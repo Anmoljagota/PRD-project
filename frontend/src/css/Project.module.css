@@ -1,0 +1,24 @@
+.parentNavbar{
+   height: 100vh;
+   font-size: 14px;
+   /* border: 1px solid black; */
+}
+.upperNavbar{
+    display: flex;
+    /* border: 1px solid red; */
+    padding: 7px;
+    background-color: #cc0000;
+    color:#ffffff
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+   width: 95%;
+   gap: 7px;
+   cursor: pointer;
+}
+.cur{
+    cursor: pointer;
+}
