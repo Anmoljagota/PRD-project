@@ -43,12 +43,14 @@ export const ImageSlider = () => {
       <Slider {...settings} style={{ width: "100%" }}>
         {images.map((Item, index) => {
           return (
-            <Box display="flex" fontSize="24px" fontWeight="bold" lineHeight="1.25">
+            <Box className={Styles.ProductBox}>
               <Box
                 // border="1px solid red"
-                width="30%"
+                width="26%"
                 mt="20px"
                 display="inline-block"
+textAlign="left"
+float="left"                
               >
                 <Box>{Item.product}</Box>
                 <Box className={Styles.desc}>{Item.description}</Box>
@@ -58,7 +60,7 @@ export const ImageSlider = () => {
                 key={index}
                 // border="1px solid black"
                 mt="20px"
-                width="60%"
+                width="69%"
                 float="right"
                 display="inline-block"
                 mr="10px"
