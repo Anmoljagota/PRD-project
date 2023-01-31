@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Box, Button, Image, Stack } from "@chakra-ui/react";
+import { border, Box, Button, Image, Stack } from "@chakra-ui/react";
 import Styles from "../css/Project.module.css"
 export const ImageSlider = () => {
   const images = [
@@ -37,7 +37,8 @@ export const ImageSlider = () => {
     <div
       style={{
         width: "100%",
-        height: "100%"
+        height: "100%",
+        
       }}
     >
       <Slider {...settings} style={{ width: "100%" }}>
