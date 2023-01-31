@@ -1,7 +1,10 @@
+*{
+   font-family:  Bogle,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
 .parentNavbar{
-   height: 100vh;
+   height: 30vh;
    font-size: 14px;
-   /* border: 1px solid black; */
+   border: 1px solid black;
 }
 .upperNavbar{
     display: flex;
@@ -21,4 +24,31 @@
 }
 .cur{
     cursor: pointer;
+}
+
+/* HOME PAGE CSS */
+.HomePageMain{
+    height: 100vh;
+    /* border: 1px solid black; */
+}
+.desc{
+    color:rgb(46, 47, 50);
+    margin-top: 8px;
+    font-weight: 400;
+    font-size: 16px;
+}
+.btn{
+    /* border: 1px solid black; */
+    box-shadow: rgb(0 0 0) 0px 0px 0px 1px inset;
+    color:rgb(0 0 0);
+    font-size: .875rem;
+    height: 2rem;
+    padding: 0 1rem;
+    background-color: white;
+    font-weight: 700;
+    border-radius: 65.5rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
 }
