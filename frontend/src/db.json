@@ -1,42 +1,25 @@
-[
-  {
-    "image": "https://rukminim1.flixcart.com/flap/128/128/image/29327f40e9c4d26b.png?q=100",
-    "category": "Grocery"
-  },
-  {
-    "image": "https://rukminim1.flixcart.com/flap/128/128/image/22fddf3c7da4c4f4.png?q=100",
-    "category": "Mobiles"
-  },
-  {
-    "image": "https://rukminim1.flixcart.com/flap/128/128/image/c12afc017e6f24cb.png?q=100",
-    "category": "Fashion"
-  },
-  {
-    "image": "https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100",
-    "category": "Electronics"
-  },
-  {
-    "image": "https://rukminim1.flixcart.com/flap/128/128/image/ab7e2b022a4587dd.jpg?q=100",
-    "category": "Home"
-  },
-  {
-    "image": "https://rukminim1.flixcart.com/flap/128/128/image/0ff199d1bd27eb98.png?q=100",
-    "category": "Appliances"
-  },
-  {
-    "image": "https://rukminim1.flixcart.com/flap/128/128/image/71050627a56b4693.png?q=100",
-    "category": "Travel"
-  },
-  {
-    "image": "https://rukminim1.flixcart.com/flap/128/128/image/f15c02bfeb02d15d.png?q=100",
-    "category": "Top Offers"
-  },
-  {
-    "image": "https://rukminim1.flixcart.com/flap/128/128/image/dff3f7adcf3a90c6.png?q=100",
-    "category": "Beauty, Toys & More"
-  },
-  {
-    "image ": "https://rukminim1.flixcart.com/fk-p-flap/128/128/image/05d708653beff580.png?q=100",
-    "category": "Two Wheelers"
-  }
-]
+ 
+ [
+    {
+      "image":
+        "https://i5.walmartimages.com/dfw/4ff9c6c9-2abf/k2-_a16fbc9e-bea4-47da-ac72-c774b9796ca3.v1.jpg?odnHeight=128&odnWidth=128&odnBg=FFFFFF",
+      "name": "25% off select home"
+    },
+    {
+      "image":
+        "https://i5.walmartimages.com/dfw/4ff9c6c9-9ad2/k2-_0377fcda-85f3-4b27-aae6-fdb36a5f1d7a.v1.jpg?odnHeight=128&odnWidth=128&odnBg=FFFFFF",
+      "name": "50% off select fashion"
+    },
+    {
+      "image":
+        "https://i5.walmartimages.com/dfw/4ff9c6c9-ae69/k2-_7593e03c-eb4b-424b-85a0-574a5eebf95a.v1.jpg?odnHeight=128&odnWidth=128&odnBg=FFFFFF",
+      "name": "35% off on select beauty"
+    },
+    {
+     "image":
+        "https://i5.walmartimages.com/dfw/4ff9c6c9-f2ba/k2-_1a07238d-99c2-4859-b9cf-28d6a3ec233e.v1.jpg?odnHeight=128&odnWidth=128&odnBg=FFFFFF",
+      "name": "30% off on select fitness"
+    }
+    
+    
+  ]

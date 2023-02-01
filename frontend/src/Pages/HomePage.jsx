@@ -1,11 +1,20 @@
-import { HStack, Box, Image } from "@chakra-ui/react";
+import { HStack, Box, Image, SimpleGrid } from "@chakra-ui/react";
 import React from "react";
 import { ImageSlider } from "../Components/demo";
+import Latest from "../Components/Latest";
+import TopDepartments from "../Components/TopDepartments";
 import Styles from "../css/Project.module.css";
+import data from "../db.json";
 const HomePage = () => {
   return (
     <div className={Styles.HomePageMain}>
-      <Box width="95%" margin="auto" p="10px" height="100%" border="1px solid black">
+      <Box
+        width="95%"
+        margin="auto"
+        p="10px"
+        height="100%"
+        border="1px solid black"
+      >
         <HStack spacing="24px" cursor="pointer">
           <Box
             w="70%"
@@ -97,10 +106,15 @@ const HomePage = () => {
                 </span>
               </h1>
               <br />
-              {/* <h3 style={{fontSize:"14px",overflow:"hidden"}}>SuperFit 2.25HP Two Dual Display Folding Treadmills</h3> */}
             </Box>
           </Box>
         </HStack>
+        <Box className={Styles.flexall} mt="20px">
+
+        {data.map((items, index) => (
+          <Box float="right" key={index}>{index < 3 && <TopDepartments i={index}/>}</Box>
+          ))}
+          </Box>
       </Box>
     </div>
   );

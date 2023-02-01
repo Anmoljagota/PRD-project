@@ -54,7 +54,7 @@ export const ImageSlider = () => {
       <Slider {...settings} style={{ width: "100%" }}>
         {images.map((Item, index) => {
           return (
-            <Box className={Styles.ProductBox}>
+            <Box className={Styles.ProductBox} key={index}>
               <Box
                 width="300px"
                 position="absolute"
