@@ -1,9 +1,12 @@
 require("dotenv").config()
+const {categoryRoute}=require("./Routes/CategoryRoute")
 const {connection}=require("./Config/db")
 const express=require("express")
 const cors=require("cors")
 const app=express()
 app.use(cors())
+app.use(express.json())
+app.use("/category",categoryRoute)
 app.listen(process.env.PORT,async()=>{
   try{
     await connection
@@ -14,4 +17,3 @@ app.listen(process.env.PORT,async()=>{
   }
   console.log(`server is listening on port ${process.env.PORT}`);
 })
-console.log("");
