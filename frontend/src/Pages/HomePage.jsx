@@ -1,7 +1,7 @@
 import { HStack, Box, Image, SimpleGrid } from "@chakra-ui/react";
 import React from "react";
 import { ImageSlider } from "../Components/demo";
-import Latest from "../Components/Latest";
+import HomeProduct from "../Components/HomeProduct";
 import TopDepartments from "../Components/TopDepartments";
 import Styles from "../css/Project.module.css";
 import data from "../db.json";
@@ -115,6 +115,7 @@ const HomePage = () => {
           <Box float="right" key={index}>{index < 3 && <TopDepartments i={index}/>}</Box>
           ))}
           </Box>
+      <HomeProduct/>
       </Box>
     </div>
   );

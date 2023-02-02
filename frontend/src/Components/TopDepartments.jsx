@@ -41,14 +41,13 @@ const TopDepartments = ({ i }) => {
             justifyContent="space-between"
             alignItems="center"
             marginTop="20px"
-          
           >
             <h1>Winter savings</h1>
           </Box>
-          <Box display="flex" justifyContent="center" >
+          <Box display="flex" justifyContent="center">
             <SimpleGrid columns={[2, null, 2]} spacing="40px">
-              {winters.map((items) => (
-                <Box>
+              {winters.map((items,index) => (
+                <Box key={index}>
                   <Box>
                     <Image src={items.image} alt="something wrong" />
                   </Box>
