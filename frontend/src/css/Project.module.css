@@ -67,3 +67,17 @@
     justify-content: space-between;
     align-items: center;
 }
+.product{
+    padding: 25px 15px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    line-height: 1.4;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: #f1f3f6;
+    font-weight: 500;
+ overflow: hidden;
+ white-space: nowrap;
+    
+}
