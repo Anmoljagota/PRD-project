@@ -12,14 +12,14 @@ const HomeProduct = () => {
   }, []);
   return (
     <div>
-      <Box border="1px solid blue">
+      <Box  background="white">
         <Box border="1px solid yellow">
-          <SimpleGrid columns={[2, null, 5]} border="1px solid green">
+          <SimpleGrid columns={[2, null, 5]} >
             {data.data &&
               data.data.length > 0 &&
               data.data.map((items) => (
                 <Box
-                  border="1px solid black"
+                 mt="20px"
                   key={items._id}
                   className={Styles.product}
                 >
@@ -28,17 +28,21 @@ const HomeProduct = () => {
                     width="200px"
                     position="relative"
                     margin="0 auto"
+                   
+                    background="white"
                   >
                     <Image src={items.image} />
                   </Box>
-                  <Box>{items.title}</Box>
+                  <Box   background="white">{items.title}</Box>
                   <Box
                     color="#388e3c"
                     paddingTop="8px"
                     fontSize="16px"
+                    
+background="white"
                   >{`Up to ${items.discount} off`}</Box>
-                  <Box display="inline-block"  mr="5px" textDecorationLine="line-through">{items.value}</Box>
-                  <Box display="inline-block" >{items.price}</Box>
+                  <Box display="inline-block"  mr="5px" textDecorationLine="line-through" background="white" paddingTop="8px">{items.value}</Box>
+                  <Box display="inline-block" background="white" paddingTop="8px">{items.price}</Box>
                 </Box>
               ))}
           </SimpleGrid>
