@@ -18,9 +18,11 @@ function ERROR_PRODUCT(){
     }
 }
 
-const getdata=(dispatch)=>{
+const getdata=(limit,page)=>(dispatch)=>{
+    
     dispatch(LOADING_PRODUCT())
-    return axios.get("http://localhost:8080/homeproduct").then((res)=>{
+    return axios.get("http://localhost:8080/homeproduct",{ params: { page:page,limit:limit } }).then((res)=>{
+        console.log("i am res data",res.data)
         dispatch(SUCCESS_PRODUCT(res.data))
     })
     .catch((err)=>{

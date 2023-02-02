@@ -1,48 +1,110 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getdata } from "../Redux/Product_redux/action";
+import React, { useEffect, useState } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+
 import { Box, Image, SimpleGrid } from "@chakra-ui/react";
+import { BiRupee } from "react-icons/bi";
 import Styles from "../css/Project.module.css";
+import axios from "axios";
+
 const HomeProduct = () => {
-  const dispatch = useDispatch();
-  const data = useSelector((store) => store.homeproduct);
-  console.log(data, "i am");
+  const [page, SetPage] = useState(1);
+  const [data, setData] = useState([]);
+  const [loading,setLoading]=useState(false)
+  const [error,setError]=useState(false)
+  const getdata1 = (page, limit) => {
+    
+    axios
+    .get("http://localhost:8080/homeproduct", {
+      params: { page: page, limit: limit },
+    })
+    .then((res) => {
+      setData((prev) => [...prev, ...res.data]);
+    
+      });
+
+  };
+
+  // const data = useSelector((store) => store.homeproduct);
+  // console.log("i am data",data)
+  const handleInfiniteScroll = async () => {
+    try {
+      if (
+        window.innerHeight + document.documentElement.scrollTop + 1 >=
+        document.documentElement.scrollHeight
+      ) {
+        SetPage((prev) => prev + 1);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   useEffect(() => {
-    dispatch(getdata);
+    getdata1(page, 50);
+  }, [page]);
+  console.log("i am data",data)
+  useEffect(() => {
+    window.addEventListener("scroll", handleInfiniteScroll);
+    return () => window.removeEventListener("scroll", handleInfiniteScroll);
   }, []);
+  if(loading===true){
+    return <h1>...Loading</h1>
+  }
+  console.log("i am loading",loading);
   return (
     <div>
-      <Box  background="white">
-        <Box border="1px solid yellow">
-          <SimpleGrid columns={[2, null, 5]} >
-            {data.data &&
-              data.data.length > 0 &&
-              data.data.map((items) => (
-                <Box
-                 mt="20px"
-                  key={items._id}
-                  className={Styles.product}
-                >
+      <Box background="white">
+        <Box>
+          <SimpleGrid columns={[2, null, 5]}>
+            {data &&
+              data.length > 0 &&
+              data.map((items) => (
+                <Box mt="20px" key={items._id} className={Styles.product}>
                   <Box
                     height="200px"
                     width="200px"
                     position="relative"
                     margin="0 auto"
-                   
                     background="white"
                   >
-                    <Image src={items.image} />
+                    <Image src={items.image} alt="something wrong"/>
                   </Box>
-                  <Box   background="white">{items.title}</Box>
+                  <Box background="white">{items.title}</Box>
                   <Box
                     color="#388e3c"
                     paddingTop="8px"
                     fontSize="16px"
-                    
-background="white"
+                    background="white"
                   >{`Up to ${items.discount} off`}</Box>
-                  <Box display="inline-block"  mr="5px" textDecorationLine="line-through" background="white" paddingTop="8px">{items.value}</Box>
-                  <Box display="inline-block" background="white" paddingTop="8px">{items.price}</Box>
+
+                  <Box
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    background="white"
+                    paddingTop="8px"
+                  >
+                    <Box
+                      display="inline-block"
+                      mr="5px"
+                      textDecorationLine="line-through"
+                      background="white"
+                      paddingTop="8px"
+                    >
+                      {items.value}
+                    </Box>
+                    <Box
+                      display="flex"
+                      justifyContent="center"
+                      fontWeight="700"
+                      fontSize="16px"
+                      background="white"
+                      mt="7px"
+                      alignItems="center"
+                    >
+                      <BiRupee />
+                      {items.price}
+                    </Box>
+                  </Box>
                 </Box>
               ))}
           </SimpleGrid>
