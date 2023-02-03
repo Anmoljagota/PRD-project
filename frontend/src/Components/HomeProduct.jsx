@@ -9,19 +9,16 @@ import axios from "axios";
 const HomeProduct = () => {
   const [page, SetPage] = useState(1);
   const [data, setData] = useState([]);
-  const [loading,setLoading]=useState(false)
-  const [error,setError]=useState(false)
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const getdata1 = (page, limit) => {
-    
     axios
-    .get("http://localhost:8080/homeproduct", {
-      params: { page: page, limit: limit },
-    })
-    .then((res) => {
-      setData((prev) => [...prev, ...res.data]);
-    
+      .get("http://localhost:8080/homeproduct", {
+        params: { page: page, limit: limit },
+      })
+      .then((res) => {
+        setData((prev) => [...prev, ...res.data]);
       });
-
   };
 
   // const data = useSelector((store) => store.homeproduct);
@@ -41,15 +38,15 @@ const HomeProduct = () => {
   useEffect(() => {
     getdata1(page, 50);
   }, [page]);
-  console.log("i am data",data)
+  console.log("i am data", data);
   useEffect(() => {
     window.addEventListener("scroll", handleInfiniteScroll);
     return () => window.removeEventListener("scroll", handleInfiniteScroll);
   }, []);
-  if(loading===true){
-    return <h1>...Loading</h1>
+  if (loading === true) {
+    return <h1>...Loading</h1>;
   }
-  console.log("i am loading",loading);
+  console.log("i am loading", loading);
   return (
     <div>
       <Box background="white">
@@ -66,7 +63,7 @@ const HomeProduct = () => {
                     margin="0 auto"
                     background="white"
                   >
-                    <Image src={items.image} alt="something wrong"/>
+                    <Image src={items.image} alt="something wrong" />
                   </Box>
                   <Box background="white">{items.title}</Box>
                   <Box
