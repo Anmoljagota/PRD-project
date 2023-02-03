@@ -16,7 +16,7 @@ const reducer = (state = inital_state, action) => {
         ...state,
         loading: false,
         error: false,
-        data: [...state.data, payload],
+        data:payload,
       };
     case ERROR:
       return { ...state, loading: false, error: true };

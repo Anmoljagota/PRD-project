@@ -1,16 +1,20 @@
 const express = require("express");
 const clothesProductRoute = express.Router();
 const { clothesmodel } = require("../Models/Clothes.model");
-clothesProductRoute.get("/", async (req, res) => {
+clothesProductRoute.get("/clothes", async (req, res) => {
   if (req.query.page && req.query.limit) {
     try {
+      console.log("running");
       const { page, limit } = req.query;
       if (!page) {
         page = 1;
       }
       let newlimit = Number(limit);
       let size = (page - 1) * limit;
-      let paginateddata = await Homemodel.find({}).limit(newlimit).skip(size);
+      let paginateddata = await clothesmodel
+        .find({})
+        .limit(newlimit)
+        .skip(size);
       res.send(paginateddata);
     } catch (err) {
       res.send(`error:${err}`);
