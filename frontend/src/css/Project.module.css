@@ -1,5 +1,8 @@
 *{
    font-family:  Bogle,Helvetica Neue,Helvetica,Arial,sans-serif;
+   margin: 0px;
+   box-sizing: border-box;
+   padding: 0px;
    /* background-color: #f1f3f6; */
 }
 .parentNavbar{

@@ -2,22 +2,25 @@
   
   /* Main Div Css*/
   .maindiv {
-    background-color: #fff;
-    border: 1px solid red;
-   
+    /* background-color: #fff; */
+    /* border: 1px solid red; */
+   font-size: 14px;
     height: 600vh;
     width: 100%;
     padding: 0px 15px 0px 15px;
     margin: 30px 0px 30px 0px;
     text-decoration: none solid rgba(0, 0, 0);
+    color:#212121;
+    line-height: 1.4;
+
   }
   
   /* inner main div */
   .innermaindiv {
-    width: 97%;
-    border: 1px solid red;
+    width: 99%;
+    /* border: 1px solid red; */
     /* margin: auto; */
-    height: 100%;
+    height: 1600vh;
   }
   .sorting{
     margin-left: 20px;
@@ -42,10 +45,10 @@
     
       width: 100%;
   }
-  :hover.cart{
+  /* :hover.cart{
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     padding: 7px 8px 7px 8px;
-  }
+  } */
   .pagination{
    
      
@@ -56,4 +59,24 @@
   }
   .color1{
     color:#fba937!important
+  }
+  .cart{
+    background:#fff;
+    align-items: stretch;
+    display: flex;
+    font-size: 14px;
+    line-height: 1.5;
+    color:#212121
+  }
+  .info{
+    width:100%;
+    padding: 3px 7px 3px;
+    background-color: #fff;
+    /* position: relative; */
+    z-index: 2;
+    text-align: left;
+  float: left;
+    /* border: 1px solid black; */
+    font-weight: 550;
+   
   }

@@ -54,13 +54,14 @@ useEffect(()=>{
 
         <Box
           width="84%"
-          height="2%"
+          height="0.7%"
           float="left"
           fontSize="20px"
           padding="7px 7px 4px 35px"
           lineHeight="25px"
           fontWeight="450"
           cursor="pointer"
+          // border="3px solid green"
         >
           <span
             style={{ marginLeft: "10px" }}
@@ -89,8 +90,8 @@ useEffect(()=>{
           </span>
           <span style={{ marginLeft: "10px" }}>New Arrivals</span>
         </Box>
-        <Box width="84%" height="auto" float="left" border="1px solid yellow">
-          <SimpleGrid columns={[2, 2, 4]}>
+        <Box width="84%"float="left" >
+          <SimpleGrid columns={[2, 2, 4]} spacing="19px">
             {data.data.length>0 &&data.data.map((items)=>{
 return <ProductItems {...items} key={items._id}/>
             })}
@@ -101,7 +102,7 @@ return <ProductItems {...items} key={items._id}/>
             justifyContent="center"
             alignItems="center"
             marginTop="80px"
-            border="1px solid black"
+            // border="1px solid black"
           >
            
           </Box>
