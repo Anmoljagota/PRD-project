@@ -2,7 +2,7 @@ import { Box, Button, Img } from "@chakra-ui/react";
 import Styles from "../ProductPage/Product.module.css";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 const ProductItems = (products) => {
-  console.log("i am items", products);
+  // console.log("i am items", products);
   return (
     <Box
       //   padding="10px 12px 10px 12px"

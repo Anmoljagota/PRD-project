@@ -33,4 +33,17 @@ const getdata = (limit, page) => (dispatch) => {
       dispatch(ERROR_PRODUCT());
     });
 };
-export { getdata };
+const sortgetdata = (data) => (dispatch) => {
+  console.log("lo",data)
+  dispatch(LOADING_PRODUCT());
+  return axios
+    .get("http://localhost:8080/fashion/clothes", data)
+    .then((res) => {
+      console.log("i am res data", res.data);
+      dispatch(SUCCESS_PRODUCT(res.data));
+    })
+    .catch((err) => {
+      dispatch(ERROR_PRODUCT());
+    });
+};
+export { getdata,sortgetdata };

@@ -19,8 +19,25 @@ clothesProductRoute.get("/clothes", async (req, res) => {
     } catch (err) {
       res.send(`error:${err}`);
     }
+  } else if (req.query._sort && req.query._order) {
+    try {
+      const sortBy = req.query._sort;
+      const order = req.query._order;
+      console.log("i am", sortBy, order);
+      if (sortBy === "discount") {
+        data = 1;
+      } else {
+        order === "LTH" ? (data = 1) : (data = -1);
+      }
+      console.log("i am data", data);
+      const sortdata = await clothesmodel.find({}).sort({ [sortBy]: data });
+      res.send(sortdata);
+    } catch (err) {
+      res.send(err);
+    }
   }
 });
+
 clothesProductRoute.post("/clothes", async (req, res) => {
   console.log(req.body);
 
