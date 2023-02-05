@@ -6,9 +6,10 @@
    /* background-color: #f1f3f6; */
 }
 .parentNavbar{
-   height: 30vh;
+   height: 20vh;
    font-size: 14px;
-   border: 1px solid black;
+   cursor: pointer;
+   /* border: 1px solid black; */
 }
 .upperNavbar{
     display: flex;
@@ -84,4 +85,28 @@
  overflow: hidden;
  white-space: nowrap;
     
+}
+.input{
+    /* padding:7px 140px 7px 140px; */
+    border-radius: 50px;
+    /* position: absolute; */
+    border: 1px solid white;
+   width: 50%;
+   height: 30px;
+   padding: 20px;
+  
+}
+.signin{
+    font-size: .875rem;
+    height: 2rem;
+    padding: 0 1rem;
+    background: #0071dc;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 62.5rem;
+    transition: all .1s cubic-bezier(.77,0,.175,1);
+    white-space: nowrap;
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
 }

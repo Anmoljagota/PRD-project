@@ -5,52 +5,51 @@ import { useDispatch, useSelector } from "react-redux";
 import { getdata, sortgetdata } from "../../Redux/Product_redux/action";
 import ProductItems from "./ProductItems";
 import { useLocation, useSearchParams } from "react-router-dom";
+import Filtering from "../../Components/Filtering";
 const CustomProductPage = () => {
-  const location=useLocation()
- const sortdata=(order,sortBy)=>{
-console.log("i am value",order,sortBy)
-setSort(order)
-setSortby(sortBy)
- }
+  const location = useLocation();
+  const sortdata = (order,sortBy) => {
+    console.log("i am value", order);
+    setSort(order);
+    // setSortby(sortBy)
+  };
 
   const [searhparams, setSearchParama] = useSearchParams();
-   let sortdata1= searhparams.getAll("_sort")
-   const orderdata=searhparams.get("order")
-   console.log("i am sort data arr",orderdata)
-   const [sortby,setSortby]=useState(orderdata||"")
-  const [sort,setSort]=useState(sortdata1[0]||"")
+  let sortdata1 = searhparams.getAll("_sort");
+
+  //  const [sortby,setSortby]=useState(orderdata||"")
+  const [sort, setSort] = useState(sortdata1[0] || "");
 
   const dispatch = useDispatch();
   const data = useSelector((data) => data.homeproduct);
+  console.log("i am data", data);
   useEffect(() => {
     dispatch(getdata());
   }, []);
-  useEffect(()=>{
-  if(sort){
-    console.log("running")
-    let params={}
-  sort&&(params._sort=sort)
-sortby!==""&& (params.order=sortby)
+  useEffect(() => {
+    if (sort) {
+      console.log("running");
+      let params = {};
+      sort && (params._sort = sort);
+      // sortby!==""&& (params.order=sortby)
 
- 
-setSearchParama(params)
-const newsortBy= searhparams.getAll("_sort")
-const neworder=searhparams.getAll("order")
-console.log("sort",newsortBy)
-console.log("sortby",neworder)
-if(location){
-  const changedata={
-    params:{
-
-_sort:neworder[0],
-_order:newsortBy[0],
+      setSearchParama(params);
+      const newsortBy = searhparams.getAll("_sort");
+      // const neworder = searhparams.getAll("order");
+      console.log("sort", newsortBy);
+      // console.log("sortby", neworder);
+      if (location||sort) {
+        const changedata = {
+          params: {
+            _sort: sortdata1[0],
+            // _order:newsortBy[0],
+          },
+        };
+        console.log("changedata", changedata);
+        dispatch(sortgetdata(changedata));
+      }
     }
-  }
-  console.log("changedata",changedata)
-  dispatch(sortgetdata(changedata))
-}
-  }
-  },[sort,sortby])
+  }, [sort]);
 
   return (
     <Box className={Styles.maindiv}>
@@ -62,7 +61,7 @@ _order:newsortBy[0],
           padding="0px 15px 0px 15px"
           position="relative"
           float="left"
-          border="1px solid blue"
+          
         >
           <Box height="100%">
             <Box
@@ -74,6 +73,7 @@ _order:newsortBy[0],
             >
               Filter by
             </Box>
+            <Filtering/>
           </Box>
         </Box>
 
@@ -93,10 +93,9 @@ _order:newsortBy[0],
             <span style={{ marginLeft: "10px" }}>|</span>
           </span>
           <span
-            style={{ marginLeft: "10px", border: "1px solid black" }}
+            style={{ marginLeft: "10px" }}
             // defaultChecked={sort==="low_to_high"}
-            onClick={() => sortdata("LTH","price")}
-           
+            onClick={() => sortdata("LTH", "price")}
           >
             Price:<span>Low to Hight</span>{" "}
             <span style={{ marginLeft: "10px" }}>|</span>
@@ -104,7 +103,7 @@ _order:newsortBy[0],
           <span
             style={{ marginLeft: "10px" }}
             // defaultChecked={sort==="high_to_low"}
-            onClick={() => sortdata("HTL","price")}
+            onClick={() => sortdata("HTL", "price")}
             value="desc"
             name="sortby"
           >
@@ -114,7 +113,7 @@ _order:newsortBy[0],
 
           <span
             style={{ marginLeft: "10px" }}
-            onClick={() => sortdata("disc","discount")}
+            onClick={() => sortdata("disc", "discount")}
             value="disc"
             name="sortby"
           >

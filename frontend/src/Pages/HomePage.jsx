@@ -13,7 +13,7 @@ const HomePage = () => {
         margin="auto"
         p="10px"
         height="100%"
-        border="1px solid black"
+        // border="1px solid black"
       >
         <HStack spacing="24px" cursor="pointer">
           <Box
@@ -110,12 +110,13 @@ const HomePage = () => {
           </Box>
         </HStack>
         <Box className={Styles.flexall} mt="20px">
-
-        {data.map((items, index) => (
-          <Box float="right" key={index}>{index < 3 && <TopDepartments i={index}/>}</Box>
+          {data.map((items, index) => (
+            <Box float="right" key={index}>
+              {index < 3 && <TopDepartments i={index} />}
+            </Box>
           ))}
-          </Box>
-      <HomeProduct/>
+        </Box>
+        <HomeProduct />
       </Box>
     </div>
   );

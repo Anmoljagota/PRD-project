@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";
-
+import { useNavigate } from "react-router-dom";
 import { Box, Image, SimpleGrid } from "@chakra-ui/react";
 import { BiRupee } from "react-icons/bi";
 import Styles from "../css/Project.module.css";
 import axios from "axios";
 
 const HomeProduct = () => {
+  const navigate=useNavigate()
   const [page, SetPage] = useState(1);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -18,12 +19,16 @@ const HomeProduct = () => {
       })
       .then((res) => {
         setData((prev) => [...prev, ...res.data]);
+        console.log(res.data,"lllll")
       });
   };
-
-  // const data = useSelector((store) => store.homeproduct);
+function gotonextpage(){
+navigate("/products")
+}
+  // const data1 = useSelector((store) => console.log(store));
   // console.log("i am data",data)
   const handleInfiniteScroll = async () => {
+   
     try {
       if (
         window.innerHeight + document.documentElement.scrollTop + 1 >=
@@ -55,7 +60,8 @@ const HomeProduct = () => {
             {data &&
               data.length > 0 &&
               data.map((items) => (
-                <Box mt="20px" key={items._id} className={Styles.product}>
+                <Box mt="20px" key={items._id} className={Styles.product} onClick={gotonextpage}>
+
                   <Box
                     height="200px"
                     width="200px"
