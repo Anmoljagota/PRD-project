@@ -8,3 +8,4 @@ const rootreducer = combineReducers({
 });
 const store = legacy_createStore(rootreducer, applyMiddleware(thunk));
 export { store };
+//hlo

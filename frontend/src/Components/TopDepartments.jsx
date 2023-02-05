@@ -1,7 +1,12 @@
 import { Box, HStack, Image, SimpleGrid } from "@chakra-ui/react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Styles from "../css/Project.module.css";
 const TopDepartments = ({ i }) => {
+  const navigate = useNavigate();
+  function nextpage() {
+    navigate("/products");
+  }
   const winters = [
     {
       image:
@@ -46,8 +51,8 @@ const TopDepartments = ({ i }) => {
           </Box>
           <Box display="flex" justifyContent="center">
             <SimpleGrid columns={[2, null, 2]} spacing="40px">
-              {winters.map((items,index) => (
-                <Box key={index}>
+              {winters.map((items, index) => (
+                <Box key={index} onClick={nextpage}>
                   <Box>
                     <Image src={items.image} alt="something wrong" />
                   </Box>
