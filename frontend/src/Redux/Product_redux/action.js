@@ -22,7 +22,7 @@ const getdata = (limit, page) => (dispatch) => {
   console.log("running")
   dispatch(LOADING_PRODUCT());
   return axios
-    .get("http://localhost:8080/fashion/clothes", {
+    .get("https://crazy-crown-yak.cyclic.app/fashion/clothes", {
       params: { page: 1, limit: 100 },
     })
     .then((res) => {
@@ -37,7 +37,7 @@ const sortgetdata = (data) => (dispatch) => {
   console.log("lo",data)
   dispatch(LOADING_PRODUCT());
   return axios
-    .get("http://localhost:8080/fashion/clothes", data)
+    .get("https://crazy-crown-yak.cyclic.app/fashion/clothes", data)
     .then((res) => {
       console.log("i am res data", res.data);
       dispatch(SUCCESS_PRODUCT(res.data));

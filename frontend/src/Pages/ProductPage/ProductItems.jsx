@@ -1,24 +1,21 @@
-import { Box, Button, Img } from "@chakra-ui/react";
+import { Box, Img } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
 import Styles from "../ProductPage/Product.module.css";
-import { HiOutlineShoppingBag } from "react-icons/hi";
 const ProductItems = (products) => {
-  // console.log("i am items", products);
+const data=useSelector((details)=>console.log("i am details",details))
   return (
     <Box
-      //   padding="10px 12px 10px 12px"
       margin="15px 0 0 0"
       height="483px"
       width="100%"
       cursor="pointer"
       textAlign="center"
       className={Styles.cart}
-      //   border="1px solid black"
       position="relative"
       lineHeight="1.4"
-      //   display="flex"
     >
       <Box width="100%" height="427px" mt="12px">
-        <Box  height="350px" width="100%">
+        <Box height="350px" width="100%">
           <Img
             src={products.image}
             height="350px"
@@ -42,7 +39,6 @@ const ProductItems = (products) => {
           </Box>
           <br />
           <Box
-           
             p="5px"
             mt="5px"
             whiteSpace="nowrap"

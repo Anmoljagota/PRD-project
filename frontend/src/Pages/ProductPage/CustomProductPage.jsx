@@ -11,16 +11,11 @@ const CustomProductPage = () => {
   const sortdata = (order,sortBy) => {
     console.log("i am value", order);
     setSort(order);
-    // setSortby(sortBy)
   };
-
-  const [searhparams, setSearchParama] = useSearchParams();
+const [searhparams, setSearchParama] = useSearchParams();
   let sortdata1 = searhparams.getAll("_sort");
-
-  //  const [sortby,setSortby]=useState(orderdata||"")
   const [sort, setSort] = useState(sortdata1[0] || "");
-
-  const dispatch = useDispatch();
+const dispatch = useDispatch();
   const data = useSelector((data) => data.homeproduct);
   console.log("i am data", data);
   useEffect(() => {
@@ -31,18 +26,13 @@ const CustomProductPage = () => {
       console.log("running");
       let params = {};
       sort && (params._sort = sort);
-      // sortby!==""&& (params.order=sortby)
-
-      setSearchParama(params);
+setSearchParama(params);
       const newsortBy = searhparams.getAll("_sort");
-      // const neworder = searhparams.getAll("order");
       console.log("sort", newsortBy);
-      // console.log("sortby", neworder);
       if (location||sort) {
         const changedata = {
           params: {
             _sort: sortdata1[0],
-            // _order:newsortBy[0],
           },
         };
         console.log("changedata", changedata);
@@ -50,8 +40,7 @@ const CustomProductPage = () => {
       }
     }
   }, [sort]);
-
-  return (
+ return (
     <Box className={Styles.maindiv}>
       <Box className={Styles.innermaindiv}>
         <Box
@@ -61,8 +50,7 @@ const CustomProductPage = () => {
           padding="0px 15px 0px 15px"
           position="relative"
           float="left"
-          
-        >
+>
           <Box height="100%">
             <Box
               fontSize="28px"
@@ -76,8 +64,7 @@ const CustomProductPage = () => {
             <Filtering/>
           </Box>
         </Box>
-
-        <Box
+ <Box
           width="84%"
           height="0.7%"
           float="left"
@@ -86,7 +73,6 @@ const CustomProductPage = () => {
           lineHeight="25px"
           fontWeight="450"
           cursor="pointer"
-          // border="3px solid green"
         >
           <span style={{ marginLeft: "10px" }}>
             Sort By:<span style={{ marginLeft: "15px" }}>Popular</span>
@@ -94,7 +80,6 @@ const CustomProductPage = () => {
           </span>
           <span
             style={{ marginLeft: "10px" }}
-            // defaultChecked={sort==="low_to_high"}
             onClick={() => sortdata("LTH", "price")}
           >
             Price:<span>Low to Hight</span>{" "}
@@ -102,7 +87,6 @@ const CustomProductPage = () => {
           </span>
           <span
             style={{ marginLeft: "10px" }}
-            // defaultChecked={sort==="high_to_low"}
             onClick={() => sortdata("HTL", "price")}
             value="desc"
             name="sortby"
@@ -134,7 +118,6 @@ const CustomProductPage = () => {
             justifyContent="center"
             alignItems="center"
             marginTop="80px"
-            // border="1px solid black"
           ></Box>
         </Box>
       </Box>
