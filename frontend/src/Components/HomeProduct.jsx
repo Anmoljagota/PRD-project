@@ -5,6 +5,8 @@ import { Box, Image, SimpleGrid } from "@chakra-ui/react";
 import { BiRupee } from "react-icons/bi";
 import Styles from "../css/Project.module.css";
 import axios from "axios";
+import { cartdata } from "../Redux/Product_redux/action";
+import { useSelector } from "react-redux";
 
 const HomeProduct = () => {
   const navigate = useNavigate();
@@ -12,12 +14,14 @@ const HomeProduct = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [datalength, setdatalength] = useState(0);
+ 
   useEffect(() => {
     if (datalength < 96) {
       getdata1(page, 20);
     }
   }, [page]);
   useEffect(() => {
+   
     window.addEventListener("scroll", handleInfiniteScroll);
     return () => window.removeEventListener("scroll", handleInfiniteScroll);
   }, []);

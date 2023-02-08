@@ -1,13 +1,15 @@
 import { HStack, Box, Image, SimpleGrid } from "@chakra-ui/react";
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { ImageSlider } from "../Components/demo";
 import HomeProduct from "../Components/HomeProduct";
 import TopDepartments from "../Components/TopDepartments";
 import Styles from "../css/Project.module.css";
 import data from "../db.json";
+import { cartdata } from "../Redux/Product_redux/action";
 const HomePage = () => {
-return (
+
+  return (
     <div className={Styles.HomePageMain}>
       <Box
         width="95%"
@@ -26,7 +28,6 @@ return (
             zIndex="1"
             // border="1px solid yellow"
             p="4px 10px 10px 10px"
-            
             display="flex"
           >
             <Box width="100%" position="relative">
@@ -112,7 +113,7 @@ return (
             </Box>
           </Box>
         </HStack>
-        <Box className={Styles.flexall} mt="20px" >
+        <Box className={Styles.flexall} mt="20px">
           {data.map((items, index) => (
             <Box float="right" key={index}>
               {index < 3 && <TopDepartments i={index} />}

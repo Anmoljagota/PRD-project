@@ -41,7 +41,7 @@ const reducer = (state = inital_state, action) => {
         ...state,
         loading: false,
         error: false,
-        singledata: [...state.singledata,payload],
+        singledata: payload,
       };
     case SINGLE_PRODUCT_ERROR:
       return { ...state, loading: false, error: true };

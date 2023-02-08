@@ -44,14 +44,12 @@ function SINGLE_ERROR_PRODUCT() {
   };
 }
 const getdata = (limit, page) => (dispatch) => {
-  console.log("running");
   dispatch(LOADING_PRODUCT());
   return axios
     .get("https://crazy-crown-yak.cyclic.app/fashion/clothes", {
       params: { page: 1, limit: 100 },
     })
     .then((res) => {
-      console.log("i am res datakkkkkkkk", res.data);
       dispatch(SUCCESS_PRODUCT(res.data));
     })
     .catch((err) => {
@@ -59,7 +57,6 @@ const getdata = (limit, page) => (dispatch) => {
     });
 };
 const sortgetdata = (data) => (dispatch) => {
-  console.log("lo", data);
   dispatch(LOADING_PRODUCT());
   return axios
     .get("https://crazy-crown-yak.cyclic.app/fashion/clothes", data)
@@ -84,7 +81,9 @@ const singleproduct = (data) => (dispatch) => {
       }
     )
     .then((res) => {
-      console.log("i am res.data",res.data)
+      if(res.data==="you are not authorized"){
+        alert("Login first")
+      }
       dispatch(SINGLE_SUCCESS_PRODUCT(res.data));
     })
     .catch((err) => {
@@ -92,8 +91,7 @@ const singleproduct = (data) => (dispatch) => {
       dispatch(SINGLE_ERROR_PRODUCT());
     });
 };
-const cartdata = ()=> (dispatch) => {
-  console.log("runinnnnnnnnnnmmmmmmmmmmmmmmmmmmnnnnng")
+const cartdata = () => (dispatch) => {
   dispatch({ type: CART_REQUEST });
   return axios
     .get("http://localhost:8080/cartdata", {
@@ -103,7 +101,7 @@ const cartdata = ()=> (dispatch) => {
       },
     })
     .then((res) => {
-      console.log("hiiiiiiii", res.data);
+      console.log(res.data,"ppppppppp")
       dispatch({ type: CART_SUCCESS, payload: res.data });
     })
     .catch((err) => {

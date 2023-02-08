@@ -22,11 +22,16 @@ import {
   PopoverTrigger,
   Stack,
 } from "@chakra-ui/react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cartdata } from "../Redux/Product_redux/action";
+import { useEffect } from "react";
 const Navbar = () => {
   const dispatch=useDispatch()
   const navigate = useNavigate();
+  useEffect(()=>{
+dispatch(cartdata())
+  },[])
+  const fixeddata=useSelector((details)=>console.log(details,"hlo"))
   function navigatetoanother() {
     navigate("/");
   }

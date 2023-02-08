@@ -1,8 +1,23 @@
-import { Box, Img } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
+import { Alert, AlertIcon, AlertTitle, Box, Img } from "@chakra-ui/react";
+import { shallowEqual, useSelector } from "react-redux";
 import Styles from "../ProductPage/Product.module.css";
-const ProductItems = ({image,getproduct,brand,description,prev_price,discount,deals,delivery,price,id}) => {
-// console.log("i am getproduct",getproduct)
+const ProductItems = ({
+  image,
+  getproduct,
+  brand,
+  description,
+  prev_price,
+  discount,
+  deals,
+  delivery,
+  price,
+  id
+}) => {
+  // console.log("i am getproduct",getproduct)
+  const data = useSelector((data) => {
+    return data.homeproduct;
+  }, shallowEqual);
+  console.log("i am", data);
   return (
     <Box
       margin="15px 0 0 0"
@@ -13,9 +28,9 @@ const ProductItems = ({image,getproduct,brand,description,prev_price,discount,de
       className={Styles.cart}
       position="relative"
       lineHeight="1.4"
-      onClick={()=>getproduct(id)}
+      onClick={() => getproduct(id)}
     >
-      <Box width="100%" height="427px" mt="12px">
+      <Box width="100%" height="427px" mt="12px" >
         <Box height="350px" width="100%">
           <Img
             src={image}

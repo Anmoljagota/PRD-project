@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Box, SimpleGrid } from "@chakra-ui/react";
 import Styles from "../ProductPage/Product.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { getdata, singleproduct, sortgetdata } from "../../Redux/Product_redux/action";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import {
+  getdata,
+  singleproduct,
+  sortgetdata,
+} from "../../Redux/Product_redux/action";
 import ProductItems from "./ProductItems";
 import { useLocation, useSearchParams } from "react-router-dom";
 import Filtering from "../../Components/Filtering";
@@ -16,11 +20,13 @@ const CustomProductPage = () => {
   let sortdata1 = searhparams.getAll("_sort");
   const [sort, setSort] = useState(sortdata1[0] || "");
   const dispatch = useDispatch();
-  const data = useSelector((data) => data.homeproduct);
-  console.log("i am",data)
-  const getproduct=(id)=>{
-dispatch(singleproduct(id))
-  }
+  const data = useSelector((data) => {
+    return data.homeproduct;
+  }, shallowEqual);
+  const getproduct = (id) => {
+    dispatch(singleproduct(id));
+  };
+
   useEffect(() => {
     dispatch(getdata());
   }, []);
@@ -41,6 +47,7 @@ dispatch(singleproduct(id))
       }
     }
   }, [sort]);
+ 
   return (
     <Box className={Styles.maindiv} mt="150px">
       <Box className={Styles.innermaindiv}>
@@ -110,7 +117,22 @@ dispatch(singleproduct(id))
           <SimpleGrid columns={[2, 2, 4]} spacing="19px">
             {data.productdata.length > 0 &&
               data.productdata.map((items) => {
-                return <ProductItems image={items.image}  getproduct={getproduct} brand={items.brand} description={items.description} prev_price={items.prev_price} discount={items.discount} deals={items.deals} delivery={items.delivery} price={items.price} key={items._id} id={items._id}/>;
+                return (
+                  <ProductItems
+                    image={items.image}
+                    getproduct={getproduct}
+                    brand={items.brand}
+                    description={items.description}
+                    prev_price={items.prev_price}
+                    discount={items.discount}
+                    deals={items.deals}
+                    delivery={items.delivery}
+                    price={items.price}
+                    key={items._id}
+                    id={items._id}
+                    
+                  />
+                );
               })}
           </SimpleGrid>
           <Box
