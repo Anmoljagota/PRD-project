@@ -19,13 +19,10 @@ const inital_state = {
 
 const reducer = (state = inital_state, action) => {
   const { type, payload } = action;
-  console.log("i am actionnnnnnnnnnnnnnnn", type);
-  console.log("i am payload", payload);
   switch (type) {
     case REQUEST:
       return { ...state, loading: true, error: false };
     case SUCCESS:
-      console.log("jhhhhhhhhhhhhhhhhhhhh");
       return {
         ...state,
         loading: false,

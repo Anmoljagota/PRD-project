@@ -8,7 +8,7 @@ const Total = ({ newarr }) => {
         <button className={Styles.signin} style={{ height: "40px" }}>
           Continue to checkout
         </button>
-        <Box height="60px" mt="20px" background="#002d58" color="white">
+        <Box p="10px" borderRadius="15px" height="60px" mt="20px" background="#002d58" color="white">
           Items in your cart have reduced prices. Check out now for extra
           savings!
         </Box>
@@ -35,7 +35,7 @@ const Total = ({ newarr }) => {
         </Box>
         <Box className={Styles.flexall} mt="30px">
           <Box>Taxes</Box>
-          <Box>Calculated at checkou</Box>
+          <Box>Calculated at checkout</Box>
         </Box><br/>
         <hr /><br/>
         <Box className={Styles.flexall} mt="10px">

@@ -1,5 +1,5 @@
 import { Box, Image } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { HiPlusSm, HiMinusSm } from "react-icons/hi";
 import Total from "./Total";
@@ -10,10 +10,13 @@ const SingleProductPage = () => {
     (details) => details.homeproduct.cartdata
   );
   console.log("m", singleproductdata);
+
   for (let i = 0; i < singleproductdata.length; i++) {
+    console.log("running");
     newarr.push(singleproductdata[i].product);
   }
-  console.log(newarr, "i am");
+  console.log(newarr, "mewarr");
+
   return (
     <div style={{ marginTop: "120px" }}>
       <Box
@@ -30,13 +33,13 @@ const SingleProductPage = () => {
           ({newarr.length} items)
         </span>
       </Box>
-      <Box display="flex"  width="90%" margin="auto">
+      <Box display="flex" width="90%" margin="auto">
         <Box
           width="65%"
           margin="auto"
           boxShadow="rgba(0, 0, 0, 0.16) 0px 1px 4px"
         >
-          {newarr.length > 2 &&
+          {newarr !== "you are not authorized" &&
             newarr.map((items) => (
               <>
                 <Box
@@ -136,10 +139,9 @@ const SingleProductPage = () => {
                 />
               </>
             ))}
-          <Box>
+          <Box></Box>
         </Box>
-          </Box>
-            <Total newarr={newarr}/>
+        <Total newarr={newarr} />
       </Box>
     </div>
   );

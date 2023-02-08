@@ -23,7 +23,7 @@ const Login = () => {
   }
 
   return (
-    <div style={{ marginTop: "50px" }}>
+    <div style={{ marginTop: "180px" }}>
       <Box
         width="15%"
         lineHeight="1.5"

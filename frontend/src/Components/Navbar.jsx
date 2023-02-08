@@ -26,15 +26,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { cartdata } from "../Redux/Product_redux/action";
 import { useEffect } from "react";
 const Navbar = () => {
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  useEffect(()=>{
-dispatch(cartdata())
-  },[])
-  const fixeddata=useSelector((details)=>console.log(details,"hlo"))
+  useEffect(() => {
+    dispatch(cartdata());
+  }, []);
+  const fixeddata = useSelector((details) => details.homeproduct);
+  console.log("i am fied data", fixeddata);
   function navigatetoanother() {
     navigate("/");
   }
+  function showcart() {
+    dispatch(cartdata());
+    console.log(fixeddata.cartdata.length, "hiiiiiiiii");
+    if (fixeddata.cartdata !== "you are not authorized") {
+      navigate("/singlepage");
+    } else {
+      navigate("/cartlogin");
+    }
+  }
+
   return (
     <div className={Styles.parentNavbar}>
       <Stack
@@ -88,11 +99,11 @@ dispatch(cartdata())
             className={Styles.input}
             placeholder="Search products"
           />
- <AiOutlineHeart
+          <AiOutlineHeart
             style={{ marginLeft: "40px", fontSize: "25px" }}
             className={Styles.heart}
           />
-<span
+          <span
             style={{
               fontSize: "15px",
               padding: "3px",
@@ -119,36 +130,50 @@ dispatch(cartdata())
                     marginLeft: "5px",
                   }}
                 >
-                  Sign in
-                  <Box fontWeight="700" fontSize="17px">
-                    Account
-                  </Box>
+                  {localStorage.getItem("token") ? (
+                    <h1 onClick={()=>localStorage.removeItem("token")}>Logout</h1>
+                    
+                  ) : (
+                    <>
+                      <h1> Sign in</h1>
+
+                      <Box fontWeight="700" fontSize="17px">
+                        Account
+                      </Box>
+                    </>
+                  )}
                 </span>
               </PopoverTrigger>
               <PopoverContent>
                 <PopoverArrow />
                 <PopoverCloseButton />
-                <Link to="/login">
-                  <button className={Styles.signin}>
-                    Sign in or create account
-                  </button>
-                  <br />
-                </Link>
-                <hr />
-                <Breadcrumb mt="15px">
-                  <BreadcrumbItem>
-                    <BreadcrumbLink
-                      href="#"
-                      color="black"
-                      marginLeft="80px"
-                      fontWeight="400"
-                      className={Styles.flexall}
-                    >
-                      <GrNotes />
-                      Purchase history
-                    </BreadcrumbLink>
-                  </BreadcrumbItem>
-                </Breadcrumb>
+                {localStorage.getItem("token") ? (
+                  ""
+                ) : (
+                  <>
+                    <Link to="/login">
+                      <button className={Styles.signin}>
+                        <h1>Signin or create account</h1>
+                      </button>
+                      <br />
+                    </Link>
+                    <hr />
+                    <Breadcrumb mt="15px">
+                      <BreadcrumbItem>
+                        <BreadcrumbLink
+                          href="#"
+                          color="black"
+                          marginLeft="80px"
+                          fontWeight="400"
+                          className={Styles.flexall}
+                        >
+                          <GrNotes />
+                          Purchase history
+                        </BreadcrumbLink>
+                      </BreadcrumbItem>
+                    </Breadcrumb>
+                  </>
+                )}
               </PopoverContent>
             </Popover>
           </Box>
@@ -157,8 +182,24 @@ dispatch(cartdata())
             fontSize="25px"
             ml="50px"
             className={Styles.cart}
-            onClick={()=>dispatch(cartdata())}
+            onClick={showcart}
           >
+            <Box
+              background="#ffc220"
+              borderRadius="100%"
+              color="#2e2f32"
+              boxShadow="inset 0 0 0 0.0625rem #803d10"
+              width="25px"
+              height="25px"
+              fontSize="15px"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              {fixeddata.cartdata === "you are not authorized"
+                ? 0
+                : fixeddata.cartdata.length}
+            </Box>
             <AiOutlineShoppingCart />
           </Box>
         </Box>
