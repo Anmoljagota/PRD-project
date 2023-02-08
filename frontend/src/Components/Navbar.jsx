@@ -22,7 +22,10 @@ import {
   PopoverTrigger,
   Stack,
 } from "@chakra-ui/react";
+import { useDispatch } from "react-redux";
+import { cartdata } from "../Redux/Product_redux/action";
 const Navbar = () => {
+  const dispatch=useDispatch()
   const navigate = useNavigate();
   function navigatetoanother() {
     navigate("/");
@@ -149,6 +152,7 @@ const Navbar = () => {
             fontSize="25px"
             ml="50px"
             className={Styles.cart}
+            onClick={()=>dispatch(cartdata())}
           >
             <AiOutlineShoppingCart />
           </Box>

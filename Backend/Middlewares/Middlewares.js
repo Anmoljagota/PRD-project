@@ -1,17 +1,19 @@
 const jwt = require("jsonwebtoken");
-const ProductTocart = (req, res, next) => {
+const middleware = (req, res, next) => {
   const token = req.headers.auth;
-  // if(token){
-  //     const decode=jwt.verify(token,"loginornot")
-  //     console.log("i am decoded",decode.UserId)
-  //     req.body.userId=decode.UserId
-  //     next()llll
-  // }
-  // else{
-  //     res.send("you are not authorized")
-  // }
-  next();
+  // console.log("i am token", token);
+  if (token) {
+    const decode = jwt.verify(token, "loginornot");
+    req.body.userId=decode.UserId
+    // console.log("i am decode",decode)
+    if (decode) {
+      next();
+    }
+  } else {
+    res.send("you are not authorized");
+  }
+ 
 };
 module.exports = {
-  ProductTocart,
+  middleware,
 };

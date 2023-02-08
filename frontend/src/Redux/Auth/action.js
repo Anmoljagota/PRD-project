@@ -1,20 +1,20 @@
-import { REQUEST, SUCCESS, ERROR } from "./actionTypes";
-import { Link, useNavigate } from "react-router-dom";
+import { LOGIN_REQUEST,LOGIN_SUCCESS,LOGIN_ERROR } from "./actionTypes";
+import { Link } from "react-router-dom";
 import axios from "axios";
 function LOADING_PRODUCT() {
   return {
-    type: REQUEST,
+    type: LOGIN_REQUEST,
   };
 }
 function SUCCESS_PRODUCT(payload) {
   return {
-    type: SUCCESS,
+    type: LOGIN_SUCCESS,
     payload,
   };
 }
 function ERROR_PRODUCT() {
   return {
-    type: ERROR,
+    type: LOGIN_ERROR,
   };
 }
 

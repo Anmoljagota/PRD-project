@@ -1,24 +1,23 @@
-import { REQUEST, SUCCESS, ERROR } from "./actionTypes";
+import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR } from "./actionTypes";
 const inital_state = {
   loading: false,
   error: false,
-
-  data: [],
+  isAuth: false,
 };
 
 const reducer = (state = inital_state, action) => {
   const { type, payload } = action;
   switch (type) {
-    case REQUEST:
+    case LOGIN_REQUEST:
       return { ...state, loading: true, error: false };
-    case SUCCESS:
+    case LOGIN_SUCCESS:
       return {
         ...state,
         loading: false,
         error: false,
-        data:payload,
+        isAuth: true,
       };
-    case ERROR:
+    case LOGIN_ERROR:
       return { ...state, loading: false, error: true };
     default:
       return state;

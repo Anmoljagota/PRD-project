@@ -25,8 +25,10 @@ userRouter.post("/login", async (req, res) => {
   console.log(req.body, "i am a body");
   const checkuser = await UserModel.find({ email });
   if (checkuser.length > 0) {
+    console.log(checkuser[0]._id)
     try {
       var token = jwt.sign({ UserId: checkuser[0]._id }, "loginornot");
+      console.log("i am token",token)
       res.send(token);
     } catch (err) {
       res.send(`error:${err}`);

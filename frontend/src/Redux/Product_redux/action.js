@@ -1,4 +1,14 @@
-import { REQUEST, SUCCESS, ERROR } from "./actionTypes";
+import {
+  REQUEST,
+  SUCCESS,
+  ERROR,
+  SINGLE_PRODUCT_REQUEST,
+  SINGLE_PRODUCT_SUCCESS,
+  SINGLE_PRODUCT_ERROR,
+  CART_REQUEST,
+  CART_SUCCESS,
+  CART_ERROR,
+} from "./actionTypes";
 import axios from "axios";
 
 function LOADING_PRODUCT() {
@@ -17,16 +27,31 @@ function ERROR_PRODUCT() {
     type: ERROR,
   };
 }
-
+function SINGLE_LOADING_PRODUCT() {
+  return {
+    type: SINGLE_PRODUCT_REQUEST,
+  };
+}
+function SINGLE_SUCCESS_PRODUCT(payload) {
+  return {
+    type: SINGLE_PRODUCT_SUCCESS,
+    payload,
+  };
+}
+function SINGLE_ERROR_PRODUCT() {
+  return {
+    type: SINGLE_PRODUCT_ERROR,
+  };
+}
 const getdata = (limit, page) => (dispatch) => {
-  console.log("running")
+  console.log("running");
   dispatch(LOADING_PRODUCT());
   return axios
     .get("https://crazy-crown-yak.cyclic.app/fashion/clothes", {
       params: { page: 1, limit: 100 },
     })
     .then((res) => {
-      console.log("i am res data", res.data);
+      console.log("i am res datakkkkkkkk", res.data);
       dispatch(SUCCESS_PRODUCT(res.data));
     })
     .catch((err) => {
@@ -34,16 +59,56 @@ const getdata = (limit, page) => (dispatch) => {
     });
 };
 const sortgetdata = (data) => (dispatch) => {
-  console.log("lo",data)
+  console.log("lo", data);
   dispatch(LOADING_PRODUCT());
   return axios
     .get("https://crazy-crown-yak.cyclic.app/fashion/clothes", data)
     .then((res) => {
-      console.log("i am res data", res.data);
       dispatch(SUCCESS_PRODUCT(res.data));
     })
     .catch((err) => {
       dispatch(ERROR_PRODUCT());
     });
 };
-export { getdata,sortgetdata };
+const singleproduct = (data) => (dispatch) => {
+  dispatch(SINGLE_LOADING_PRODUCT());
+  return axios
+    .post(
+      "http://localhost:8080/cartdata",
+      { product: data },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          auth: localStorage.getItem("token"),
+        },
+      }
+    )
+    .then((res) => {
+      console.log("i am res.data",res.data)
+      dispatch(SINGLE_SUCCESS_PRODUCT(res.data));
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch(SINGLE_ERROR_PRODUCT());
+    });
+};
+const cartdata = ()=> (dispatch) => {
+  console.log("runinnnnnnnnnnmmmmmmmmmmmmmmmmmmnnnnng")
+  dispatch({ type: CART_REQUEST });
+  return axios
+    .get("http://localhost:8080/cartdata", {
+      headers: {
+        "Content-Type": "application/json",
+        auth: localStorage.getItem("token"),
+      },
+    })
+    .then((res) => {
+      console.log("hiiiiiiii", res.data);
+      dispatch({ type: CART_SUCCESS, payload: res.data });
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch({ type: CART_ERROR });
+    });
+};
+export { getdata, sortgetdata, singleproduct, cartdata };

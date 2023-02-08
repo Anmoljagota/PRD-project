@@ -1,8 +1,8 @@
 import { Box, Img } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import Styles from "../ProductPage/Product.module.css";
-const ProductItems = (products) => {
-const data=useSelector((details)=>console.log("i am details",details))
+const ProductItems = ({image,getproduct,brand,description,prev_price,discount,deals,delivery,price,id}) => {
+// console.log("i am getproduct",getproduct)
   return (
     <Box
       margin="15px 0 0 0"
@@ -13,11 +13,12 @@ const data=useSelector((details)=>console.log("i am details",details))
       className={Styles.cart}
       position="relative"
       lineHeight="1.4"
+      onClick={()=>getproduct(id)}
     >
       <Box width="100%" height="427px" mt="12px">
         <Box height="350px" width="100%">
           <Img
-            src={products.image}
+            src={image}
             height="350px"
             width="100%"
             position="absolute"
@@ -35,7 +36,7 @@ const data=useSelector((details)=>console.log("i am details",details))
             fontSize="14px"
             fontWeight="500"
           >
-            {products.brand}
+            {brand}
           </Box>
           <br />
           <Box
@@ -45,7 +46,7 @@ const data=useSelector((details)=>console.log("i am details",details))
             textOverflow="ellipsis"
             overflow="hidden"
           >
-            {products.description}
+            {description}
           </Box>
           <Box
             display="flex"
@@ -53,13 +54,13 @@ const data=useSelector((details)=>console.log("i am details",details))
             alignContent="center"
             width="60%"
           >
-            <Box fontSize="16px">₹{products.price}</Box>
+            <Box fontSize="16px">₹{price}</Box>
             <Box
               textDecorationLine="line-through"
               color="#878787"
               fontWeight="400"
             >
-              ₹{products.prev_price}
+              ₹{prev_price}
             </Box>
             <Box
               color="#388e3c"
@@ -67,14 +68,14 @@ const data=useSelector((details)=>console.log("i am details",details))
               letterSpacing="-.2px"
               fontWeight="500"
             >
-              {products.discount}%off
+              {discount}%off
             </Box>
           </Box>
           <Box fontWeight="450" p="5px">
-            {products.delivery ? products.delivery : ""}
+            {delivery ? delivery : ""}
           </Box>
           <Box color="rgb(38, 165, 65)" fontWeight="700" fontSize="12px">
-            {products.deals ? products.deals : ""}
+            {deals ? deals : ""}
           </Box>
         </Box>
       </Box>

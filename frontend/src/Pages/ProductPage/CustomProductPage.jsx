@@ -2,46 +2,47 @@ import React, { useEffect, useState } from "react";
 import { Box, SimpleGrid } from "@chakra-ui/react";
 import Styles from "../ProductPage/Product.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getdata, sortgetdata } from "../../Redux/Product_redux/action";
+import { getdata, singleproduct, sortgetdata } from "../../Redux/Product_redux/action";
 import ProductItems from "./ProductItems";
 import { useLocation, useSearchParams } from "react-router-dom";
 import Filtering from "../../Components/Filtering";
 const CustomProductPage = () => {
   const location = useLocation();
-  const sortdata = (order,sortBy) => {
+  const sortdata = (order, sortBy) => {
     console.log("i am value", order);
     setSort(order);
   };
-const [searhparams, setSearchParama] = useSearchParams();
+  const [searhparams, setSearchParama] = useSearchParams();
   let sortdata1 = searhparams.getAll("_sort");
   const [sort, setSort] = useState(sortdata1[0] || "");
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const data = useSelector((data) => data.homeproduct);
-  console.log("i am data", data);
+  console.log("i am",data)
+  const getproduct=(id)=>{
+dispatch(singleproduct(id))
+  }
   useEffect(() => {
     dispatch(getdata());
   }, []);
   useEffect(() => {
     if (sort) {
-      console.log("running");
       let params = {};
       sort && (params._sort = sort);
-setSearchParama(params);
+      setSearchParama(params);
       const newsortBy = searhparams.getAll("_sort");
       console.log("sort", newsortBy);
-      if (location||sort) {
+      if (location || sort) {
         const changedata = {
           params: {
             _sort: sortdata1[0],
           },
         };
-        console.log("changedata", changedata);
         dispatch(sortgetdata(changedata));
       }
     }
   }, [sort]);
- return (
-    <Box className={Styles.maindiv}>
+  return (
+    <Box className={Styles.maindiv} mt="150px">
       <Box className={Styles.innermaindiv}>
         <Box
           width="16%"
@@ -50,7 +51,7 @@ setSearchParama(params);
           padding="0px 15px 0px 15px"
           position="relative"
           float="left"
->
+        >
           <Box height="100%">
             <Box
               fontSize="28px"
@@ -61,10 +62,10 @@ setSearchParama(params);
             >
               Filter by
             </Box>
-            <Filtering/>
+            <Filtering />
           </Box>
         </Box>
- <Box
+        <Box
           width="84%"
           height="0.7%"
           float="left"
@@ -107,9 +108,9 @@ setSearchParama(params);
         </Box>
         <Box width="84%" float="left">
           <SimpleGrid columns={[2, 2, 4]} spacing="19px">
-            {data.data.length > 0 &&
-              data.data.map((items) => {
-                return <ProductItems {...items} key={items._id} />;
+            {data.productdata.length > 0 &&
+              data.productdata.map((items) => {
+                return <ProductItems image={items.image}  getproduct={getproduct} brand={items.brand} description={items.description} prev_price={items.prev_price} discount={items.discount} deals={items.deals} delivery={items.delivery} price={items.price} key={items._id} id={items._id}/>;
               })}
           </SimpleGrid>
           <Box
