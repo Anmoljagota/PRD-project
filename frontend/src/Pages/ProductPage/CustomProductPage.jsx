@@ -26,8 +26,9 @@ const CustomProductPage = () => {
   const getproduct = (id) => {
     dispatch(singleproduct(id));
   };
-
+console.log("pppppppppp",data)
   useEffect(() => {
+    
     dispatch(getdata());
   }, []);
   useEffect(() => {

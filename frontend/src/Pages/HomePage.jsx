@@ -1,14 +1,11 @@
-import { HStack, Box, Image, SimpleGrid } from "@chakra-ui/react";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { HStack, Box, Image } from "@chakra-ui/react";
+import React from "react";
 import { ImageSlider } from "../Components/demo";
 import HomeProduct from "../Components/HomeProduct";
 import TopDepartments from "../Components/TopDepartments";
 import Styles from "../css/Project.module.css";
 import data from "../db.json";
-import { cartdata } from "../Redux/Product_redux/action";
 const HomePage = () => {
-
   return (
     <div className={Styles.HomePageMain}>
       <Box
@@ -19,14 +16,13 @@ const HomePage = () => {
         background="white"
         // border="1px solid black"
       >
-        <HStack spacing="24px" cursor="pointer">
+        <HStack spacing="24px" cursor="pointer" width="95%">
           <Box
-            w="70%"
+            w="100%"
             h="455px"
             background="#f1f3f6"
             boxShadow="rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px"
             zIndex="1"
-            // border="1px solid yellow"
             p="4px 10px 10px 10px"
             display="flex"
           >
@@ -36,7 +32,7 @@ const HomePage = () => {
           </Box>
           <Box
             position="relative"
-            w="100%"
+            w="45%"
             fontSize="25px"
             fontWeight="bold"
             lineHeight="1.25"
@@ -110,6 +106,9 @@ const HomePage = () => {
                 </span>
               </h1>
               <br />
+            </Box>
+            <Box mt="26%" width="100%" fontSize="15px" lineHeight="1.5">
+              MAXPRO PTM405 2HP(4 HP Peak) Folding Treadmill, Electric Motorized
             </Box>
           </Box>
         </HStack>

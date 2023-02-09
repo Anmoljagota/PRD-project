@@ -16,7 +16,13 @@ const SingleProductPage = () => {
     newarr.push(singleproductdata[i].product);
   }
   console.log(newarr, "mewarr");
-
+  if (singleproductdata === "you are not authorized") {
+    return (
+      <Box fontSize="50px" color="black" fontWeight="700" mt="200px">
+        Login first
+      </Box>
+    );
+  }
   return (
     <div style={{ marginTop: "120px" }}>
       <Box

@@ -8,12 +8,19 @@ const Total = ({ newarr }) => {
         <button className={Styles.signin} style={{ height: "40px" }}>
           Continue to checkout
         </button>
-        <Box p="10px" borderRadius="15px" height="60px" mt="20px" background="#002d58" color="white">
+        <Box
+          p="10px"
+          borderRadius="15px"
+          height="60px"
+          mt="20px"
+          background="#002d58"
+          color="white"
+        >
           Items in your cart have reduced prices. Check out now for extra
           savings!
         </Box>
         <hr />
-        <Box className={Styles.flexall}  mt="30px">
+        <Box className={Styles.flexall} mt="30px">
           <Box>
             Subtotal{" "}
             <span
@@ -27,8 +34,10 @@ const Total = ({ newarr }) => {
         <Box className={Styles.flexall} mt="17px">
           <Box>Savings</Box>
           <Box>₹50</Box>
-        </Box><br/>
-        <hr /><br/>
+        </Box>
+        <br />
+        <hr />
+        <br />
         <Box className={Styles.flexall}>
           <Box>Shipping (below ₹35 order minimum)</Box>
           <Box>₹75</Box>
@@ -36,8 +45,10 @@ const Total = ({ newarr }) => {
         <Box className={Styles.flexall} mt="30px">
           <Box>Taxes</Box>
           <Box>Calculated at checkout</Box>
-        </Box><br/>
-        <hr /><br/>
+        </Box>
+        <br />
+        <hr />
+        <br />
         <Box className={Styles.flexall} mt="10px">
           <Box>Estimated total</Box>
           <Box>₹510</Box>

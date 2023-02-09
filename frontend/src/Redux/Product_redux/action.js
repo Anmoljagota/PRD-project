@@ -44,20 +44,41 @@ function SINGLE_ERROR_PRODUCT() {
   };
 }
 const getdata = (limit, page) => (dispatch) => {
+  console.log("i am limit", limit);
   dispatch(LOADING_PRODUCT());
-  return axios
-    .get("https://crazy-crown-yak.cyclic.app/fashion/clothes", {
-      params: { page: 1, limit: 100 },
-    })
-    .then((res) => {
-      dispatch(SUCCESS_PRODUCT(res.data));
-    })
-    .catch((err) => {
-      dispatch(ERROR_PRODUCT());
-    });
+  if (limit !== undefined && limit.q !== undefined) {
+    console.log("kkkkkkkkkkkkkkkkkkkk");
+    let query = limit.q[0];
+    console.log("i am queryyyyyyy", query);
+    return axios
+      .get("http://localhost:8080/fashion/clothes", {
+        params: { q: query },
+      })
+      .then((res) => {
+        console.log("i am resssssss", res.data);
+        dispatch(SUCCESS_PRODUCT(res.data));
+      })
+      .catch((err) => {
+        console.log("hlo");
+        dispatch(ERROR_PRODUCT());
+      });
+  } else {
+    return axios
+      .get("https://crazy-crown-yak.cyclic.app/fashion/clothes", {
+        params: { page: 1, limit: 100 },
+      })
+      .then((res) => {
+        console.log("i am running");
+        dispatch(SUCCESS_PRODUCT(res.data));
+      })
+      .catch((err) => {
+        dispatch(ERROR_PRODUCT());
+      });
+  }
 };
 const sortgetdata = (data) => (dispatch) => {
   dispatch(LOADING_PRODUCT());
+
   return axios
     .get("https://crazy-crown-yak.cyclic.app/fashion/clothes", data)
     .then((res) => {
@@ -81,8 +102,8 @@ const singleproduct = (data) => (dispatch) => {
       }
     )
     .then((res) => {
-      if(res.data==="you are not authorized"){
-        alert("Login first")
+      if (res.data === "you are not authorized") {
+        alert("Login first");
       }
       dispatch(SINGLE_SUCCESS_PRODUCT(res.data));
     })
@@ -101,7 +122,7 @@ const cartdata = () => (dispatch) => {
       },
     })
     .then((res) => {
-      console.log(res.data,"ppppppppp")
+      console.log(res.data, "ppppppppp");
       dispatch({ type: CART_SUCCESS, payload: res.data });
     })
     .catch((err) => {
@@ -109,4 +130,5 @@ const cartdata = () => (dispatch) => {
       dispatch({ type: CART_ERROR });
     });
 };
+
 export { getdata, sortgetdata, singleproduct, cartdata };

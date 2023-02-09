@@ -3,7 +3,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { HiOutlineUser } from "react-icons/hi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { GrNotes } from "react-icons/gr";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
   Box,
@@ -23,29 +23,54 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { cartdata } from "../Redux/Product_redux/action";
-import { useEffect } from "react";
+import { cartdata, getdata } from "../Redux/Product_redux/action";
+import { useEffect, useState } from "react";
 const Navbar = () => {
+  const [params, searchParams] = useSearchParams("");
+  let searchdata = params.getAll("q");
+  const [search, setSearch] = useState(searchdata || "");
+  console.log("i am params", search);
+  const loginuser = useSelector((details) => details.loginuser.isAuth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  //single page
   useEffect(() => {
     dispatch(cartdata());
-  }, []);
+  }, [loginuser]);
+  useEffect(() => {
+    if (search) {
+      let obj = {};
+      obj.q = search;
+      searchParams(obj);
+    }
+    if (params.getAll("q") !== undefined) {
+      const searching = params.getAll("q");
+      console.log("dispatching");
+      dispatch(getdata({ q: searching }));
+    }
+  }, [search]);
   const fixeddata = useSelector((details) => details.homeproduct);
-  console.log("i am fied data", fixeddata);
+  console.log("fixed", fixeddata);
   function navigatetoanother() {
     navigate("/");
   }
   function showcart() {
     dispatch(cartdata());
-    console.log(fixeddata.cartdata.length, "hiiiiiiiii");
-    if (fixeddata.cartdata !== "you are not authorized") {
+    if (
+      fixeddata.cartdata !== "you are not authorized" &&
+      fixeddata.cartdata !== "authorization first"
+    ) {
       navigate("/singlepage");
+    } else if (fixeddata.cartdata === "authorization first") {
+      navigate("/nodata");
     } else {
       navigate("/cartlogin");
     }
   }
-
+  function handeleChange(e) {
+    setSearch(e.target.value);
+  }
+  // console.log(search)
   return (
     <div className={Styles.parentNavbar}>
       <Stack
@@ -98,6 +123,8 @@ const Navbar = () => {
             type="text"
             className={Styles.input}
             placeholder="Search products"
+            onChange={handeleChange}
+            value={search}
           />
           <AiOutlineHeart
             style={{ marginLeft: "40px", fontSize: "25px" }}
@@ -131,8 +158,9 @@ const Navbar = () => {
                   }}
                 >
                   {localStorage.getItem("token") ? (
-                    <h1 onClick={()=>localStorage.removeItem("token")}>Logout</h1>
-                    
+                    <h1 onClick={() => localStorage.removeItem("token")}>
+                      Logout
+                    </h1>
                   ) : (
                     <>
                       <h1> Sign in</h1>
@@ -196,7 +224,8 @@ const Navbar = () => {
               justifyContent="center"
               alignItems="center"
             >
-              {fixeddata.cartdata === "you are not authorized"
+              {fixeddata.cartdata === "you are not authorized" ||
+              fixeddata.cartdata === "authorization first"
                 ? 0
                 : fixeddata.cartdata.length}
             </Box>

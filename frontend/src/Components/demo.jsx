@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Slider from "react-slick";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useNavigate } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -41,14 +42,7 @@ export const ImageSlider = () => {
       description: "New savings every week! Hurry to score low, low prices.",
     },
   ];
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-  function SlideImages() {}
+
   return (
     <div
       style={{
@@ -56,7 +50,8 @@ export const ImageSlider = () => {
         height: "100%",
       }}
     >
-      <Slider {...settings} style={{ width: "100%" }}>
+     
+        <Carousel autoPlay infiniteLoop stopOnHover showIndicators={true}  style={{ width: "100%" }}>
         {images.map((Item, index) => {
           return (
             <Box className={Styles.ProductBox} key={index}>
@@ -85,7 +80,8 @@ export const ImageSlider = () => {
             </Box>
           );
         })}
-      </Slider>
+      </Carousel>
+    
     </div>
   );
 };

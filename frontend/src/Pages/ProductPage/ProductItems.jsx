@@ -17,7 +17,7 @@ const ProductItems = ({
   const data = useSelector((data) => {
     return data.homeproduct;
   }, shallowEqual);
-  console.log("i am", data);
+  // console.log("i am", data);
   return (
     <Box
       margin="15px 0 0 0"
