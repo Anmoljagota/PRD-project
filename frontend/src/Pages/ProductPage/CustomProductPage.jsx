@@ -26,7 +26,9 @@ const CustomProductPage = () => {
     return data.homeproduct;
   }, shallowEqual);
   const getproduct = (id) => {
-     navigate("/singleproduct")
+    setTimeout(() => {
+      navigate("/singleproduct");
+    }, 1000);
     dispatch(singleproduct({ product: id }));
   };
 
