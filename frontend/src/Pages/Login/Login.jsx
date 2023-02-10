@@ -72,7 +72,6 @@ const Login = () => {
           <button
             style={{ width: "20%", height: "40px", marginTop: "20px" }}
             className={Styles.signin}
-            onClick={handleSubmit}
           >
             continue
           </button>

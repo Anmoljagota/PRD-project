@@ -7,6 +7,7 @@ import Signup from '../Pages/Login/Signup'
 import SingleProductPage from '../Pages/SingleProductpage/SingleProductPage'
 import Cartlogin from '../Components/Cartlogin'
 import Cartdata from '../Pages/Cartdata/Cartdata'
+import SingleProduct from '../Pages/SingleProduct'
 const AllRoutes = () => {
   return (
     <div>
@@ -18,6 +19,7 @@ const AllRoutes = () => {
         <Route path="/singlepage" element={<SingleProductPage/>}></Route>
         <Route path="/cartlogin" element={<Cartlogin/>}></Route>
         <Route path="/nodata" element={<Cartdata/>}></Route>
+        <Route path="/singleproduct" element={<SingleProduct/>}></Route>
       </Routes>
     </div>
   )

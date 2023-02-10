@@ -28,6 +28,7 @@ userRouter.post("/login", async (req, res) => {
     console.log(checkuser[0]._id)
     try {
       var token = jwt.sign({ UserId: checkuser[0]._id }, "loginornot");
+      console.log("token",token)
       console.log("i am token",token)
       res.send(token);
     } catch (err) {

@@ -3,18 +3,14 @@ const { middleware } = require("../Middlewares/Middlewares");
 const { Cartmodel } = require("../Models/Cart.model");
 const cartRoute = express.Router();
 cartRoute.post("/", middleware, async (req, res) => {
-  // console.log(req.body);
+  console.log("hiiiiiiiiiiiii")
   const { product, userId } = req.body;
-  //   console.log("i m product", product);
-  // console.log("i a, userid", userId);
   let findproduct = await Cartmodel.find({ product });
-  // console.log("ia m find product", findproduct);
   try {
     if (findproduct.length > 0) {
       res.send(findproduct);
     } else {
       const cart = new Cartmodel({ userId, product });
-      // console.log("i am cart", cart);
       await cart.save();
       res.send(cart);
     }
@@ -23,14 +19,17 @@ cartRoute.post("/", middleware, async (req, res) => {
   }
 });
 cartRoute.get("/", middleware, async (req, res) => {
-  console.log("i am req.body", req.body);
+  console.log("heyyyyyyyyyyy")
   try {
     const finduser = req.body.userId;
-    console.log("i am finduser", finduser);
+console.log("finduser",finduser)
     const user = await Cartmodel.find({ userId: finduser });
-    console.log("iam user", user);
+
     if (user.length > 0) {
-      const cart = await Cartmodel.find({ userId: finduser }).populate(["product", "userId"]);
+      const cart = await Cartmodel.find({ userId: finduser }).populate([
+        "product",
+        "userId",
+      ]);
       res.send(cart);
     } else {
       res.send("authorization first");

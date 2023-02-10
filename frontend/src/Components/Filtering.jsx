@@ -6,33 +6,50 @@ import {
   AccordionItem,
   AccordionPanel,
   Box,
-  filter,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-// import { filterdata, searchdata } from "../Redux/Product_redux/action";
+import { Filterdata, getdata } from "../Redux/Product_redux/action";
+
 const Filtering = () => {
-  const location = useLocation();
   const [params, setParams] = useSearchParams();
-  let initial_category = params.getAll("category");
-  const [category, setCategory] = useState(initial_category || []);
+  let persist = params.getAll("category");
+  const [value, setValue] = useState(persist || []);
   const dispatch = useDispatch();
-  function handleChange(e) {
-    const newcategory = [...category];
-    if (newcategory.includes(e.target.value)) {
-      newcategory.splice(newcategory.indexOf(e.target.value), 1);
-    } else {
-      newcategory.push(e.target.value);
+  const location = useLocation();
+  useEffect(() => {
+    if (value) {
+      let obj = {};
+      obj.category = value;
+      setParams(obj);
     }
-    setCategory(newcategory);
 
-    // dispatch(filterdata(e.target.value))
+    if (location.search !== "") {
+      console.log("location.searchhhhhhhhhhhhhhhhhhh", location);
+      const changledata = {
+        params: {
+          category: params.getAll("category"),
+        },
+      };
+      dispatch(Filterdata(changledata));
+    } else {
+      dispatch(getdata());
+    }
+  }, [value, location.search]);
+  function handleChange(e) {
+    console.log(e.target.value, "kkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+    const category = [...value];
+    if (category.includes(e.target.value)) {
+      category.splice(category.indexOf(e.target.value), 1);
+    } else {
+      category.push(e.target.value);
+    }
+    setValue(category);
   }
-
   return (
     <div>
       <Accordion
-        efaultIndex={[0]}
+        defaultIndex={[0]}
         allowMultiple
         textAlign="left"
         fontWeight="530"
@@ -67,7 +84,7 @@ const Filtering = () => {
                 id=""
                 onChange={handleChange}
                 value="1000-2000"
-                checked={category.includes("1000-2000")}
+                checked={value.includes("1000-2000")}
               />{" "}
               <label style={{ marginLeft: "5px" }} position="absolute">
                 1000-2000
@@ -79,7 +96,7 @@ const Filtering = () => {
                 id=""
                 onChange={handleChange}
                 value="2000-5000"
-                checked={category.includes("2000-5000")}
+                checked={value.includes("2000-5000")}
               />{" "}
               <label style={{ marginLeft: "5px" }} position="absolute">
                 2000-5000
@@ -91,7 +108,7 @@ const Filtering = () => {
                 id=""
                 onChange={handleChange}
                 value="500-1000"
-                checked={category.includes("500-1000")}
+                checked={value.includes("500-1000")}
               />{" "}
               <label style={{ marginLeft: "5px" }} position="absolute">
                 500-1000
@@ -103,7 +120,7 @@ const Filtering = () => {
                 id=""
                 onChange={handleChange}
                 value="Above 500"
-                checked={category.includes("Above 500")}
+                checked={value.includes("Above 500")}
               />{" "}
               <label
                 style={{ marginLeft: "5px", overflow: "hidden" }}
@@ -118,7 +135,7 @@ const Filtering = () => {
                 id=""
                 onChange={handleChange}
                 value="Below 500"
-                checked={category.includes("Below 500 ")}
+                checked={value.includes("Below 500 ")}
               />{" "}
               <label style={{ marginLeft: "5px" }} position="absolute">
                 Below 500
@@ -155,37 +172,72 @@ const Filtering = () => {
               overflow="hidden"
             >
               <span style={{ display: "flex" }}>
-                <input type="checkbox" id="" onChange={handleChange} />{" "}
+                <input
+                  type="checkbox"
+                  id=""
+                  onChange={handleChange}
+                  value="0"
+                  checked={value.includes("0")}
+                />{" "}
                 <label style={{ marginLeft: "5px" }} position="absolute">
                   0% or more
                 </label>
               </span>
               <span style={{ display: "flex", marginTop: "10px" }}>
-                <input type="checkbox" id="" onChange={handleChange} />{" "}
+                <input
+                  type="checkbox"
+                  id=""
+                  onChange={handleChange}
+                  value="10"
+                  checked={value.includes("10")}
+                />{" "}
                 <label style={{ marginLeft: "5px" }} position="absolute">
                   10% or more
                 </label>
               </span>
               <span style={{ display: "flex", marginTop: "10px" }}>
-                <input type="checkbox" id="" />{" "}
+                <input
+                  type="checkbox"
+                  id=""
+                  value="20"
+                  checked={value.includes("20")}
+                />{" "}
                 <label style={{ marginLeft: "5px" }} position="absolute">
                   20% or more
                 </label>
               </span>
               <span style={{ display: "flex", marginTop: "10px" }}>
-                <input type="checkbox" id="" onChange={handleChange} />{" "}
+                <input
+                  type="checkbox"
+                  id=""
+                  onChange={handleChange}
+                  value="30"
+                  checked={value.includes("30")}
+                />{" "}
                 <label style={{ marginLeft: "5px" }} position="absolute">
                   30% or more
                 </label>
               </span>
               <span style={{ display: "flex", marginTop: "10px" }}>
-                <input type="checkbox" id="" onChange={handleChange} />{" "}
+                <input
+                  type="checkbox"
+                  id=""
+                  onChange={handleChange}
+                  value="40"
+                  checked={value.includes("40")}
+                />{" "}
                 <label style={{ marginLeft: "5px" }} position="absolute">
                   40% or more
                 </label>
               </span>
               <span style={{ display: "flex", marginTop: "10px" }}>
-                <input type="checkbox" id="" onChange={handleChange} />{" "}
+                <input
+                  type="checkbox"
+                  id=""
+                  onChange={handleChange}
+                  value="50"
+                  checked={value.includes("50")}
+                />{" "}
                 <label style={{ marginLeft: "5px" }} position="absolute">
                   50% or more
                 </label>
@@ -222,37 +274,73 @@ const Filtering = () => {
               overflow="hidden"
             >
               <span style={{ display: "flex" }}>
-                <input type="checkbox" id="" onChange={handleChange} />{" "}
+                <input
+                  type="checkbox"
+                  id=""
+                  onChange={handleChange}
+                  checked={value.includes("men")}
+                  value="men"
+                />{" "}
                 <label style={{ marginLeft: "5px" }} position="absolute">
-                  Man
+                  Men
                 </label>
               </span>
               <span style={{ display: "flex", marginTop: "10px" }}>
-                <input type="checkbox" id="" onChange={handleChange} />{" "}
+                <input
+                  type="checkbox"
+                  id=""
+                  onChange={handleChange}
+                  checked={value.includes("women")}
+                  value="women"
+                />{" "}
                 <label style={{ marginLeft: "5px" }} position="absolute">
                   Women
                 </label>
               </span>
               <span style={{ display: "flex", marginTop: "10px" }}>
-                <input type="checkbox" id="" onChange={handleChange} />{" "}
+                <input
+                  type="checkbox"
+                  id=""
+                  onChange={handleChange}
+                  checked={value.includes("child")}
+                  value="child"
+                />{" "}
                 <label style={{ marginLeft: "5px" }} position="absolute">
                   Baby
                 </label>
               </span>
               <span style={{ display: "flex", marginTop: "10px" }}>
-                <input type="checkbox" id="" onChange={handleChange} />{" "}
+                <input
+                  type="checkbox"
+                  id=""
+                  onChange={handleChange}
+                  checked={value.includes("unisex")}
+                  value="unisex"
+                />{" "}
                 <label style={{ marginLeft: "5px" }} position="absolute">
                   Unisex
                 </label>
               </span>
               <span style={{ display: "flex", marginTop: "10px" }}>
-                <input type="checkbox" id="" onChange={handleChange} />{" "}
+                <input
+                  type="checkbox"
+                  id=""
+                  onChange={handleChange}
+                  checked={value.includes("baby boys")}
+                  value="baby boys"
+                />{" "}
                 <label style={{ marginLeft: "5px" }} position="absolute">
                   Baby Boys
                 </label>
               </span>
               <span style={{ display: "flex", marginTop: "10px" }}>
-                <input type="checkbox" id="" onChange={handleChange} />{" "}
+                <input
+                  type="checkbox"
+                  id=""
+                  onChange={handleChange}
+                  checked={value.includes("baby girls")}
+                  value="baby girls"
+                />{" "}
                 <label style={{ marginLeft: "5px" }} position="absolute">
                   Baby Girls
                 </label>

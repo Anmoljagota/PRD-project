@@ -8,9 +8,10 @@ import {
   sortgetdata,
 } from "../../Redux/Product_redux/action";
 import ProductItems from "./ProductItems";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import Filtering from "../../Components/Filtering";
 const CustomProductPage = () => {
+  const navigate=useNavigate()
   const location = useLocation();
   const sortdata = (order, sortBy) => {
     console.log("i am value", order);
@@ -24,13 +25,10 @@ const CustomProductPage = () => {
     return data.homeproduct;
   }, shallowEqual);
   const getproduct = (id) => {
-    dispatch(singleproduct(id));
+   navigate("/singleproduct")
+   dispatch(singleproduct(id))
   };
-console.log("pppppppppp",data)
-  useEffect(() => {
-    
-    dispatch(getdata());
-  }, []);
+
   useEffect(() => {
     if (sort) {
       let params = {};
@@ -48,7 +46,8 @@ console.log("pppppppppp",data)
       }
     }
   }, [sort]);
- 
+  console.log("pppppppppp", data);
+  
   return (
     <Box className={Styles.maindiv} mt="150px">
       <Box className={Styles.innermaindiv}>
@@ -131,7 +130,6 @@ console.log("pppppppppp",data)
                     price={items.price}
                     key={items._id}
                     id={items._id}
-                    
                   />
                 );
               })}

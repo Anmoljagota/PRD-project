@@ -28,8 +28,7 @@ import { useEffect, useState } from "react";
 const Navbar = () => {
   const [params, searchParams] = useSearchParams("");
   let searchdata = params.getAll("q");
-  const [search, setSearch] = useState(searchdata || "");
-  console.log("i am params", search);
+  const [search, setSearch] = useState(searchdata || "")
   const loginuser = useSelector((details) => details.loginuser.isAuth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -50,7 +49,7 @@ const Navbar = () => {
     }
   }, [search]);
   const fixeddata = useSelector((details) => details.homeproduct);
-  console.log("fixed", fixeddata);
+  console.log("fix",fixeddata)
   function navigatetoanother() {
     navigate("/");
   }

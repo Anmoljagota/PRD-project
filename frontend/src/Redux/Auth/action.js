@@ -38,7 +38,7 @@ const getlogin = (data) => (dispatch) => {
   console.log("running");
   dispatch(LOADING_PRODUCT());
   return axios
-    .post("https://crazy-crown-yak.cyclic.app/login", data)
+    .post("http://localhost:8080/login", data)
     .then((res) => {
       console.log("i am res data", res.data);
       if (res.data !== "Wrong Credentials") {
