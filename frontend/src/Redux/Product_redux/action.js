@@ -45,6 +45,7 @@ function SINGLE_ERROR_PRODUCT() {
 }
 const getdata = (limit, page) => (dispatch) => {
   // console.log("i am limit", limit);
+
   dispatch(LOADING_PRODUCT());
   return axios
     .get("http://localhost:8080/fashion/clothes", {
@@ -70,32 +71,51 @@ const sortgetdata = (data) => (dispatch) => {
       dispatch(ERROR_PRODUCT());
     });
 };
-const singleproduct = (data) => (dispatch) => {
-  dispatch(SINGLE_LOADING_PRODUCT());
-  console.log(data,"lllllll")
-  return axios
-    .post(
-      "http://localhost:8080/cartdata",
-      { product: data },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          auth: localStorage.getItem("token"),
-        },
+// const singleproduct = (data) => (dispatch) => {
+//   if(data.product){
+//     data=data.product
+//   }
+//   dispatch(SINGLE_LOADING_PRODUCT());
+//   console.log(data,"lllllll")
+//   return axios
+//     .post(
+//       "http://localhost:8080/cartdata",
+//       { product: data },
+//       {
+//         headers: {
+//           "Content-Type": "application/json",
+//           auth: localStorage.getItem("token"),
+//         },
+//       }
+//     )
+//     .then((res) => {
+//       console.log("resssssssssssssss",res.data)
+//       if (res.data === "you are not authorized") {
+//         alert("Login first");
+//       }
+//       dispatch(SINGLE_SUCCESS_PRODUCT(res.data));
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       dispatch(SINGLE_ERROR_PRODUCT());
+//     });
+// };
+const singleproduct=(data)=>(dispatch)=>{
+  console.log("i am dataaaaaaaaa",data)
+  if(data.product){
+        data=data.product
       }
-    )
-    .then((res) => {
-      console.log("resssssssssssssss",res.data)
-      if (res.data === "you are not authorized") {
-        alert("Login first");
-      }
-      dispatch(SINGLE_SUCCESS_PRODUCT(res.data));
-    })
-    .catch((err) => {
-      console.log(err);
-      dispatch(SINGLE_ERROR_PRODUCT());
-    });
-};
+  axios.post("http://localhost:8080/fashion/clothes",{
+    product:data
+  }).then((res) => {
+          console.log("resssssssssssssss",res.data)
+          dispatch(SINGLE_SUCCESS_PRODUCT(res.data));
+        })
+        .catch((err) => {
+          console.log(err);
+          dispatch(SINGLE_ERROR_PRODUCT());
+        });
+}
 const cartdata = () => (dispatch) => {
   dispatch({ type: CART_REQUEST });
   return axios

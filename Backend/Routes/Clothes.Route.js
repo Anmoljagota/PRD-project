@@ -3,6 +3,7 @@ const clothesProductRoute = express.Router();
 const { clothesmodel } = require("../Models/Clothes.model");
 clothesProductRoute.get("/clothes", async (req, res) => {
   if (req.query.category) {
+    console.log("ccccccccc");
     try {
       let categorydata = await clothesmodel.find({
         category: req.query.category,
@@ -43,16 +44,32 @@ clothesProductRoute.get("/clothes", async (req, res) => {
     } catch (err) {
       res.send(err);
     }
+  } else {
+    try {
+      let productdata = await clothesmodel.find({ _id: req.body });
+      res.send(productdata);
+    } catch (err) {
+      res.send(err);
+    }
   }
 });
 
 clothesProductRoute.post("/clothes", async (req, res) => {
-  try {
-    const PostData = new clothesmodel(req.body);
-    await PostData.save();
-    res.send("data added");
-  } catch (err) {
-    res.send(`err`);
+  if (req.body.product) {
+    try {
+      let productdata = await clothesmodel.find({ _id: req.body.product });
+      res.send(productdata);
+    } catch (err) {
+      res.send(err);
+    }
+  } else {
+    try {
+      const PostData = new clothesmodel(req.body);
+      await PostData.save();
+      res.send("data added");
+    } catch (err) {
+      res.send(`err`);
+    }
   }
 });
 module.exports = {

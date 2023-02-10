@@ -3,6 +3,7 @@ import { Box, SimpleGrid } from "@chakra-ui/react";
 import Styles from "../ProductPage/Product.module.css";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import {
+  cartdata,
   getdata,
   singleproduct,
   sortgetdata,
@@ -11,7 +12,7 @@ import ProductItems from "./ProductItems";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import Filtering from "../../Components/Filtering";
 const CustomProductPage = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const location = useLocation();
   const sortdata = (order, sortBy) => {
     console.log("i am value", order);
@@ -25,8 +26,8 @@ const CustomProductPage = () => {
     return data.homeproduct;
   }, shallowEqual);
   const getproduct = (id) => {
-   navigate("/singleproduct")
-   dispatch(singleproduct(id))
+     navigate("/singleproduct")
+    dispatch(singleproduct({ product: id }));
   };
 
   useEffect(() => {
@@ -47,7 +48,7 @@ const CustomProductPage = () => {
     }
   }, [sort]);
   console.log("pppppppppp", data);
-  
+
   return (
     <Box className={Styles.maindiv} mt="150px">
       <Box className={Styles.innermaindiv}>
