@@ -1,21 +1,18 @@
 const express = require("express");
 const { middleware } = require("../Middlewares/Middlewares");
 const { Cartmodel } = require("../Models/Cart.model");
-const { clothesmodel } = require("../Models/Clothes.model");
 const cartRoute = express.Router();
 cartRoute.post("/", middleware, async (req, res) => {
-  console.log("hiiiiiiiiiiiii");
+  console.log("hiiiiiiiiiiiii", req.body);
   const { product, userId } = req.body;
   let findproduct = await Cartmodel.find({ product });
 
   try {
-    if (findproduct.length > 0) {
-      res.send(findproduct);
-    } else {
-      const cart = new Cartmodel({ userId, product });
-      await cart.save();
-      res.send(cart);
-    }
+    const cart = new Cartmodel({ userId, product });
+    await cart.save();
+    const getcartdata = await Cartmodel.find({userId:userId});
+    console.log("i am getcarddata", getcartdata);
+    res.send(getcartdata);
   } catch (err) {
     res.send(`error:${err}`);
   }

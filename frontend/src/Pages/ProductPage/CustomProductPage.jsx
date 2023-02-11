@@ -28,6 +28,7 @@ const CustomProductPage = () => {
   const getproduct = (id) => {
     setTimeout(() => {
       navigate("/singleproduct");
+      console.log("i am runnnnnnnnnnnnnnnnnniiiiiiiiiiiiiiiiiinnnnnnnnnnnnnnggggggggggggg")
     }, 1000);
     dispatch(singleproduct({ product: id }));
   };

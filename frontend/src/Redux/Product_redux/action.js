@@ -71,37 +71,39 @@ const sortgetdata = (data) => (dispatch) => {
       dispatch(ERROR_PRODUCT());
     });
 };
-// const singleproduct = (data) => (dispatch) => {
-//   if(data.product){
-//     data=data.product
-//   }
-//   dispatch(SINGLE_LOADING_PRODUCT());
-//   console.log(data,"lllllll")
-//   return axios
-//     .post(
-//       "http://localhost:8080/cartdata",
-//       { product: data },
-//       {
-//         headers: {
-//           "Content-Type": "application/json",
-//           auth: localStorage.getItem("token"),
-//         },
-//       }
-//     )
-//     .then((res) => {
-//       console.log("resssssssssssssss",res.data)
-//       if (res.data === "you are not authorized") {
-//         alert("Login first");
-//       }
-//       dispatch(SINGLE_SUCCESS_PRODUCT(res.data));
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       dispatch(SINGLE_ERROR_PRODUCT());
-//     });
-// };
+const addtocart = (data) => (dispatch) => {
+
+  if(data.product){
+    data=data.product
+  }
+  dispatch({ type: CART_REQUEST });
+  console.log(data,"lllllll")
+  return axios
+    .post(
+      "http://localhost:8080/cartdata",
+      { product: data },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          auth: localStorage.getItem("token"),
+        },
+      }
+    )
+    .then((res) => {
+      console.log("resssssssssssssss",res.data)
+      if (res.data === "you are not authorized") {
+        alert("Login first");
+      }
+      dispatch({ type: CART_SUCCESS, payload: res.data });
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch({ type: CART_ERROR });
+    });
+};
 const singleproduct=(data)=>(dispatch)=>{
   console.log("i am dataaaaaaaaa",data)
+  SINGLE_LOADING_PRODUCT()
   if(data.product){
         data=data.product
       }
@@ -109,6 +111,9 @@ const singleproduct=(data)=>(dispatch)=>{
     product:data
   }).then((res) => {
           console.log("resssssssssssssss",res.data)
+          if(res.data==="you are not authorized"){
+        alert("Login first")
+      }
           dispatch(SINGLE_SUCCESS_PRODUCT(res.data));
         })
         .catch((err) => {
@@ -119,7 +124,7 @@ const singleproduct=(data)=>(dispatch)=>{
 const cartdata = () => (dispatch) => {
   dispatch({ type: CART_REQUEST });
   return axios
-    .get("http://localhost:8080/cartdata", {
+    .get(`http://localhost:8080/cartdata`, {
       headers: {
         "Content-Type": "application/json",
         auth: localStorage.getItem("token"),
@@ -127,6 +132,7 @@ const cartdata = () => (dispatch) => {
     })
     .then((res) => {
       console.log(res.data, "ppppppppp");
+      
       dispatch({ type: CART_SUCCESS, payload: res.data });
     })
     .catch((err) => {
@@ -134,6 +140,18 @@ const cartdata = () => (dispatch) => {
       dispatch({ type: CART_ERROR });
     });
 };
+const adddatatocart=(product)=>(dispatch)=>{
+  console.log("i am product",product)
+  dispatch({ type: CART_REQUEST });
+  axios.post("http://localhost:8080/cartdata",product,{
+    headers:{
+      "Content-Type": "application/json",
+      auth:localStorage.getItem("token")
+    }
+  }).then((res)=>{
+    console.log(res.data,"ooooooooooo")
+  })
+}
 const Filterdata = (data) => (dispatch) => {
   const category = data.params.category;
   console.log("i am paranms", category);
@@ -150,4 +168,4 @@ const Filterdata = (data) => (dispatch) => {
     });
 };
 
-export { getdata, sortgetdata, singleproduct, cartdata, Filterdata };
+export { getdata, sortgetdata, singleproduct, cartdata, Filterdata,addtocart };

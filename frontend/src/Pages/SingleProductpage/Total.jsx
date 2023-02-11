@@ -1,11 +1,17 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Styles from "../../css/Project.module.css";
 const Total = ({ newarr }) => {
+  const navigate = useNavigate();
   return (
     <div>
       <Box boxShadow="rgba(0, 0, 0, 0.16) 0px 1px 4px" p="15px" width="370px">
-        <button className={Styles.signin} style={{ height: "40px" }}>
+        <button
+          className={Styles.signin}
+          style={{ height: "40px" }}
+          onClick={()=>navigate("/address")}
+        >
           Continue to checkout
         </button>
         <Box

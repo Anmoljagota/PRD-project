@@ -8,6 +8,7 @@ import SingleProductPage from '../Pages/SingleProductpage/SingleProductPage'
 import Cartlogin from '../Components/Cartlogin'
 import Cartdata from '../Pages/Cartdata/Cartdata'
 import SingleProduct from '../Pages/SingleProduct'
+import AddressPage from '../Pages/AddressPage/AddressPage'
 const AllRoutes = () => {
   return (
     <div>
@@ -20,6 +21,7 @@ const AllRoutes = () => {
         <Route path="/cartlogin" element={<Cartlogin/>}></Route>
         <Route path="/nodata" element={<Cartdata/>}></Route>
         <Route path="/singleproduct" element={<SingleProduct/>}></Route>
+        <Route path="/address" element={<AddressPage/>}></Route>
       </Routes>
     </div>
   )

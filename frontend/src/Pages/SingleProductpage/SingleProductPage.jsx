@@ -12,7 +12,7 @@ const SingleProductPage = () => {
   console.log("m", singleproductdata);
 
   for (let i = 0; i < singleproductdata.length; i++) {
-    console.log("running");
+    // console.log("running",singleproductdata.length);
     newarr.push(singleproductdata[i].product);
   }
   console.log(newarr, "mewarr");

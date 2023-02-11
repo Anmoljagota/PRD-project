@@ -45,7 +45,7 @@ const reducer = (state = inital_state, action) => {
     case CART_REQUEST:
       return { ...state, loading: true, error: false };
     case CART_SUCCESS:
-      return { ...state, loading: false, error: false, cartdata: payload };
+      return { ...state, loading: false, error: false, cartdata:payload };
     case CART_ERROR:
       return { ...state, loading: false, error: true };
     default:
