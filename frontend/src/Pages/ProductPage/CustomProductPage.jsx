@@ -11,6 +11,7 @@ import {
 import ProductItems from "./ProductItems";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import Filtering from "../../Components/Filtering";
+import ProductStyles from "../ProductPage/Product.module.css";
 const CustomProductPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -28,7 +29,6 @@ const CustomProductPage = () => {
   const getproduct = (id) => {
     setTimeout(() => {
       navigate("/singleproduct");
-      console.log("i am runnnnnnnnnnnnnnnnnniiiiiiiiiiiiiiiiiinnnnnnnnnnnnnnggggggggggggg")
     }, 1000);
     dispatch(singleproduct({ product: id }));
   };
@@ -50,11 +50,10 @@ const CustomProductPage = () => {
       }
     }
   }, [sort]);
-  console.log("pppppppppp", data);
 
   return (
     <Box className={Styles.maindiv} mt="150px">
-      <Box className={Styles.innermaindiv}>
+      <Box className={Styles.innermaindiv} border="1px solid black">
         <Box
           width="16%"
           height="100vh"
@@ -62,7 +61,9 @@ const CustomProductPage = () => {
           padding="0px 15px 0px 15px"
           position="relative"
           float="left"
-        >
+          border="1px solid yellow"
+          className={ProductStyles.none}
+          >
           <Box height="100%">
             <Box
               fontSize="28px"
@@ -70,10 +71,12 @@ const CustomProductPage = () => {
               borderBottom="DDDDDDOundefined"
               textAlign="left"
               padding="15px 10px 15px 10px"
-            >
+              className={ProductStyles.filterby}
+              >
               Filter by
             </Box>
             <Filtering />
+              {/* <Drawer/> */}
           </Box>
         </Box>
         <Box
@@ -85,6 +88,7 @@ const CustomProductPage = () => {
           lineHeight="25px"
           fontWeight="450"
           cursor="pointer"
+          className={ProductStyles.sortingphone}
         >
           <span style={{ marginLeft: "10px" }}>
             Sort By:<span style={{ marginLeft: "15px" }}>Popular</span>
@@ -117,8 +121,8 @@ const CustomProductPage = () => {
           </span>
           <span style={{ marginLeft: "10px" }}>New Arrivals</span>
         </Box>
-        <Box width="84%" float="left">
-          <SimpleGrid columns={[2, 2, 4]} spacing="19px">
+        <Box   className={ProductStyles.products} border="1px solid red">
+          <SimpleGrid columns={[2, 2, 4]} spacing="19px"  className={Styles.grid} border="1px solid red">
             {data.productdata.length > 0 &&
               data.productdata.map((items) => {
                 return (
@@ -138,13 +142,13 @@ const CustomProductPage = () => {
                 );
               })}
           </SimpleGrid>
-          <Box
+          {/* <Box
             width="100%"
             display="flex"
             justifyContent="center"
             alignItems="center"
             marginTop="80px"
-          ></Box>
+          ></Box> */}
         </Box>
       </Box>
     </Box>

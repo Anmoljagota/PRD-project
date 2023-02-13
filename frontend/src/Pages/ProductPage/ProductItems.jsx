@@ -1,6 +1,7 @@
 import { Alert, AlertIcon, AlertTitle, Box, Img } from "@chakra-ui/react";
 import { shallowEqual, useSelector } from "react-redux";
 import Styles from "../ProductPage/Product.module.css";
+import ProductStyles from "../ProductPage/Product.module.css"
 const ProductItems = ({
   image,
   getproduct,
@@ -21,20 +22,19 @@ const ProductItems = ({
   return (
     <Box
       margin="15px 0 0 0"
-      height="483px"
-      width="100%"
       cursor="pointer"
       textAlign="center"
-      className={Styles.cart}
+      className={ProductStyles.cart}
+     border="1px solid black"
       position="relative"
       lineHeight="1.4"
       onClick={() => getproduct(id)}
     >
-      <Box width="100%" height="427px" mt="12px" >
-        <Box height="350px" width="100%">
+      <Box width="100%" className={ProductStyles.maindiv} mt="12px" border="2px solid blue" height="100%">
+        <Box  className={ProductStyles.yellowbox} border="5px solid green" >
           <Img
             src={image}
-            height="350px"
+            className={ProductStyles.images}
             width="100%"
             position="absolute"
             top="0"
@@ -43,23 +43,23 @@ const ProductItems = ({
             right="0"
           ></Img>
         </Box>
-        <Box className={Styles.info}>
+        <Box  className={Styles.info}  border="1px solid yellow" >
           <Box
             textAlign="left"
             float="left"
             color="##878787"
             fontSize="14px"
             fontWeight="500"
+            border="3px solid grey"
           >
             {brand}
           </Box>
           <br />
           <Box
             p="5px"
-            mt="5px"
-            whiteSpace="nowrap"
+            width="100%"
             textOverflow="ellipsis"
-            overflow="hidden"
+            className={ProductStyles.desc}
           >
             {description}
           </Box>
@@ -67,7 +67,8 @@ const ProductItems = ({
             display="flex"
             justifyContent="space-around"
             alignContent="center"
-            width="60%"
+            width="70%"
+            border="1px solid"
           >
             <Box fontSize="16px">₹{price}</Box>
             <Box

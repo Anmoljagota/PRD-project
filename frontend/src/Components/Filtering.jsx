@@ -10,7 +10,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Filterdata, getdata } from "../Redux/Product_redux/action";
-
+import Styles from "../Pages/ProductPage/Product.module.css";
 const Filtering = () => {
   const [params, setParams] = useSearchParams();
   let persist = params.getAll("category");
@@ -47,7 +47,7 @@ const Filtering = () => {
     setValue(category);
   }
   return (
-    <div>
+    <div className={Styles.filtering}>
       <Accordion
         defaultIndex={[0]}
         allowMultiple

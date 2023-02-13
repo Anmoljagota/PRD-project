@@ -118,6 +118,7 @@ const Navbar = () => {
               />
             </Box>
           </Box>
+         
           <input
             type="text"
             className={Styles.input}
@@ -125,6 +126,8 @@ const Navbar = () => {
             onChange={handeleChange}
             value={search}
           />
+         
+         
           <AiOutlineHeart
             style={{ marginLeft: "40px", fontSize: "25px" }}
             className={Styles.heart}
