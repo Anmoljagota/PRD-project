@@ -1,45 +1,27 @@
 import { HStack, Box, Image } from "@chakra-ui/react";
 import React from "react";
-import { ImageSlider } from "../Components/demo";
-import HomeProduct from "../Components/HomeProduct";
-import TopDepartments from "../Components/TopDepartments";
-import Styles from "../css/Project.module.css";
-import data from "../db.json";
+import { ImageSlider } from "../../Components/demo";
+import HomeProduct from "../../Components/HomeProduct";
+import TopDepartments from "../../Components/TopDepartments";
+import Styles from "../../css/Project.module.css";
+import HomeStyles from "../HomePage/Homepage.module.css";
+import data from "../../db.json";
 const HomePage = () => {
   return (
     <div className={Styles.HomePageMain}>
       <Box
+       
         width="95%"
         margin="auto"
-        p="10px"
-        height="100%"
-        background="white"
-        // border="1px solid black"
+        className={HomeStyles.maindiv}
       >
-        <HStack spacing="24px" cursor="pointer" width="95%">
-          <Box
-            w="100%"
-            h="455px"
-            background="#f1f3f6"
-            boxShadow="rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px"
-            zIndex="1"
-            p="4px 10px 10px 10px"
-            display="flex"
-          >
-            <Box width="100%" position="relative">
+        <HStack spacing="24px" cursor="pointer" className={Styles.hstack}>
+          <Box  className={HomeStyles.slider}>
+            <Box width="100%" position="relative" boxShadow="rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px" mt="30px">
               <ImageSlider />
             </Box>
           </Box>
-          <Box
-            position="relative"
-            w="45%"
-            fontSize="25px"
-            fontWeight="bold"
-            lineHeight="1.25"
-            height="455px"
-            boxShadow="rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px"
-            p="5px 10px 5px 10px"
-          >
+          <Box className={HomeStyles.specialoffer}>
             <Box
               display="flex"
               justifyContent="space-between"
@@ -115,7 +97,7 @@ const HomePage = () => {
         <Box className={Styles.flexall} mt="20px">
           {data.map((items, index) => (
             <Box float="right" key={index}>
-              {index < 3 && <TopDepartments i={index} />}
+              {index < 1 && <TopDepartments i={index} />}
             </Box>
           ))}
         </Box>

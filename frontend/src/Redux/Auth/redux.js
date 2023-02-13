@@ -2,7 +2,7 @@ import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_ERROR } from "./actionTypes";
 const inital_state = {
   loading: false,
   error: false,
-  isAuth: false,
+  isAuth: [],
 };
 
 const reducer = (state = inital_state, action) => {
@@ -15,7 +15,7 @@ const reducer = (state = inital_state, action) => {
         ...state,
         loading: false,
         error: false,
-        isAuth: true,
+        isAuth: payload,
       };
     case LOGIN_ERROR:
       return { ...state, loading: false, error: true };

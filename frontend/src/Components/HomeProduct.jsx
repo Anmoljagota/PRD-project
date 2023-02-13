@@ -5,8 +5,7 @@ import { Box, Image, SimpleGrid } from "@chakra-ui/react";
 import { BiRupee } from "react-icons/bi";
 import Styles from "../css/Project.module.css";
 import axios from "axios";
-import { cartdata } from "../Redux/Product_redux/action";
-import { useSelector } from "react-redux";
+import Homeproduct from "../Pages/HomePage/Homepage.module.css"
 
 const HomeProduct = () => {
   const navigate = useNavigate();
@@ -78,7 +77,7 @@ const HomeProduct = () => {
               <Box
                 mt="20px"
                 key={items._id}
-                className={Styles.product}
+                className={Homeproduct.product}
                 onClick={gotonextpage}
               >
                 <Box className={Styles.flexall}>
@@ -92,7 +91,7 @@ const HomeProduct = () => {
                     <Image src={items.image} alt="something wrong" />
                   </Box>
                 </Box>
-                <Box background="white">{items.title}</Box>
+                <Box background="white"  className={Homeproduct.title}>{items.title}</Box>
                 <Box
                   color="#388e3c"
                   paddingTop="8px"

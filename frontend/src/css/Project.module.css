@@ -81,22 +81,8 @@
   justify-content: space-between;
   align-items: center;
 }
-.product {
-  padding: 25px 15px;
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-  line-height: 1.4;
-  cursor: pointer;
-  font-size: 14px;
-  background-color: white;
-  font-weight: 500;
-  overflow: hidden;
-  white-space: nowrap;
-}
-.product:hover {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
+
+
 .input {
   /* padding:7px 140px 7px 140px; */
   border-radius: 50px;
@@ -160,6 +146,4 @@
     align-items: center;
   }
 }
-/* .hameburger{
-    display: none;
-} */
+

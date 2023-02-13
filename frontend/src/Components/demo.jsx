@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { border, Box, Button, Image, Stack } from "@chakra-ui/react";
 import Styles from "../css/Project.module.css";
+import Homestyles from "../Pages/HomePage/Homepage.module.css";
 export const ImageSlider = () => {
   const navigate = useNavigate();
   function nextpage() {
@@ -48,15 +49,26 @@ export const ImageSlider = () => {
       style={{
         width: "100%",
         height: "100%",
+
+        marginTop: "5px",
       }}
     >
-     
-        <Carousel autoPlay infiniteLoop stopOnHover showIndicators={true}  style={{ width: "100%" }}>
+      <Carousel
+        autoPlay
+        infiniteLoop
+        stopOnHover
+        showIndicators={true}
+        style={{ width: "100%", border: "3px solid black" }}
+      >
         {images.map((Item, index) => {
           return (
-            <Box className={Styles.ProductBox} key={index}>
+            <Box
+              className={Styles.ProductBox}
+              key={index}
+           
+            >
               <Box
-                width="300px"
+                width="100%"
                 position="absolute"
                 zIndex="1"
                 m="20px 0 0 10px"
@@ -64,24 +76,27 @@ export const ImageSlider = () => {
                 float="left"
                 onClick={nextpage}
               >
-                <Box>{Item.product}</Box>
-                <Box className={Styles.desc}>{Item.description}</Box>
-                <button className={Styles.btn}>Shop now</button>
+                <Box className={Homestyles.imagetext} >
+                  <Box>{Item.product}</Box>
+                  <Box className={Styles.desc}>{Item.description}</Box>
+                  <button className={Styles.btn}>Shop now</button>
+                </Box>
               </Box>
               <Box
                 key={index}
                 width="100%"
                 float="right"
                 position="relative"
-                height="402px"
+                height="100%"
+                
+              
               >
-                <Image src={Item.image} width="100%" height="410px" />
+                <Image src={Item.image}   className={Homestyles.images}/>
               </Box>
             </Box>
           );
         })}
       </Carousel>
-    
     </div>
   );
 };

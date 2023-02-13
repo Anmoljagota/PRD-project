@@ -1,18 +1,36 @@
 import React, { useState } from "react";
-import { Box, Image } from "@chakra-ui/react";
+import { Alert, AlertIcon, Box, Image, Stack } from "@chakra-ui/react";
 import Styles from "../../css/Project.module.css";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getlogin } from "../../Redux/Auth/action";
 const Login = () => {
-  const navigate = useNavigate();
-  const newtoken = localStorage.getItem("token");
-
   const login_data = {
     email: "",
   };
   const [login, setLogin] = useState(login_data);
   const dispatch = useDispatch();
+  const newtoken = localStorage.getItem("token");
+  const data = useSelector((details) => details.loginuser.isAuth);
+  if (data === "Wrong Credentials") {
+    return (
+      <Stack spacing={3} mt="150px">
+        <Alert status="success" variant="solid">
+          <AlertIcon />
+          Data uploaded to the server. Fire on!
+        </Alert>
+      </Stack>
+    );
+  } else if (typeof data == "string" && data !== "Wrong Credentials") {
+    return (
+      <Stack spacing={3} mt="150px">
+        <Alert status="success" variant="solid">
+          <AlertIcon />
+          Data uploaded to the server. Fire on!
+        </Alert>
+      </Stack>
+    );
+  }
   function login1(e) {
     const { name, value } = e.target;
     setLogin({ email: value });
