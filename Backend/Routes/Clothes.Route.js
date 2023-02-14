@@ -39,10 +39,22 @@ clothesProductRoute.get("/clothes", async (req, res) => {
         sortBy === "LTH" ? (data = 1) : (data = -1);
       }
       // console.log("i am data", data);
-      const sortdata = await clothesmodel.find({}).sort({ price: data });
+      sortBy === "disc"
+        ? (sortdata = await clothesmodel.find({}).sort({ discount: data }))
+        : (sortdata = await clothesmodel.find({}).sort({ price: data }));
       res.send(sortdata);
     } catch (err) {
       res.send(err);
+    }
+  } else if (req.query.search) {
+    console.log("i ma searchhh", req.query.search);
+    try {
+      let searchdata = await clothesmodel.find({
+        description: { $regex: `${req.query.search}`, $options: "i" },
+      });
+      res.send(searchdata);
+    } catch (err) {
+      res.send(`error:${err}`);
     }
   } else {
     try {

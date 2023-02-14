@@ -15,6 +15,7 @@ const inital_state = {
   productdata: [],
   singledata: [],
   cartdata: [],
+  obj:{}
 };
 
 const reducer = (state = inital_state, action) => {

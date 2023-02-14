@@ -72,12 +72,11 @@ const sortgetdata = (data) => (dispatch) => {
     });
 };
 const addtocart = (data) => (dispatch) => {
-
-  if(data.product){
-    data=data.product
+  if (data.product) {
+    data = data.product;
   }
   dispatch({ type: CART_REQUEST });
-  console.log(data,"lllllll")
+  console.log(data, "lllllll");
   return axios
     .post(
       "http://localhost:8080/cartdata",
@@ -90,7 +89,7 @@ const addtocart = (data) => (dispatch) => {
       }
     )
     .then((res) => {
-      console.log("resssssssssssssss",res.data)
+      console.log("resssssssssssssss", res.data);
       if (res.data === "you are not authorized") {
         alert("Login first");
       }
@@ -101,26 +100,28 @@ const addtocart = (data) => (dispatch) => {
       dispatch({ type: CART_ERROR });
     });
 };
-const singleproduct=(data)=>(dispatch)=>{
-  console.log("i am dataaaaaaaaa",data)
-  SINGLE_LOADING_PRODUCT()
-  if(data.product){
-        data=data.product
+const singleproduct = (data) => (dispatch) => {
+  console.log("i am dataaaaaaaaa", data);
+  SINGLE_LOADING_PRODUCT();
+  if (data.product) {
+    data = data.product;
+  }
+  axios
+    .post("http://localhost:8080/fashion/clothes", {
+      product: data,
+    })
+    .then((res) => {
+      console.log("resssssssssssssss", res.data);
+      if (res.data === "you are not authorized") {
+        alert("Login first");
       }
-  axios.post("http://localhost:8080/fashion/clothes",{
-    product:data
-  }).then((res) => {
-          console.log("resssssssssssssss",res.data)
-          if(res.data==="you are not authorized"){
-        alert("Login first")
-      }
-          dispatch(SINGLE_SUCCESS_PRODUCT(res.data));
-        })
-        .catch((err) => {
-          console.log(err);
-          dispatch(SINGLE_ERROR_PRODUCT());
-        });
-}
+      dispatch(SINGLE_SUCCESS_PRODUCT(res.data));
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch(SINGLE_ERROR_PRODUCT());
+    });
+};
 const cartdata = () => (dispatch) => {
   dispatch({ type: CART_REQUEST });
   return axios
@@ -132,7 +133,7 @@ const cartdata = () => (dispatch) => {
     })
     .then((res) => {
       console.log(res.data, "ppppppppp");
-      
+
       dispatch({ type: CART_SUCCESS, payload: res.data });
     })
     .catch((err) => {
@@ -140,21 +141,13 @@ const cartdata = () => (dispatch) => {
       dispatch({ type: CART_ERROR });
     });
 };
-const adddatatocart=(product)=>(dispatch)=>{
-  console.log("i am product",product)
-  dispatch({ type: CART_REQUEST });
-  axios.post("http://localhost:8080/cartdata",product,{
-    headers:{
-      "Content-Type": "application/json",
-      auth:localStorage.getItem("token")
-    }
-  }).then((res)=>{
-    console.log(res.data,"ooooooooooo")
-  })
-}
 const Filterdata = (data) => (dispatch) => {
-  const category = data.params.category;
-  console.log("i am paranms", category);
+  console.log("i am dataaaaaaaaaaaaaaaaaaaaaaaaaaaaa",data)
+  // const category=""
+  // if (data.params.category) {
+  //    category = data.params.category;
+  // }
+  // console.log("i am paranms", category);
   dispatch(LOADING_PRODUCT());
   return axios
     .get("http://localhost:8080/fashion/clothes", data)
@@ -168,4 +161,11 @@ const Filterdata = (data) => (dispatch) => {
     });
 };
 
-export { getdata, sortgetdata, singleproduct, cartdata, Filterdata,addtocart };
+export {
+  getdata,
+  sortgetdata,
+  singleproduct,
+  cartdata,
+  Filterdata,
+  addtocart
+};

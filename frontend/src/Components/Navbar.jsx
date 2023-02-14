@@ -3,7 +3,12 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { HiOutlineUser } from "react-icons/hi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { GrNotes } from "react-icons/gr";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
   Box,
@@ -23,33 +28,45 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { cartdata, getdata } from "../Redux/Product_redux/action";
+import {
+  cartdata,
+  Filterdata,
+  getdata,
+  inputsearchdata,
+} from "../Redux/Product_redux/action";
 import { useEffect, useState } from "react";
 const Navbar = () => {
   const [params, searchParams] = useSearchParams("");
+
   let searchdata = params.getAll("q");
-  const [search, setSearch] = useState(searchdata || "")
+  const [search, setSearch] = useState(searchdata || []);
   const loginuser = useSelector((details) => details.loginuser.isAuth);
+  const data = useSelector((details) => details.homeproduct);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   //single page
   useEffect(() => {
     dispatch(cartdata());
   }, [loginuser]);
   useEffect(() => {
-    if (search) {
-      let obj = {};
-      obj.q = search;
-      searchParams(obj);
+    console.log("locationnnnnnnn", search);
+    location.hash = "";
+    if (search && location.hash === "") {
+      data.obj.q = search;
+      console.log("data.objjjjjjjjjjjjjjjjjjjjjjjjjjjjj", data.obj);
+      searchParams(data.obj);
+      console.log("iiiiiiiiiiiiiii", params);
+      const searchdata = {
+        params: {
+          search: params.getAll("q"),
+        },
+      };
+      dispatch(Filterdata(searchdata));
     }
-    if (params.getAll("q") !== undefined) {
-      const searching = params.getAll("q");
-      console.log("dispatching");
-      dispatch(getdata({ q: searching }));
-    }
-  }, [search]);
+  }, [search, location.search]);
   const fixeddata = useSelector((details) => details.homeproduct);
-  console.log("fix",fixeddata)
+  console.log("fix", fixeddata);
   function navigatetoanother() {
     navigate("/");
   }
@@ -68,6 +85,7 @@ const Navbar = () => {
   }
   function handeleChange(e) {
     setSearch(e.target.value);
+    console.log(e.target.value, "avalueeeeeeeeeeeeeee");
   }
   // console.log(search)
   return (
@@ -118,7 +136,7 @@ const Navbar = () => {
               />
             </Box>
           </Box>
-         
+
           <input
             type="text"
             className={Styles.input}
@@ -126,8 +144,7 @@ const Navbar = () => {
             onChange={handeleChange}
             value={search}
           />
-         
-         
+
           <AiOutlineHeart
             style={{ marginLeft: "40px", fontSize: "25px" }}
             className={Styles.heart}

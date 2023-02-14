@@ -8,10 +8,11 @@ import {
   Box,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Filterdata, getdata } from "../Redux/Product_redux/action";
 import Styles from "../Pages/ProductPage/Product.module.css";
 const Filtering = () => {
+  const details = useSelector((data) => data.homeproduct);
   const [params, setParams] = useSearchParams();
   let persist = params.getAll("category");
   const [value, setValue] = useState(persist || []);
@@ -19,12 +20,12 @@ const Filtering = () => {
   const location = useLocation();
   useEffect(() => {
     if (value) {
-      let obj = {};
-      obj.category = value;
-      setParams(obj);
+      console.log("i ma aaaaaa agin")
+      details.obj.category = value;
+      setParams(details.obj);
     }
-
-    if (location.search !== "") {
+    location.hash="hlo"
+    if (location.search !== "" && location.hash==="hlo") {
       console.log("location.searchhhhhhhhhhhhhhhhhhh", location);
       const changledata = {
         params: {
@@ -35,7 +36,7 @@ const Filtering = () => {
     } else {
       dispatch(getdata());
     }
-  }, [value, location.search]);
+  }, [value,location.search]);
   function handleChange(e) {
     console.log(e.target.value, "kkkkkkkkkkkkkkkkkkkkkkkkkkkk");
     const category = [...value];
@@ -56,9 +57,9 @@ const Filtering = () => {
         fontSize="21px"
         padding="4px"
       >
-          <AccordionItem>
+        <AccordionItem>
           <h2>
-            <AccordionButton >
+            <AccordionButton>
               <Box
                 as="span"
                 flex="1"
@@ -348,7 +349,7 @@ const Filtering = () => {
             </Box>
           </AccordionPanel>
         </AccordionItem>
-      
+
         <AccordionItem>
           <h2>
             <AccordionButton marginTop="15px">
