@@ -1,16 +1,22 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Styles from "../../css/Project.module.css";
-const Total = ({ newarr }) => {
+const Total = ({ newarr,total }) => {
+  const details = useSelector((data) => data.homeproduct.userDetails);
+  console.log("i ma userdetailssssssssssssss",details)
   const navigate = useNavigate();
+  function checking() {
+    details.length > 0 ? navigate("/checkout") : navigate("/address");
+  }
   return (
     <div>
       <Box boxShadow="rgba(0, 0, 0, 0.16) 0px 1px 4px" p="15px" width="370px">
         <button
           className={Styles.signin}
           style={{ height: "40px" }}
-          onClick={()=>navigate("/address")}
+          onClick={checking}
         >
           Continue to checkout
         </button>
@@ -35,7 +41,7 @@ const Total = ({ newarr }) => {
               ({newarr.length} items)
             </span>
           </Box>
-          <Box>hh</Box>
+          <Box>{total}</Box>
         </Box>
         <Box className={Styles.flexall} mt="17px">
           <Box>Savings</Box>
@@ -57,7 +63,7 @@ const Total = ({ newarr }) => {
         <br />
         <Box className={Styles.flexall} mt="10px">
           <Box>Estimated total</Box>
-          <Box>₹510</Box>
+          <Box>{total-50+75}</Box>
         </Box>
       </Box>
     </div>

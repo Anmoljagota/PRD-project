@@ -12,8 +12,8 @@ import ProductItems from "./ProductItems";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import Filtering from "../../Components/Filtering";
 import ProductStyles from "../ProductPage/Product.module.css";
-// import PlacementExample from "../../Components/Drawer";
-// import DrawerExample from "../../Components/FilterDrawer";
+import PlacementExample from "../../Components/Drawer";
+import DrawerExample from "../../Components/FilterDrawer";
 const CustomProductPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -36,22 +36,23 @@ const CustomProductPage = () => {
     dispatch(singleproduct({ product: id }));
   };
 
-  useEffect(() => {
-    if (sort) {
-      data.obj._sort = sort;
-      setParams(data.obj);
-    }
-    location.hash = "sorting";
+  // useEffect(() => {
+  //   if (sort) {
+  //     data.obj._sort = sort;
+  //     setParams(data.obj);
+  //   }
+ 
 
-    if (location.search && location.hash === "sorting") {
-      const changledata = {
-        params: {
-          _sort: params.getAll("_sort"),
-        },
-      };
-      dispatch(Filterdata(changledata));
-    }
-  }, [sort, location.search]);
+  //   if (sort || location.search!=="") {
+  //     console.log("location.searchhhhhhhhhhhhhhhhhhh for soring", location);
+  //     const changledata = {
+  //       params: {
+  //         _sort: params.getAll("_sort"),
+  //       },
+  //     };
+  //     // dispatch(Filterdata(changledata));
+  //   }
+  // }, [sort,location.search]);
 
   return (
     <>
@@ -66,7 +67,7 @@ const CustomProductPage = () => {
         width="100%"
       >
         <Box width="50%" border="1px solid grey">
-          {/* <PlacementExample /> */}
+          <PlacementExample />
         </Box>
         <Box
           width="50%"
@@ -75,7 +76,7 @@ const CustomProductPage = () => {
           justifyContent="center"
           alignItems="center"
         >
-          {/* <DrawerExample /> */}
+          <DrawerExample />
         </Box>
       </Box>
       <Box className={Styles.maindiv} mt="150px">

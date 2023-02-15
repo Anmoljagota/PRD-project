@@ -4,22 +4,27 @@ import { useDispatch, useSelector } from "react-redux";
 import Styles from "../css/Project.module.css";
 import { AiOutlineHeart } from "react-icons/ai";
 import { TbAlertCircle } from "react-icons/tb";
-import { adddata, adddatatocart, addtocart, cartdata, cartdatapost } from "../Redux/Product_redux/action";
+import {
+  adddata,
+  adddatatocart,
+  addtocart,
+  cartdata,
+  cartdatapost,
+} from "../Redux/Product_redux/action";
 let images = [{ data: "" }, { data: "" }, { data: "" }, { data: "" }];
 const SingleProduct = () => {
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const details = useSelector((data) => data.homeproduct.singledata);
-  function handleClick(){
-  console.log("i am detailssss",details)
-dispatch(addtocart(details[0]._id))
-}
-      return (
-<div style={{ marginTop: "150px" }}>
+  function handleClick() {
+    console.log("i am detailssss", details);
+    dispatch(addtocart(details[0]._id));
+  }
+  return (
+    <div style={{ marginTop: "150px" }}>
       <Box>
         <Box width="95%" margin="auto" height="100vw">
           <Box height="40vw" className={Styles.flexall}>
             <Box
-              
               height="auto"
               width="68%"
               className={Styles.flexall}
@@ -46,11 +51,7 @@ dispatch(addtocart(details[0]._id))
                 />
               </Box>
             </Box>
-            <Box
-              height="40vw"
-              width="30%"
-              textAlign="left"
-            >
+            <Box height="40vw" width="30%" textAlign="left">
               <Box
                 width="100%"
                 margin="auto"

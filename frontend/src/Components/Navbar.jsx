@@ -33,6 +33,8 @@ import {
   Filterdata,
   getdata,
   inputsearchdata,
+  user_adderss_details,
+  user_adderss_details_get,
 } from "../Redux/Product_redux/action";
 import { useEffect, useState } from "react";
 const Navbar = () => {
@@ -48,26 +50,35 @@ const Navbar = () => {
   //single page
   useEffect(() => {
     dispatch(cartdata());
+    dispatch(user_adderss_details_get());
   }, [loginuser]);
   useEffect(() => {
-    console.log("locationnnnnnnn", search);
-    location.hash = "";
-    if (search && location.hash === "") {
-      data.obj.q = search;
-      console.log("data.objjjjjjjjjjjjjjjjjjjjjjjjjjjjj", data.obj);
-      searchParams(data.obj);
-      console.log("iiiiiiiiiiiiiii", params);
-      const searchdata = {
-        params: {
-          search: params.getAll("q"),
-        },
-      };
-      dispatch(Filterdata(searchdata));
-    }
-  }, [search, location.search]);
+    // console.log("locationnnnnnnn", search);
+    // location.hash = "";
+    // if (location.search||search) {
+    //   data.obj.q = search;
+    //   console.log("location.searchhhhhhhhhhhhhhhhhhh for searching", location);
+    //   searchParams(data.obj);
+    //   console.log("iiiiiiiiiiiiiii", params);
+    //   const searchdata = {
+    //     params: {
+    //       search: params.getAll("q"),
+    //     },
+    //   };
+    //   // dispatch(getdata());
+    // }
+    // else{
+    //   console.log("oooooooooooooooooooo")
+    //   dispatch(getdata());
+    // }
+  }, []);
   const fixeddata = useSelector((details) => details.homeproduct);
   console.log("fix", fixeddata);
   function navigatetoanother() {
+    navigate("/");
+  }
+  function redirect() {
+    localStorage.removeItem("token");
     navigate("/");
   }
   function showcart() {
@@ -177,9 +188,7 @@ const Navbar = () => {
                   }}
                 >
                   {localStorage.getItem("token") ? (
-                    <h1 onClick={() => localStorage.removeItem("token")}>
-                      Logout
-                    </h1>
+                    <h1 onClick={redirect}>Logout</h1>
                   ) : (
                     <>
                       <h1> Sign in</h1>

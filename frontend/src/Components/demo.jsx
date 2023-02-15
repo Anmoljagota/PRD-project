@@ -59,6 +59,7 @@ export const ImageSlider = () => {
         stopOnHover
         showIndicators={true}
         style={{ width: "100%", border: "3px solid black" }}
+        showThumbs={false} 
       >
         {images.map((Item, index) => {
           return (

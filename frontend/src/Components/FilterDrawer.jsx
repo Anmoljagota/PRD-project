@@ -21,44 +21,44 @@ import { useDispatch } from "react-redux";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { Filterdata, getdata } from "../Redux/Product_redux/action";
 const DrawerExample = () => {
-    const [params, setParams] = useSearchParams();
-  let persist = params.getAll("category");
-  const [value, setValue] = useState(persist || []);
-  const dispatch = useDispatch();
-  const location = useLocation();
-  useEffect(() => {
-    if (value) {
-      let obj = {};
-      obj.category = value;
-      setParams(obj);
-    }
+  //     const [params, setParams] = useSearchParams();
+  //   let persist = params.getAll("category");
+  //   const [value, setValue] = useState(persist || []);
+  //   const dispatch = useDispatch();
+  //   const location = useLocation();
+  //   useEffect(() => {
+  //     if (value) {
+  //       let obj = {};
+  //       obj.category = value;
+  //       setParams(obj);
+  //     }
 
-    if (location.search !== "") {
-    //   console.log("location.searchhhhhhhhhhhhhhhhhhh", location);
-      const changledata = {
-        params: {
-          category: params.getAll("category"),
-        },
-      };
-      dispatch(Filterdata(changledata));
-    } 
-    // else {
-    //   dispatch(getdata());
-    // }
-  }, [value, location.search]);
-  function handleChange(e) {
-    // console.log(e.target.value, "kkkkkkkkkkkkkkkkkkkkkkkkkkkk");
-    const category = [...value];
-    if (category.includes(e.target.value)) {
-      category.splice(category.indexOf(e.target.value), 1);
-    } else {
-      category.push(e.target.value);
-    }
-    setValue(category);
-  }
+  //     if (location.search !== "") {
+  //     //   console.log("location.searchhhhhhhhhhhhhhhhhhh", location);
+  //       const changledata = {
+  //         params: {
+  //           category: params.getAll("category"),
+  //         },
+  //       };
+  //       dispatch(Filterdata(changledata));
+  //     }
+  //     // else {
+  //     //   dispatch(getdata());
+  //     // }
+  //   }, [value, location.search]);
+  //   function handleChange(e) {
+  //     // console.log(e.target.value, "kkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+  //     const category = [...value];
+  //     if (category.includes(e.target.value)) {
+  //       category.splice(category.indexOf(e.target.value), 1);
+  //     } else {
+  //       category.push(e.target.value);
+  //     }
+  //     setValue(category);
+  //   }
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
- 
+
   return (
     <>
       <Button ref={btnRef} background="white" onClick={onOpen}>
@@ -73,10 +73,8 @@ const DrawerExample = () => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-         
 
-         
-            <Accordion
+          {/* <Accordion
               defaultIndex={[0]}
               allowMultiple
               textAlign="left"
@@ -188,7 +186,7 @@ const DrawerExample = () => {
                 </AccordionPanel>
               </AccordionItem>
             </Accordion>
-         
+          */}
         </DrawerContent>
       </Drawer>
     </>

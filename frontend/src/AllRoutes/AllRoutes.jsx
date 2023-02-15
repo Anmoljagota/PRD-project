@@ -9,6 +9,7 @@ import Cartlogin from '../Components/Cartlogin'
 import Cartdata from '../Pages/Cartdata/Cartdata'
 import SingleProduct from '../Pages/SingleProduct'
 import AddressPage from '../Pages/AddressPage/AddressPage'
+import Checkout from '../Pages/CheckoutPage/Checkout'
 const AllRoutes = () => {
   return (
     <div>
@@ -22,6 +23,7 @@ const AllRoutes = () => {
         <Route path="/nodata" element={<Cartdata/>}></Route>
         <Route path="/singleproduct" element={<SingleProduct/>}></Route>
         <Route path="/address" element={<AddressPage/>}></Route>
+        <Route path="/checkout" element={<Checkout/>}></Route>
       </Routes>
     </div>
   )

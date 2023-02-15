@@ -56,4 +56,5 @@ const getlogin = (data) => (dispatch) => {
       dispatch(ERROR_PRODUCT());
     });
 };
+
 export { getregister, getlogin };

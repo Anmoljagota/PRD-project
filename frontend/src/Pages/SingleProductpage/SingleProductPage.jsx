@@ -1,11 +1,14 @@
 import { Box, Image } from "@chakra-ui/react";
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { HiPlusSm, HiMinusSm } from "react-icons/hi";
 import Total from "./Total";
+import { cartdata, cartdelete } from "../../Redux/Product_redux/action";
 
-const SingleProductPage = () => {
+const SingleProductPage = ({ l }) => {
+  const dispatch = useDispatch();
   let newarr = [];
+  let total = 0;
   const singleproductdata = useSelector(
     (details) => details.homeproduct.cartdata
   );
@@ -13,7 +16,10 @@ const SingleProductPage = () => {
 
   for (let i = 0; i < singleproductdata.length; i++) {
     // console.log("running",singleproductdata.length);
-    newarr.push(singleproductdata[i].product);
+    if (singleproductdata !== "authorization first") {
+      total += singleproductdata[i].product.price;
+      newarr.push(singleproductdata[i].product);
+    }
   }
   console.log(newarr, "mewarr");
   if (singleproductdata === "you are not authorized") {
@@ -22,6 +28,11 @@ const SingleProductPage = () => {
         Login first
       </Box>
     );
+  }
+  function removeproduct(product) {
+    console.log("i ma productssssssssssss", product);
+    dispatch(cartdelete(product));
+    dispatch(cartdata());
   }
   return (
     <div style={{ marginTop: "120px" }}>
@@ -46,6 +57,7 @@ const SingleProductPage = () => {
           boxShadow="rgba(0, 0, 0, 0.16) 0px 1px 4px"
         >
           {newarr !== "you are not authorized" &&
+            singleproductdata !== "authorization first" &&
             newarr.map((items) => (
               <>
                 <Box
@@ -118,6 +130,7 @@ const SingleProductPage = () => {
                           </span>
                           <span style={{ marginLeft: "5px" }}>₹50</span>
                         </Box>
+
                         <Box
                           cursor="pointer"
                           border="1px solid black"
@@ -140,14 +153,26 @@ const SingleProductPage = () => {
                     </Box>
                   </Box>
                 </Box>
+                <Box
+                  onClick={() => removeproduct(items._id)}
+                  width="70%"
+                  float="right"
+                  textAlign="center"
+                  fontSize="15px"
+                  fontWeight="600"
+                  textDecorationLine="underline"
+                  cursor="pointer"
+                >
+                  <h1>Remove</h1>
+                </Box>
+                <br />
                 <hr
                   style={{ width: "90%", margin: "auto", marginTop: "20px" }}
                 />
               </>
             ))}
-          <Box></Box>
         </Box>
-        <Total newarr={newarr} />
+        {l === 1 ? "" : <Total newarr={newarr} total={total} />}
       </Box>
     </div>
   );

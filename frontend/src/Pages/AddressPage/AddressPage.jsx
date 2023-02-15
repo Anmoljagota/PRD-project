@@ -1,20 +1,53 @@
-import { Box, Button, Radio, RadioGroup, Stack, Text, Textarea } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Radio,
+  RadioGroup,
+  Stack,
+  Text,
+  Textarea,
+} from "@chakra-ui/react";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { user_adderss_details } from "../../Redux/Product_redux/action";
 import Styles from "../AddressPage/Address.module.css";
 const textareadata = [
-  { text: "Landmark (optional)" },
-  { text: "Pincode" },
-  { text: "Locality" },
-  { text: "city" },
-  { text: "State" },
-  { text: "Customer Name" },
-  { text: "10 Digit Mobile Number" },
+  { text: "Landmark (optional)", name: "landmark" },
+  { text: "Pincode", name: "pincode" },
+  { text: "Locality", name: "locality" },
+  { text: "city", name: "city" },
+  { text: "State", name: "state" },
+  { text: "Customer Name", name: "name" },
+  { text: "10 Digit Mobile Number", name: "phonenumber" },
 ];
-const AddressPage = () => {
-  const [value, setValue] = useState("");
-  // function setValue(){
 
-  // }
+const AddressPage = () => {
+  const userdetails = {
+    homeaddress: "",
+  };
+  const dispatch = useDispatch();
+  const [value, setValue] = useState("");
+  const [data, setData] = useState("");
+  const [] = useState("");
+  function handleChange(e) {
+    console.log(e.target.value, "hiiiiiiiiiiiiiiiii");
+    const { name, value } = e.target;
+    setData({ ...data, [name]: value });
+  }
+  console.log("iiiiiii ammmmmmm dataaaaaaaaaaaaaaa", data);
+  function handleSubmit() {
+    if (
+      data.homeaddress !== "" &&
+      data.city !== "" &&
+      data.locality !== "" &&
+      data.name !== "" &&
+      data.pincode !== "" &&
+      data.phonenumber !== "" &&
+      data.state !== ""
+    ) {
+      dispatch(user_adderss_details(data));
+    }
+  }
   return (
     <div
       style={{
@@ -29,14 +62,12 @@ const AddressPage = () => {
           width: "35.33333333%",
           textAlign: "left",
           margin: "15px 0 0 10%",
-         
-        
         }}
       >
         Add New Address
       </h1>
       <Box
-boxShadow="0 1px 2px 0 rgb(0 0 0 / 20%)"
+        boxShadow="0 1px 2px 0 rgb(0 0 0 / 20%)"
         width="45.33333333%"
         ml="10%"
         mt="30px"
@@ -57,12 +88,12 @@ boxShadow="0 1px 2px 0 rgb(0 0 0 / 20%)"
             float: "left",
           }}
           placeholder="Flat Number, Building Name, Street/Locality"
-        >
-         
-        </textarea>
+          onChange={handleChange}
+          name="homeaddress"
+        ></textarea>
         <Box border="1px solid white" height="100%">
           {textareadata.map((items) => (
-            <Box color="grey" float="left" mt="20px" >
+            <Box color="grey" float="left" mt="20px">
               <Textarea
                 style={{
                   border: "1px solid #e8e8e8",
@@ -74,12 +105,12 @@ boxShadow="0 1px 2px 0 rgb(0 0 0 / 20%)"
                 rows="1"
                 float="left"
                 placeholder={items.text}
-              >
-                
-              </Textarea>
+                onChange={handleChange}
+                name={items.name}
+              ></Textarea>
             </Box>
           ))}
-          <Box  mt="530px">
+          <Box mt="530px">
             <RadioGroup defaultValue="1">
               <Stack spacing={7} direction="row">
                 <Radio colorScheme="red" value="1">
@@ -95,7 +126,6 @@ boxShadow="0 1px 2px 0 rgb(0 0 0 / 20%)"
             </RadioGroup>
           </Box>
           <Box
-            
             color="#fff"
             mt="15px"
             display="flex"
@@ -119,6 +149,7 @@ boxShadow="0 1px 2px 0 rgb(0 0 0 / 20%)"
               p="0px 16px"
               display="inline-flex"
               float="right"
+              onClick={handleSubmit}
             >
               SAVE
             </Button>

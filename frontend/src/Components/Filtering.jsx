@@ -20,12 +20,12 @@ const Filtering = () => {
   const location = useLocation();
   useEffect(() => {
     if (value) {
-      console.log("i ma aaaaaa agin")
+      console.log("i ma aaaaaa agin");
       details.obj.category = value;
       setParams(details.obj);
     }
-    location.hash="hlo"
-    if (location.search !== "" && location.hash==="hlo") {
+    location.hash = "hlo";
+    if (location.search !== "") {
       console.log("location.searchhhhhhhhhhhhhhhhhhh", location);
       const changledata = {
         params: {
@@ -34,9 +34,10 @@ const Filtering = () => {
       };
       dispatch(Filterdata(changledata));
     } else {
+      console.log("runnnningll");
       dispatch(getdata());
     }
-  }, [value,location.search]);
+  }, [value, location.search]);
   function handleChange(e) {
     console.log(e.target.value, "kkkkkkkkkkkkkkkkkkkkkkkkkkkk");
     const category = [...value];

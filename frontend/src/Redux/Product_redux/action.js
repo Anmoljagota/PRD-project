@@ -8,6 +8,9 @@ import {
   CART_REQUEST,
   CART_SUCCESS,
   CART_ERROR,
+  USER_DETAILS_REQUEST,
+  USER_DETAILS_SUCCESS,
+  USER_DETAILS_ERROR,
 } from "./actionTypes";
 import axios from "axios";
 
@@ -141,8 +144,15 @@ const cartdata = () => (dispatch) => {
       dispatch({ type: CART_ERROR });
     });
 };
+const cartdelete = (id) => (dispatch) => {
+  dispatch({ type: CART_REQUEST });
+  axios.delete(`http://localhost:8080/cartdata/${id}`).then((res) => {
+    console.log(res.data, "resssssddddddddddd");
+  });
+  dispatch({ type: CART_ERROR });
+};
 const Filterdata = (data) => (dispatch) => {
-  console.log("i am dataaaaaaaaaaaaaaaaaaaaaaaaaaaaa",data)
+  console.log("i am dataaaaaaaaaaaaaaaaaaaaaaaaaaaaa", data);
   // const category=""
   // if (data.params.category) {
   //    category = data.params.category;
@@ -160,12 +170,41 @@ const Filterdata = (data) => (dispatch) => {
       dispatch(ERROR_PRODUCT());
     });
 };
-
+const user_adderss_details = (data) => (dispatch) => {
+  dispatch({ type: USER_DETAILS_REQUEST });
+  axios
+    .post("http://localhost:8080/address", data, {
+      headers: {
+        "Content-Type": "application/json",
+        auth: localStorage.getItem("token"),
+      },
+    })
+    .then((res) => {});
+  dispatch({ type: USER_DETAILS_ERROR });
+};
+const user_adderss_details_get = () => (dispatch) => {
+  dispatch({ type: USER_DETAILS_REQUEST });
+  axios
+    .get("http://localhost:8080/address", {
+      headers: {
+        "Content-Type": "application/json",
+        auth: localStorage.getItem("token"),
+      },
+    })
+    .then((res) => {
+      console.log("i ma resssssssssssssssssssaaaaa", res.data);
+      dispatch({ type: USER_DETAILS_SUCCESS, payload: res.data });
+    });
+  dispatch({ type: USER_DETAILS_ERROR });
+};
 export {
   getdata,
   sortgetdata,
   singleproduct,
   cartdata,
   Filterdata,
-  addtocart
+  addtocart,
+  user_adderss_details,
+  user_adderss_details_get,
+  cartdelete
 };
