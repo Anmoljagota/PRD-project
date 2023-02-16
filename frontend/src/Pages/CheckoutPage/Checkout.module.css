@@ -12,27 +12,55 @@
   color: white;
   font-weight: 700;
 }
-.payment{
-    font-size: 18px;
-    font-weight: 520;
-    color:black;
-    text-align: left;
+.payment {
+  font-size: 18px;
+  font-weight: 520;
+  color: black;
+  text-align: left;
 }
-.ship{
+.ship {
   font-weight: 700;
-  color:black;
+  color: black;
   font-size: 17px;
 }
-.address{
+.address {
   font-size: 14px;
   padding-top: 7px;
   margin-top: 25px;
   height: 80px;
-  color:#00000099;
+  color: #00000099;
   padding-bottom: 3px;
 }
-.email{
+.email {
   font-size: 14px;
-  color:#00000099;
+  color: #00000099;
   padding-top: 7px;
+}
+
+@media (min-width: 750px) and (max-width: 1800px) {
+  .widthboxes {
+    width: 30%;
+
+    padding-left: 20px;
+    margin-left: 30px;
+  }
+  .payment {
+    width: 38%;
+  }
+}
+
+@media (min-width: 0px) and (max-width: 800px) {
+  .flexall {
+    display: block;
+  }
+  .widthboxes {
+    width: 100%;
+    margin: auto;
+    float: left;
+    margin-top: 30px;
+    padding: 18px;
+  }
+  .payment {
+    width: 45%;
+  }
 }

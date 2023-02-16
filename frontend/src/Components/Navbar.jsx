@@ -1,7 +1,10 @@
 import Styles from "../css/Project.module.css";
-import { AiOutlineHeart } from "react-icons/ai";
+import {
+  AiOutlineHeart,
+  AiOutlineSearch,
+  AiOutlineShoppingCart,
+} from "react-icons/ai";
 import { HiOutlineUser } from "react-icons/hi";
-import { AiOutlineShoppingCart } from "react-icons/ai";
 import { GrNotes } from "react-icons/gr";
 import {
   Link,
@@ -80,19 +83,22 @@ const Navbar = () => {
   function redirect() {
     localStorage.removeItem("token");
     navigate("/");
+    dispatch(cartdata());
   }
   function showcart() {
     dispatch(cartdata());
-    if (
-      fixeddata.cartdata !== "you are not authorized" &&
-      fixeddata.cartdata !== "authorization first"
-    ) {
-      navigate("/singlepage");
-    } else if (fixeddata.cartdata === "authorization first") {
-      navigate("/nodata");
-    } else {
-      navigate("/cartlogin");
-    }
+    setTimeout(() => {
+      if (
+        fixeddata.cartdata !== "you are not authorized" &&
+        fixeddata.cartdata !== "authorization first"
+      ) {
+        navigate("/singlepage");
+      } else if (fixeddata.cartdata === "authorization first") {
+        navigate("/nodata");
+      } else {
+        navigate("/cartlogin");
+      }
+    }, 1000);
   }
   function handeleChange(e) {
     setSearch(e.target.value);
@@ -147,14 +153,18 @@ const Navbar = () => {
               />
             </Box>
           </Box>
-
-          <input
-            type="text"
-            className={Styles.input}
-            placeholder="Search products"
-            onChange={handeleChange}
-            value={search}
-          />
+     
+            <input
+              type="text"
+              className={Styles.input}
+              placeholder="Search products"
+              onChange={handeleChange}
+              value={search}
+            />
+          
+          <Box position="absolute" background="#ffc220" padding="7px" borderRadius="100%" ml="27%" >
+            <AiOutlineSearch  color="black"/>
+          </Box>
 
           <AiOutlineHeart
             style={{ marginLeft: "40px", fontSize: "25px" }}

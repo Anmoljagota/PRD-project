@@ -13,8 +13,10 @@ import Styles from "../CheckoutPage/Checkout.module.css";
 import { FaCreditCard } from "react-icons/fa";
 import Products from "../../Components/Checkout component/Products";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
+  const navigate=useNavigate()
   const payments = [
     { option: "Debit Card" },
     { option: "Credit Card" },
@@ -23,16 +25,20 @@ const Checkout = () => {
     { option: "Wallet" },
   ];
   const userdetails = useSelector((details) => details.homeproduct.userDetails);
+  function navigtetoaddress(){
+navigate("/address")
+  }
   return (
     <div>
       <Box height="auto" mt="150px" className={Styles.flexall} width="96%">
         {userdetails[0]!== undefined && (
           <Box
-            width="30%"
+          
             height="110%"
             textAlign="left"
-            paddingLeft="20px"
-            ml="30px"
+           
+            
+            className={Styles.widthboxes}
           >
             <h1 className={Styles.ship}>Shipping Details</h1>
             <br />
@@ -48,14 +54,16 @@ const Checkout = () => {
             <Box className={Styles.email}>
               Order Confirmation will be sent on
             </Box>
-            <span className={Styles.email}>{userdetails[0].userId.email}</span>
+            <span className={Styles.email}>{userdetails[0].userId.email}</span><br/>
+            <button onClick={navigtetoaddress} className={Styles.btn} style={{width:"35%",padding:"0px",fontSize:"12px"}}>CHANGE ADDRESS</button>
           </Box>
         )}
         <Box
-          width="30%"
+         
           borderLeft="0.2px solid #0000001a"
           borderRight="0.2px solid #0000001a"
           p="10px"
+          className={Styles.widthboxes}
         >
           <h1 className={Styles.payment}>Payment Options</h1>
           <br />
@@ -66,7 +74,7 @@ const Checkout = () => {
                   <h2>
                     <AccordionButton>
                       <Box
-                        width="32%"
+                        className={Styles.payment}
                         justifyContent="space-between"
                         textAlign="left"
                         color="black"
@@ -164,7 +172,7 @@ const Checkout = () => {
           })}
         </Box>
         <Box
-          width="30%"
+          className={Styles.widthboxes}
           background="#f7f7f7!important"
           boxShadow="rgba(0, 0, 0, 0.16) 0px 1px 4px"
         >

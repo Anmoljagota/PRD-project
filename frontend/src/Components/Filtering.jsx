@@ -11,7 +11,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Filterdata, getdata } from "../Redux/Product_redux/action";
 import Styles from "../Pages/ProductPage/Product.module.css";
-const Filtering = () => {
+  const Filtering = ({i,rerenderstop}) => {
   const details = useSelector((data) => data.homeproduct);
   const [params, setParams] = useSearchParams();
   let persist = params.getAll("category");
@@ -24,22 +24,20 @@ const Filtering = () => {
       details.obj.category = value;
       setParams(details.obj);
     }
-    location.hash = "hlo";
-    if (location.search !== "") {
-      console.log("location.searchhhhhhhhhhhhhhhhhhh", location);
+  if (location.search !== "") {
       const changledata = {
         params: {
           category: params.getAll("category"),
         },
       };
       dispatch(Filterdata(changledata));
-    } else {
-      console.log("runnnningll");
+    }
+     else {
       dispatch(getdata());
     }
   }, [value, location.search]);
   function handleChange(e) {
-    console.log(e.target.value, "kkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+   
     const category = [...value];
     if (category.includes(e.target.value)) {
       category.splice(category.indexOf(e.target.value), 1);
@@ -57,6 +55,7 @@ const Filtering = () => {
         fontWeight="530"
         fontSize="21px"
         padding="4px"
+        onClick={()=>rerenderstop(i)}
       >
         <AccordionItem>
           <h2>

@@ -90,7 +90,8 @@
   border: 1px solid white;
   width: 50%;
   height: 30px;
-  padding: 20px;
+  padding: 23px;
+  position: relative;
 }
 .signin {
   font-size: 0.875rem;

@@ -57,7 +57,7 @@ const Products = () => {
                   {items.description}
                 </Box>
               </Box>
-            </Box>
+            </Box><br/>
               <hr style={{ border: "1px solid grey", borderStyle: "dashed" }} />
           </Stack>
         ))}

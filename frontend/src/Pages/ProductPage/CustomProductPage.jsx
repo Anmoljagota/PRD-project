@@ -17,6 +17,7 @@ import DrawerExample from "../../Components/FilterDrawer";
 const CustomProductPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [norender, setNotrender] = useState("");
   const sortdata = (order) => {
     console.log("i am value", order);
     setSort(order);
@@ -35,13 +36,13 @@ const CustomProductPage = () => {
     }, 1000);
     dispatch(singleproduct({ product: id }));
   };
+ 
 
   // useEffect(() => {
   //   if (sort) {
   //     data.obj._sort = sort;
   //     setParams(data.obj);
   //   }
- 
 
   //   if (sort || location.search!=="") {
   //     console.log("location.searchhhhhhhhhhhhhhhhhhh for soring", location);
@@ -101,7 +102,7 @@ const CustomProductPage = () => {
               >
                 Filter by
               </Box>
-              <Filtering />
+              <Filtering/>
               {/* <Drawer/> */}
             </Box>
           </Box>

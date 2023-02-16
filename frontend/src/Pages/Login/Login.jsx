@@ -12,25 +12,25 @@ const Login = () => {
   const dispatch = useDispatch();
   const newtoken = localStorage.getItem("token");
   const data = useSelector((details) => details.loginuser.isAuth);
-  if (data === "Wrong Credentials") {
-    return (
-      <Stack spacing={3} mt="150px">
-        <Alert status="success" variant="solid">
-          <AlertIcon />
-          Data uploaded to the server. Fire on!
-        </Alert>
-      </Stack>
-    );
-  } else if (typeof data == "string" && data !== "Wrong Credentials") {
-    return (
-      <Stack spacing={3} mt="150px">
-        <Alert status="success" variant="solid">
-          <AlertIcon />
-          Data uploaded to the server. Fire on!
-        </Alert>
-      </Stack>
-    );
-  }
+  // if (data === "Wrong Credentials") {
+  //   return (
+  //     <Stack spacing={3} mt="150px">
+  //       <Alert status="success" variant="solid">
+  //         <AlertIcon />
+  //         Data uploaded to the server. Fire on!
+  //       </Alert>
+  //     </Stack>
+  //   );
+  // } else if (typeof data == "string" && data !== "Wrong Credentials") {
+  //   return (
+  //     <Stack spacing={3} mt="150px">
+  //       <Alert status="success" variant="solid">
+  //         <AlertIcon />
+  //         Data uploaded to the server. Fire on!
+  //       </Alert>
+  //     </Stack>
+  //   );
+  // }
   function login1(e) {
     const { name, value } = e.target;
     setLogin({ email: value });

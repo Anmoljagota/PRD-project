@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { HiPlusSm, HiMinusSm } from "react-icons/hi";
 import Total from "./Total";
 import { cartdata, cartdelete } from "../../Redux/Product_redux/action";
-
+import Styles from "./SingleProduct.module.css";
 const SingleProductPage = ({ l }) => {
   const dispatch = useDispatch();
   let newarr = [];
@@ -50,11 +50,18 @@ const SingleProductPage = ({ l }) => {
           ({newarr.length} items)
         </span>
       </Box>
-      <Box display="flex" width="90%" margin="auto">
+      <Box
+        className={Styles.checkoutboxes}
+        width="90%"
+        margin="auto"
+       
+      >
         <Box
-          width="65%"
+         
           margin="auto"
           boxShadow="rgba(0, 0, 0, 0.16) 0px 1px 4px"
+         
+          className={Styles.checkoutproduct}
         >
           {newarr !== "you are not authorized" &&
             singleproductdata !== "authorization first" &&
@@ -71,10 +78,11 @@ const SingleProductPage = ({ l }) => {
                   mt="20px"
                   padding="13px"
                   height="230px"
+                
                 >
                   <Box width="100%">
-                    <Box height="100px" display="flex">
-                      <Box width="13%">
+                    <Box height="100px" display="flex" >
+                      <Box width="13%" >
                         <Image src={items.image} height="100%" width="100%" />
                       </Box>
                       <Box
@@ -133,7 +141,7 @@ const SingleProductPage = ({ l }) => {
 
                         <Box
                           cursor="pointer"
-                          border="1px solid black"
+                      
                           mt="50px"
                           p="5px"
                           borderRadius="10px"

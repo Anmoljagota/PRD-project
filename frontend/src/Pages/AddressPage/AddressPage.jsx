@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { user_adderss_details } from "../../Redux/Product_redux/action";
 import Styles from "../AddressPage/Address.module.css";
 const textareadata = [
@@ -26,7 +27,7 @@ const AddressPage = () => {
     homeaddress: "",
   };
   const dispatch = useDispatch();
-  const [value, setValue] = useState("");
+  const navigate=useNavigate()
   const [data, setData] = useState("");
   const [] = useState("");
   function handleChange(e) {
@@ -46,6 +47,7 @@ const AddressPage = () => {
       data.state !== ""
     ) {
       dispatch(user_adderss_details(data));
+      navigate("/checkout")
     }
   }
   return (
