@@ -7,11 +7,16 @@ import { HamburgerIcon } from "@chakra-ui/icons";
 import {Box,Breadcrumb,BreadcrumbItem,BreadcrumbLink,IconButton,Image,Menu,MenuButton,MenuList,Popover, PopoverArrow,PopoverCloseButton,PopoverContent,PopoverTrigger,Stack,} from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import {cartdata,user_adderss_details_get} from "../../Redux/Product_redux/action";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Mycontext } from "../Contextapi/ContextApi";
 const Navbar = () => {
+  const {searchproduct,search}=useContext(Mycontext)
   const [params, searchParams] = useSearchParams("");
-let searchdata = params.getAll("q");
-  const [search, setSearch] = useState(searchdata || []);
+  const [inputvalue,setInputvalue]=useState({
+    searchinput:""
+  })
+// let searchdata = params.getAll("q");
+ console.log("i am searchhhhhhhhhhhhhhhhhhhhhhhhhh",search)
   const loginuser = useSelector((details) => details.loginuser.isAuth);
   const data = useSelector((details) => details.homeproduct);
   const dispatch = useDispatch();
@@ -44,10 +49,10 @@ let searchdata = params.getAll("q");
       }
     }, 1000);
   }
-  function handeleChange(e) {
-    setSearch(e.target.value);
-    console.log(e.target.value, "avalueeeeeeeeeeeeeee");
-  }
+  // function handeleChange(e) {
+  //   setSearch(e.target.value);
+  //   console.log(e.target.value, "avalueeeeeeeeeeeeeee");
+  // }
   // console.log(search)
   return (
     <div className={Styles.parentNavbar}>
@@ -66,7 +71,7 @@ let searchdata = params.getAll("q");
               />
             </Box>
           </Box>
- <input  type="text" className={Styles.input} placeholder="Search products" onChange={handeleChange}  value={search} />
+ <input  type="text" className={Styles.input} placeholder="Search products" onChange={searchproduct}  value={search} />
           
           <Box position="absolute" background="#ffc220" padding="7px" borderRadius="100%" ml="27%" >
             <AiOutlineSearch  color="black"/>

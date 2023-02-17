@@ -15,7 +15,7 @@ import Filtering from "../../Components/Filtering";
 import ProductStyles from "../ProductPage/Product.module.css";
 import PlacementExample from "../../Components/Drawer";
 import DrawerExample from "../../Components/FilterDrawer";
-import ContextApi, { Mycontext } from "../../Components/Contextapi/ContextApi";
+import  { Mycontext } from "../../Components/Contextapi/ContextApi";
 const CustomProductPage = () => {
   const {getsortdata}=useContext(Mycontext)
   
