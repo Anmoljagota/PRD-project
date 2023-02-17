@@ -20,7 +20,7 @@ console.log("i ma sortdataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",sortdata)
   let persist = params.getAll("category");
   const persistsort=params.getAll("_sort")
   const [value, setValue] = useState(persist || []);
-  const [sort,setSort]=useState(persistsort||"hlo");
+  const [sort,setSort]=useState(persistsort||"");
   const dispatch = useDispatch();
   const location = useLocation();
   useEffect(() => {

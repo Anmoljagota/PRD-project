@@ -3,7 +3,7 @@ import { Box, SimpleGrid } from "@chakra-ui/react";
 import Styles from "../ProductPage/Product.module.css";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import SimpleBackdrop from "../../Components/Backdrop/Backdrop";
-import Styles1 from "../../css/Project.module.css";
+
 import {
   Filterdata,
   singleproduct,
