@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Box, SimpleGrid } from "@chakra-ui/react";
 import Styles from "../ProductPage/Product.module.css";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import SimpleBackdrop from "../../Components/Backdrop/Backdrop";
 import Styles1 from "../../css/Project.module.css";
 import {
   Filterdata,
@@ -14,7 +15,10 @@ import Filtering from "../../Components/Filtering";
 import ProductStyles from "../ProductPage/Product.module.css";
 import PlacementExample from "../../Components/Drawer";
 import DrawerExample from "../../Components/FilterDrawer";
+import ContextApi, { Mycontext } from "../../Components/Contextapi/ContextApi";
 const CustomProductPage = () => {
+  const {getsortdata}=useContext(Mycontext)
+  
   const navigate = useNavigate();
   const location = useLocation();
   const [norender, setNotrender] = useState("");
@@ -31,13 +35,15 @@ const CustomProductPage = () => {
     return data.homeproduct;
   }, shallowEqual);
   const getproduct = (id) => {
+    dispatch(singleproduct({ product: id }));
     setTimeout(() => {
       navigate("/singleproduct");
-    }, 1000);
-    dispatch(singleproduct({ product: id }));
+      console.log("navigate runnnnnninggggggggggggggggggggggggggggg");
+    }, 2000);
   };
- 
-
+  // if (data.loading === true) {
+  //   return <SimpleBackdrop />;
+  // }
   // useEffect(() => {
   //   if (sort) {
   //     data.obj._sort = sort;
@@ -66,6 +72,7 @@ const CustomProductPage = () => {
         className={ProductStyles.sortmobile}
         color="black"
         width="100%"
+       
       >
         <Box width="50%" border="1px solid grey">
           <PlacementExample />
@@ -81,6 +88,7 @@ const CustomProductPage = () => {
         </Box>
       </Box>
       <Box className={Styles.maindiv} mt="150px">
+        <SimpleBackdrop loading={data.loading} error={data.error} />
         <Box className={Styles.innermaindiv}>
           <Box
             width="16%"
@@ -102,7 +110,7 @@ const CustomProductPage = () => {
               >
                 Filter by
               </Box>
-              <Filtering/>
+              <Filtering />
               {/* <Drawer/> */}
             </Box>
           </Box>
@@ -123,14 +131,14 @@ const CustomProductPage = () => {
             </span>
             <span
               style={{ marginLeft: "10px" }}
-              onClick={() => sortdata("LTH")}
+              onClick={() => getsortdata("LTH")}
             >
               Price:<span>Low to Hight</span>{" "}
               <span style={{ marginLeft: "10px" }}>|</span>
             </span>
             <span
               style={{ marginLeft: "10px" }}
-              onClick={() => sortdata("HTL")}
+              onClick={() => getsortdata("HTL")}
               value="desc"
               name="sortby"
             >
@@ -140,7 +148,7 @@ const CustomProductPage = () => {
 
             <span
               style={{ marginLeft: "10px" }}
-              onClick={() => sortdata("disc")}
+              onClick={() => getsortdata("disc")}
               value="disc"
               name="sortby"
             >

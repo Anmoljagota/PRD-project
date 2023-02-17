@@ -51,7 +51,7 @@ const getdata = (limit, page) => (dispatch) => {
 
   dispatch(LOADING_PRODUCT());
   return axios
-    .get("http://localhost:8080/fashion/clothes", {
+    .get("https://real-gold-iguana-cape.cyclic.app/fashion/clothes", {
       params: { page: 1, limit: 100 },
     })
     .then((res) => {
@@ -66,7 +66,7 @@ const sortgetdata = (data) => (dispatch) => {
   dispatch(LOADING_PRODUCT());
 
   return axios
-    .get("https://crazy-crown-yak.cyclic.app/fashion/clothes", data)
+    .get("https://real-gold-iguana-cape.cyclic.app/fashion/clothes", data)
     .then((res) => {
       dispatch(SUCCESS_PRODUCT(res.data));
     })
@@ -82,7 +82,7 @@ const addtocart = (data) => (dispatch) => {
   console.log(data, "lllllll");
   return axios
     .post(
-      "http://localhost:8080/cartdata",
+      "https://real-gold-iguana-cape.cyclic.app/cartdata",
       { product: data },
       {
         headers: {
@@ -110,7 +110,7 @@ const singleproduct = (data) => (dispatch) => {
     data = data.product;
   }
   axios
-    .post("http://localhost:8080/fashion/clothes", {
+    .post("https://real-gold-iguana-cape.cyclic.app/fashion/clothes", {
       product: data,
     })
     .then((res) => {
@@ -128,7 +128,7 @@ const singleproduct = (data) => (dispatch) => {
 const cartdata = () => (dispatch) => {
   dispatch({ type: CART_REQUEST });
   return axios
-    .get(`http://localhost:8080/cartdata`, {
+    .get(`https://real-gold-iguana-cape.cyclic.app/cartdata`, {
       headers: {
         "Content-Type": "application/json",
         auth: localStorage.getItem("token"),
@@ -146,9 +146,11 @@ const cartdata = () => (dispatch) => {
 };
 const cartdelete = (id) => (dispatch) => {
   dispatch({ type: CART_REQUEST });
-  axios.delete(`http://localhost:8080/cartdata/${id}`).then((res) => {
-    console.log(res.data, "resssssddddddddddd");
-  });
+  axios
+    .delete(`https://real-gold-iguana-cape.cyclic.app/cartdata/${id}`)
+    .then((res) => {
+      console.log(res.data, "resssssddddddddddd");
+    });
   dispatch({ type: CART_ERROR });
 };
 const Filterdata = (data) => (dispatch) => {
@@ -163,8 +165,7 @@ const Filterdata = (data) => (dispatch) => {
     .get("http://localhost:8080/fashion/clothes", data)
     .then((res) => {
       console.log("i am runningggggggggggg", res.data);
-
-      dispatch(SUCCESS_PRODUCT(res.data));
+ dispatch(SUCCESS_PRODUCT(res.data));
     })
     .catch((err) => {
       dispatch(ERROR_PRODUCT());
@@ -173,7 +174,7 @@ const Filterdata = (data) => (dispatch) => {
 const user_adderss_details = (data) => (dispatch) => {
   dispatch({ type: USER_DETAILS_REQUEST });
   axios
-    .post("http://localhost:8080/address", data, {
+    .post("https://real-gold-iguana-cape.cyclic.app/address", data, {
       headers: {
         "Content-Type": "application/json",
         auth: localStorage.getItem("token"),
@@ -206,5 +207,5 @@ export {
   addtocart,
   user_adderss_details,
   user_adderss_details_get,
-  cartdelete
+  cartdelete,
 };

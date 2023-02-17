@@ -7,17 +7,17 @@ import Styles from "../../css/Project.module.css";
 import HomeStyles from "../HomePage/Homepage.module.css";
 import data from "../../db.json";
 const HomePage = () => {
-  return (
+ return (
     <div className={Styles.HomePageMain}>
-      <Box
-       
-        width="95%"
-        margin="auto"
-        className={HomeStyles.maindiv}
-      >
+      <Box width="95%" margin="auto" className={HomeStyles.maindiv}>
         <HStack spacing="24px" cursor="pointer" className={Styles.hstack}>
-          <Box  className={HomeStyles.slider}>
-            <Box width="100%" position="relative" boxShadow="rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px" mt="30px">
+          <Box className={HomeStyles.slider}>
+            <Box
+              width="100%"
+              position="relative"
+              boxShadow="rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px"
+              mt="30px"
+            >
               <ImageSlider />
             </Box>
           </Box>

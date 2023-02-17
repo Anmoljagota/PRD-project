@@ -1,0 +1,106 @@
+.parentNavbar {
+    height: 18vh;
+    font-size: 14px;
+    cursor: pointer;
+    position: fixed;
+    z-index: 3;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* border: 3px solid black; */
+  }
+  .flexall {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .input {
+    /* padding:7px 140px 7px 140px; */
+    border-radius: 50px;
+    /* position: absolute; */
+    border: 1px solid white;
+    width: 50%;
+    height: 30px;
+    padding: 23px;
+    position: relative;
+  }
+  .parentNavbar {
+    height: 18vh;
+    font-size: 14px;
+    cursor: pointer;
+    position: fixed;
+    z-index: 3;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* border: 3px solid black; */
+  }
+  .upperNavbar {
+    display: flex;
+    /* border: 1px solid red; */
+    padding: 7px;
+    background-color: #cc0000;
+    color: #ffffff;
+  }
+.stack{
+    font-size: 17px;
+    font-weight: 700;
+    height: 105px;
+    background-color:#0071dc;
+    color:white;
+    padding: 15px 7px 15px 7px;
+    position: relative;
+}
+  @media (min-width: 0px) and (max-width: 1017px) {
+    .parentNavbar h1 {
+      display: none;
+    }
+    .hameburger {
+      display: flex;
+      margin-right: 20px;
+    }
+    .heart {
+      display: none;
+    }
+    .history {
+      display: none;
+    }
+    .login {
+      display: none;
+    }
+    .input {
+      width: 80%;
+      padding: 25px 25px 25px 25px;
+    }
+}
+.signin {
+    font-size: 0.875rem;
+    height: 2rem;
+    padding: 0 1rem;
+    background: #0071dc;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 62.5rem;
+    transition: all 0.1s cubic-bezier(0.77, 0, 0.175, 1);
+    white-space: nowrap;
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+  }
+  @media (min-width: 1018px) and (max-width: 1500px) {
+    .hameburger {
+      display: none;
+    }
+    .login {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .parentNavbar {
+      position: fixed;
+    }
+  }

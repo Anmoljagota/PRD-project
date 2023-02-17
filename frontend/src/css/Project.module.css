@@ -4,26 +4,6 @@
   box-sizing: border-box;
   padding: 0px;
 }
-.parentNavbar {
-  height: 18vh;
-  font-size: 14px;
-  cursor: pointer;
-  position: fixed;
-  z-index: 3;
-  width: 100%;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  /* border: 3px solid black; */
-}
-.upperNavbar {
-  display: flex;
-  /* border: 1px solid red; */
-  padding: 7px;
-  background-color: #cc0000;
-  color: #ffffff;
-}
 .flex {
   display: flex;
   justify-content: center;
@@ -83,16 +63,6 @@
 }
 
 
-.input {
-  /* padding:7px 140px 7px 140px; */
-  border-radius: 50px;
-  /* position: absolute; */
-  border: 1px solid white;
-  width: 50%;
-  height: 30px;
-  padding: 23px;
-  position: relative;
-}
 .signin {
   font-size: 0.875rem;
   height: 2rem;
@@ -108,19 +78,7 @@
   margin-top: 10px;
 }
 @media (min-width: 0px) and (max-width: 1017px) {
-  .parentNavbar h1 {
-    display: none;
-  }
-  .hameburger {
-    display: flex;
-    margin-right: 20px;
-  }
-  .heart {
-    display: none;
-  }
-  .history {
-    display: none;
-  }
+
   .login {
     display: none;
   }
@@ -128,23 +86,17 @@
     width: 80%;
     padding: 25px 25px 25px 25px;
   }
-  
+
   .homepageproduct {
     width: 100%;
     /* border: 1px solid red; */
   }
 }
 @media (min-width: 1018px) and (max-width: 1500px) {
-  .hameburger {
-    display: none;
-  }
+ 
   .login {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .parentNavbar{
-    position: fixed;
-  }
 }
-

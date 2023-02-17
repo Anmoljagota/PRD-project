@@ -15,12 +15,13 @@ let images = [{ data: "" }, { data: "" }, { data: "" }, { data: "" }];
 const SingleProduct = () => {
   const dispatch = useDispatch();
   const details = useSelector((data) => data.homeproduct.singledata);
+  console.log("i am detailssss", details);
   function handleClick() {
-    console.log("i am detailssss", details);
     dispatch(addtocart(details[0]._id));
   }
   return (
     <div style={{ marginTop: "150px" }}>
+      
       <Box>
         <Box width="95%" margin="auto" height="100vw">
           <Box height="40vw" className={Styles.flexall}>
@@ -127,6 +128,7 @@ const SingleProduct = () => {
           </Box>
         </Box>
       </Box>
+      )
     </div>
   );
 };

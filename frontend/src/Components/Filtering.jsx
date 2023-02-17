@@ -7,37 +7,46 @@ import {
   AccordionPanel,
   Box,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Filterdata, getdata } from "../Redux/Product_redux/action";
 import Styles from "../Pages/ProductPage/Product.module.css";
+import { Mycontext } from "./Contextapi/ContextApi";
   const Filtering = ({i,rerenderstop}) => {
+const {sortdata} =useContext(Mycontext)
+console.log("i ma sortdataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",sortdata)
   const details = useSelector((data) => data.homeproduct);
   const [params, setParams] = useSearchParams();
   let persist = params.getAll("category");
+  const persistsort=params.getAll("_sort")
   const [value, setValue] = useState(persist || []);
+  const [sort,setSort]=useState(persistsort||"hlo");
   const dispatch = useDispatch();
   const location = useLocation();
   useEffect(() => {
-    if (value) {
-      console.log("i ma aaaaaa agin");
+    if (value||sortdata) {
+      console.log("i ma aaaaaa agin",value);
       details.obj.category = value;
+ {  sortdata!=="" && (details.obj._sort=sortdata)}
       setParams(details.obj);
     }
+    
+   
   if (location.search !== "") {
       const changledata = {
         params: {
           category: params.getAll("category"),
+         _sort:params.getAll("_sort")
         },
       };
       dispatch(Filterdata(changledata));
     }
-     else {
+  
+      else {
       dispatch(getdata());
     }
-  }, [value, location.search]);
+  }, [value, location.search,sortdata]);
   function handleChange(e) {
-   
     const category = [...value];
     if (category.includes(e.target.value)) {
       category.splice(category.indexOf(e.target.value), 1);
@@ -112,7 +121,6 @@ import Styles from "../Pages/ProductPage/Product.module.css";
               <span style={{ display: "flex", marginTop: "10px" }}>
                 <input
                   type="checkbox"
-                  id=""
                   onChange={handleChange}
                   checked={value.includes("child")}
                   value="child"

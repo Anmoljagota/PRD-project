@@ -1,80 +1,26 @@
-import Styles from "../css/Project.module.css";
-import {
-  AiOutlineHeart,
-  AiOutlineSearch,
-  AiOutlineShoppingCart,
-} from "react-icons/ai";
+import Styles from "./Navbar.module.css";
+import { AiOutlineHeart, AiOutlineSearch , AiOutlineShoppingCart,} from "react-icons/ai";
 import { HiOutlineUser } from "react-icons/hi";
 import { GrNotes } from "react-icons/gr";
-import {
-  Link,
-  useLocation,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
+import {Link , useLocation, useNavigate, useSearchParams} from "react-router-dom";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import {
-  Box,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  IconButton,
-  Image,
-  Menu,
-  MenuButton,
-  MenuList,
-  Popover,
-  PopoverArrow,
-  PopoverCloseButton,
-  PopoverContent,
-  PopoverTrigger,
-  Stack,
-} from "@chakra-ui/react";
+import {Box,Breadcrumb,BreadcrumbItem,BreadcrumbLink,IconButton,Image,Menu,MenuButton,MenuList,Popover, PopoverArrow,PopoverCloseButton,PopoverContent,PopoverTrigger,Stack,} from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  cartdata,
-  Filterdata,
-  getdata,
-  inputsearchdata,
-  user_adderss_details,
-  user_adderss_details_get,
-} from "../Redux/Product_redux/action";
+import {cartdata,user_adderss_details_get} from "../../Redux/Product_redux/action";
 import { useEffect, useState } from "react";
 const Navbar = () => {
   const [params, searchParams] = useSearchParams("");
-
-  let searchdata = params.getAll("q");
+let searchdata = params.getAll("q");
   const [search, setSearch] = useState(searchdata || []);
   const loginuser = useSelector((details) => details.loginuser.isAuth);
   const data = useSelector((details) => details.homeproduct);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  //single page
   useEffect(() => {
     dispatch(cartdata());
     dispatch(user_adderss_details_get());
   }, [loginuser]);
-  useEffect(() => {
-    // console.log("locationnnnnnnn", search);
-    // location.hash = "";
-    // if (location.search||search) {
-    //   data.obj.q = search;
-    //   console.log("location.searchhhhhhhhhhhhhhhhhhh for searching", location);
-    //   searchParams(data.obj);
-    //   console.log("iiiiiiiiiiiiiii", params);
-    //   const searchdata = {
-    //     params: {
-    //       search: params.getAll("q"),
-    //     },
-    //   };
-    //   // dispatch(getdata());
-    // }
-    // else{
-    //   console.log("oooooooooooooooooooo")
-    //   dispatch(getdata());
-    // }
-  }, []);
   const fixeddata = useSelector((details) => details.homeproduct);
   console.log("fix", fixeddata);
   function navigatetoanother() {
@@ -88,12 +34,10 @@ const Navbar = () => {
   function showcart() {
     dispatch(cartdata());
     setTimeout(() => {
-      if (
-        fixeddata.cartdata !== "you are not authorized" &&
-        fixeddata.cartdata !== "authorization first"
-      ) {
-        navigate("/singlepage");
-      } else if (fixeddata.cartdata === "authorization first") {
+      if (fixeddata.cartdata !== "you are not authorized" &&fixeddata.cartdata !== "authorization first"){
+        navigate("/cartpage");
+      }
+       else if (fixeddata.cartdata === "authorization first") {
         navigate("/nodata");
       } else {
         navigate("/cartlogin");
@@ -107,60 +51,22 @@ const Navbar = () => {
   // console.log(search)
   return (
     <div className={Styles.parentNavbar}>
-      <Stack
-        fontWeight="700"
-        fontSize="17px"
-        height="105px"
-        background="#0071dc"
-        color="white"
-        p="15px 7px 15px 7px"
-      >
-        <Box
-          width="95%"
-          margin="auto"
-          height="inherit"
-          justifyContent="center"
-          display="flex"
-          alignItems="center"
-          position="relative"
-          color="white"
-          fontWeight="700"
-        >
-          <Box mr="50px">
-            <Box
-              className={Styles.flexall}
-              fontSize="25px"
-              onClick={navigatetoanother}
-            >
-              <Box className={Styles.hameburger}>
-                <Menu>
-                  <MenuButton
-                    as={IconButton}
-                    aria-label="Options"
-                    icon={<HamburgerIcon />}
-                    variant="outline"
-                  />
+  <Stack className={Styles.stack}>
+  <Box width="95%" margin="auto" height="inherit" justifyContent="center" display="flex" alignItems="center"position="relative" color="white"fontWeight="700">
+  <Box mr="50px">
+  <Box className={Styles.flexall} fontSize="25px" onClick={navigatetoanother}>
+  <Box className={Styles.hameburger}>
+  <Menu>
+ <MenuButton as={IconButton} aria-label="Options" icon={<HamburgerIcon />} variant="outline"/>
                   <MenuList></MenuList>
                 </Menu>
               </Box>
-
-              <h1>Shopify</h1>
-              <Image
-                src="https://i5.walmartimages.com/dfw/4ff9c6c9-991c/k2-_03d329be-5936-4ef6-ad29-95e392df014d.v1.png"
-                marginLeft="10px"
-                height="40px"
-                width="40px"
+ <h1>Shopify</h1>
+              <Image src="https://i5.walmartimages.com/dfw/4ff9c6c9-991c/k2-_03d329be-5936-4ef6-ad29-95e392df014d.v1.png" marginLeft="10px" height="40px" width="40px"
               />
             </Box>
           </Box>
-     
-            <input
-              type="text"
-              className={Styles.input}
-              placeholder="Search products"
-              onChange={handeleChange}
-              value={search}
-            />
+ <input  type="text" className={Styles.input} placeholder="Search products" onChange={handeleChange}  value={search} />
           
           <Box position="absolute" background="#ffc220" padding="7px" borderRadius="100%" ml="27%" >
             <AiOutlineSearch  color="black"/>
@@ -258,9 +164,7 @@ const Navbar = () => {
               width="25px"
               height="25px"
               fontSize="15px"
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
+              className={Styles.flex}
             >
               {fixeddata.cartdata === "you are not authorized" ||
               fixeddata.cartdata === "authorization first"

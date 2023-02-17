@@ -38,7 +38,7 @@ const getlogin = (data) => (dispatch) => {
   console.log("running");
   dispatch(LOADING_PRODUCT());
   return axios
-    .post("http://localhost:8080/login", data)
+    .post("https://real-gold-iguana-cape.cyclic.app/login", data)
     .then((res) => {
       console.log("i am res data", res.data);
       if (res.data !== "Wrong Credentials") {

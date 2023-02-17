@@ -12,7 +12,7 @@ const Total = ({ newarr,total }) => {
   }
   return (
     <div>
-      <Box boxShadow="rgba(0, 0, 0, 0.16) 0px 1px 4px" p="15px" width="370px">
+      <Box boxShadow="rgba(0, 0, 0, 0.16) 0px 1px 4px" p="15px" width="370px" position="sticky" top="110px">
         <button
           className={Styles.signin}
           style={{ height: "40px" }}

@@ -5,7 +5,7 @@ import { HiPlusSm, HiMinusSm } from "react-icons/hi";
 import Total from "./Total";
 import { cartdata, cartdelete } from "../../Redux/Product_redux/action";
 import Styles from "./SingleProduct.module.css";
-const SingleProductPage = ({ l }) => {
+const Cart = ({ l }) => {
   const dispatch = useDispatch();
   let newarr = [];
   let total = 0;
@@ -35,13 +35,15 @@ const SingleProductPage = ({ l }) => {
     dispatch(cartdata());
   }
   return (
-    <div style={{ marginTop: "120px" }}>
+    <div style={{ marginTop: "170px" }}>
       <Box
         fontWeight="700"
         fontSize="30px"
         width="85%"
         margin="auto"
         textAlign="left"
+    
+        border="1px soid black"
       >
         Cart
         <span
@@ -186,4 +188,4 @@ const SingleProductPage = ({ l }) => {
   );
 };
 
-export default SingleProductPage;
+export default Cart;

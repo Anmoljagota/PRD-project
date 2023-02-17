@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { RotatingLines } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
-import { Box, Image, SimpleGrid } from "@chakra-ui/react";
+import { Box, Image, SimpleGrid, Skeleton } from "@chakra-ui/react";
 import { BiRupee } from "react-icons/bi";
 import Styles from "../css/Project.module.css";
 import axios from "axios";
-import Homeproduct from "../Pages/HomePage/Homepage.module.css"
+import Homeproduct from "../Pages/HomePage/Homepage.module.css";
+import { Backdrop } from "@mui/material";
 
 const HomeProduct = () => {
   const navigate = useNavigate();
@@ -13,14 +14,13 @@ const HomeProduct = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [datalength, setdatalength] = useState(0);
- 
+const [error,setError]=useState(false)
   useEffect(() => {
     if (datalength < 96) {
       getdata1(page, 20);
     }
   }, [page]);
   useEffect(() => {
-   
     window.addEventListener("scroll", handleInfiniteScroll);
     return () => window.removeEventListener("scroll", handleInfiniteScroll);
   }, []);
@@ -35,7 +35,10 @@ const HomeProduct = () => {
         console.log("hlo i am data", data);
         setdatalength(data.length);
         setLoading(false);
-      });
+      })
+     .catch((err)=>{
+setError(true)
+     })
   };
 
   function gotonextpage() {
@@ -91,7 +94,9 @@ const HomeProduct = () => {
                     <Image src={items.image} alt="something wrong" />
                   </Box>
                 </Box>
-                <Box background="white"  className={Homeproduct.title}>{items.title}</Box>
+                <Box background="white" className={Homeproduct.title}>
+                  {items.title}
+                </Box>
                 <Box
                   color="#388e3c"
                   paddingTop="8px"
