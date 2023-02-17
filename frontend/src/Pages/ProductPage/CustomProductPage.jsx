@@ -17,7 +17,7 @@ import PlacementExample from "../../Components/Drawer";
 import DrawerExample from "../../Components/FilterDrawer";
 import  { Mycontext } from "../../Components/Contextapi/ContextApi";
 const CustomProductPage = () => {
-  const {getsortdata}=useContext(Mycontext)
+  const {getsortdata,search}=useContext(Mycontext)
   
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,6 +30,7 @@ const CustomProductPage = () => {
   let sortdata1 = params.getAll("_sort");
   // console.log("i am sort",sortdata)
   const [sort, setSort] = useState(sortdata1[0] || []);
+  
   const dispatch = useDispatch();
   const data = useSelector((data) => {
     return data.homeproduct;

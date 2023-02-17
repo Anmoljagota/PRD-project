@@ -4,17 +4,14 @@ import { HiOutlineUser } from "react-icons/hi";
 import { GrNotes } from "react-icons/gr";
 import {Link , useLocation, useNavigate, useSearchParams} from "react-router-dom";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import {Box,Breadcrumb,BreadcrumbItem,BreadcrumbLink,IconButton,Image,Menu,MenuButton,MenuList,Popover, PopoverArrow,PopoverCloseButton,PopoverContent,PopoverTrigger,Stack,} from "@chakra-ui/react";
+import {Box,Breadcrumb,BreadcrumbItem,BreadcrumbLink,IconButton,Image,Input,Menu,MenuButton,MenuList,Popover, PopoverArrow,PopoverCloseButton,PopoverContent,PopoverTrigger,Stack,} from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import {cartdata,user_adderss_details_get} from "../../Redux/Product_redux/action";
 import { useContext, useEffect, useState } from "react";
 import { Mycontext } from "../Contextapi/ContextApi";
 const Navbar = () => {
   const {searchproduct,search}=useContext(Mycontext)
-  const [params, searchParams] = useSearchParams("");
-  const [inputvalue,setInputvalue]=useState({
-    searchinput:""
-  })
+  const [searchinput, setSearchinput] = useState();
 // let searchdata = params.getAll("q");
  console.log("i am searchhhhhhhhhhhhhhhhhhhhhhhhhh",search)
   const loginuser = useSelector((details) => details.loginuser.isAuth);
@@ -71,7 +68,7 @@ const Navbar = () => {
               />
             </Box>
           </Box>
- <input  type="text" className={Styles.input} placeholder="Search products" onChange={searchproduct}  value={search} />
+ <input  type="text" className={Styles.input} placeholder="Search products" onChange={searchproduct} />
           
           <Box position="absolute" background="#ffc220" padding="7px" borderRadius="100%" ml="27%" >
             <AiOutlineSearch  color="black"/>

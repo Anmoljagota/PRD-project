@@ -68,11 +68,11 @@ clothesProductRoute.get("/clothes", async (req, res) => {
     } catch (err) {
       res.send(err);
     }
-  } else if (req.query.search) {
+  } else if (req.query.q) {
     console.log("i ma searchhh running", req.query.search);
     try {
       let searchdata = await clothesmodel.find({
-        description: { $regex: `${req.query.search}`, $options: "i" },
+        description: { $regex: `${req.query.q}`, $options: "i" },
       });
       res.send(searchdata);
     } catch (err) {

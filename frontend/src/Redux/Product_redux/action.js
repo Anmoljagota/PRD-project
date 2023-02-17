@@ -155,6 +155,7 @@ const cartdelete = (id) => (dispatch) => {
 };
 const Filterdata = (data) => (dispatch) => {
   console.log("i am dataaaaaaaaaaaaaaaaaaaaaaaaaaaaa", data);
+  
   // const category=""
   // if (data.params.category) {
   //    category = data.params.category;
