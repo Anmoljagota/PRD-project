@@ -24,6 +24,7 @@ return (
       >
         <DrawerOverlay />
         <DrawerContent>
+        <DrawerCloseButton />
          <Login width={"43%"} text={"Enter your email to sign in or create an account"} inputwidth={"60%"}/>
         </DrawerContent>
       

@@ -163,7 +163,7 @@ const Filterdata = (data) => (dispatch) => {
   // console.log("i am paranms", category);
   dispatch(LOADING_PRODUCT());
   return axios
-    .get("http://localhost:8080/fashion/clothes", data)
+    .get("https://real-gold-iguana-cape.cyclic.app/fashion/clothes", data)
     .then((res) => {
       console.log("i am runningggggggggggg", res.data);
  dispatch(SUCCESS_PRODUCT(res.data));
@@ -187,7 +187,7 @@ const user_adderss_details = (data) => (dispatch) => {
 const user_adderss_details_get = () => (dispatch) => {
   dispatch({ type: USER_DETAILS_REQUEST });
   axios
-    .get("http://localhost:8080/address", {
+    .get("https://real-gold-iguana-cape.cyclic.app/address", {
       headers: {
         "Content-Type": "application/json",
         auth: localStorage.getItem("token"),

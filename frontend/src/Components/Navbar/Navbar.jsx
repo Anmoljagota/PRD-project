@@ -3,12 +3,13 @@ import { AiOutlineHeart, AiOutlineSearch , AiOutlineShoppingCart,} from "react-i
 import { HiOutlineUser } from "react-icons/hi";
 import { GrNotes } from "react-icons/gr";
 import {Link , useLocation, useNavigate, useSearchParams} from "react-router-dom";
-import { HamburgerIcon } from "@chakra-ui/icons";
-import {Box,Breadcrumb,BreadcrumbItem,BreadcrumbLink,IconButton,Image,Input,Menu,MenuButton,MenuList,Popover, PopoverArrow,PopoverCloseButton,PopoverContent,PopoverTrigger,Stack,} from "@chakra-ui/react";
+import { AddIcon, EditIcon, ExternalLinkIcon, HamburgerIcon, RepeatIcon } from "@chakra-ui/icons";
+import {Box,Breadcrumb,BreadcrumbItem,BreadcrumbLink,IconButton,Image,Input,Menu,MenuButton,MenuItem,MenuList,Popover, PopoverArrow,PopoverCloseButton,PopoverContent,PopoverTrigger,Stack,} from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import {cartdata,user_adderss_details_get} from "../../Redux/Product_redux/action";
 import { useContext, useEffect, useState } from "react";
 import { Mycontext } from "../Contextapi/ContextApi";
+import Login from "../../Pages/Login/Login";
 const Navbar = () => {
   const {searchproduct,search}=useContext(Mycontext)
   const [searchinput, setSearchinput] = useState();
@@ -27,10 +28,12 @@ const Navbar = () => {
     navigate("/");
   }
   function redirect() {
+    console.log("clocked")
     localStorage.removeItem("token");
     navigate("/");
     dispatch(cartdata());
   }
+ 
   function showcart() {
     dispatch(cartdata());
     setTimeout(() => {
@@ -51,10 +54,25 @@ const Navbar = () => {
   <Box mr="50px">
   <Box className={Styles.flexall} fontSize="25px" onClick={navigatetoanother}>
   <Box className={Styles.hameburger}>
-  <Menu>
- <MenuButton as={IconButton} aria-label="Options" icon={<HamburgerIcon />} variant="outline"/>
-                  <MenuList></MenuList>
-                </Menu>
+  <Menu >
+  <MenuButton
+    as={IconButton}
+    aria-label='Options'
+    icon={<HamburgerIcon />}
+    variant='outline'
+  />
+  <MenuList color="black" fontSize="15px">
+    <MenuItem icon={<AddIcon />} command='⌘L' as="a" href='/login'>
+      Login
+    </MenuItem>
+    <MenuItem icon={<ExternalLinkIcon />} command='⌘S' as="a" href='/signup'>
+      Sign up
+    </MenuItem>
+    <MenuItem icon={<RepeatIcon />} command='⌘⇧N' onClick={redirect}>
+      Logout
+    </MenuItem>
+  </MenuList>
+</Menu>
               </Box>
  <h1>Shopify</h1>
               <Image src="https://i5.walmartimages.com/dfw/4ff9c6c9-991c/k2-_03d329be-5936-4ef6-ad29-95e392df014d.v1.png" marginLeft="10px" height="40px" width="40px"

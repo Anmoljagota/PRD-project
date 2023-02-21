@@ -23,7 +23,7 @@ const getregister = (data) => (dispatch) => {
   console.log("running");
   dispatch(LOADING_PRODUCT());
   return axios
-    .post("https://crazy-crown-yak.cyclic.app/register", data)
+    .post("https://real-gold-iguana-cape.cyclic.app/register", data)
     .then((res) => {
       console.log("i am res data", res.data);
       dispatch(SUCCESS_PRODUCT(res.data));

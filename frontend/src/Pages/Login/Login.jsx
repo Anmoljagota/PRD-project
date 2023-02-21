@@ -17,6 +17,7 @@ const Login = ({width,text,inputwidth}) => {
   const dispatch = useDispatch();
   const newtoken = localStorage.getItem("token");
   const data = useSelector((details) => details.loginuser.isAuth);
+  console.log("dataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",data)
   function handleAlert(){
     if (data === "Wrong Credentials") {
       toast.error('🦄 Wrong Credentials!',{
@@ -30,7 +31,8 @@ const Login = ({width,text,inputwidth}) => {
         theme: "colored",
       }
 )
-} else{
+} else if(data !== "Wrong Credentials"){
+  console.log("weongggggggggggggggggg runingggggggggggggggggggggggggg")
         toast.success('🦄 Login successfull', {
           position: "top-right",
           autoClose: 5000,
