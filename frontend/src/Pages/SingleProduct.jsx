@@ -1,27 +1,31 @@
-import { Box, Image } from "@chakra-ui/react";
-import React from "react";
+import { Box, Image, useDisclosure } from "@chakra-ui/react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Styles from "../css/Project.module.css";
 import { AiOutlineHeart } from "react-icons/ai";
 import { TbAlertCircle } from "react-icons/tb";
-import {
-  adddata,
-  adddatatocart,
-  addtocart,
-  cartdata,
-  cartdatapost,
-} from "../Redux/Product_redux/action";
+import { addtocart} from "../Redux/Product_redux/action";
+import { useLocation } from "react-router-dom";
+import DrawerExample from "../Components/FilterDrawer";
+import LoginDrawer from "./Login/LoginDrawer";
 let images = [{ data: "" }, { data: "" }, { data: "" }, { data: "" }];
 const SingleProduct = () => {
+  const data=useSelector((details)=>details.homeproduct.cartdata)
+  const [login,setLogin]=useState(false)
+  const location=useLocation();
   const dispatch = useDispatch();
   const details = useSelector((data) => data.homeproduct.singledata);
-  console.log("i am detailssss", details);
+  const loginornot=useSelector((data) => data.homeproduct.cartdata);
+  console.log("i am locationnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn", details);
   function handleClick() {
     dispatch(addtocart(details[0]._id));
+
   }
+
+
   return (
     <div style={{ marginTop: "150px" }}>
-      
+   
       <Box>
         <Box width="95%" margin="auto" height="100vw">
           <Box height="40vw" className={Styles.flexall}>
@@ -115,13 +119,14 @@ const SingleProduct = () => {
                     </span>
                   </h1>
                 </div>
-                <button
+              
+             {loginornot==="you are not authorized"?<LoginDrawer />:  <button
                   className={Styles.signin}
                   style={{ width: "50%", height: "40px", marginTop: "20px" }}
                   onClick={handleClick}
                 >
                   Add to cart
-                </button>
+                </button>}    
               </Box>
               <hr />
             </Box>

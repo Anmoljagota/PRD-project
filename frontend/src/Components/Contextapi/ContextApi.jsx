@@ -13,9 +13,11 @@ setSearch({...search,searchdata:e.target.value})
     const getsortdata=(data)=>{
 setSortdata(data)
     }
-    console.log(search,"context sortdataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+    const Opendrawer=(data)=>{
+
+    }
   return (
-   <Mycontext.Provider value={{getsortdata,sortdata,searchproduct,search}}>
+   <Mycontext.Provider value={{getsortdata,sortdata,searchproduct,search,Opendrawer}}>
     {props.children}
    </Mycontext.Provider>
   )

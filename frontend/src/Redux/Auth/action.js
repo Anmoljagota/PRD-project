@@ -40,16 +40,9 @@ const getlogin = (data) => (dispatch) => {
   return axios
     .post("https://real-gold-iguana-cape.cyclic.app/login", data)
     .then((res) => {
-      console.log("i am res data", res.data);
-      if (res.data !== "Wrong Credentials") {
-        alert("login successfull");
-        {
-          <Link to="/" />;
-        }
+     if (res.data !== "Wrong Credentials") {
         localStorage.setItem("token", res.data);
-      } else {
-        alert("Wrong Credentials");
-      }
+      } 
       dispatch(SUCCESS_PRODUCT(res.data));
     })
     .catch((err) => {

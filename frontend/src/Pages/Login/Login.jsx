@@ -4,33 +4,44 @@ import Styles from "../../css/Project.module.css";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getlogin } from "../../Redux/Auth/action";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {useLocation} from "react-router-dom";
 const Login = () => {
   const login_data = {
     email: "",
   };
+  const location=useLocation();
   const [login, setLogin] = useState(login_data);
   const dispatch = useDispatch();
   const newtoken = localStorage.getItem("token");
   const data = useSelector((details) => details.loginuser.isAuth);
-  // if (data === "Wrong Credentials") {
-  //   return (
-  //     <Stack spacing={3} mt="150px">
-  //       <Alert status="success" variant="solid">
-  //         <AlertIcon />
-  //         Data uploaded to the server. Fire on!
-  //       </Alert>
-  //     </Stack>
-  //   );
-  // } else if (typeof data == "string" && data !== "Wrong Credentials") {
-  //   return (
-  //     <Stack spacing={3} mt="150px">
-  //       <Alert status="success" variant="solid">
-  //         <AlertIcon />
-  //         Data uploaded to the server. Fire on!
-  //       </Alert>
-  //     </Stack>
-  //   );
-  // }
+  function handleAlert(){
+    if (data === "Wrong Credentials") {
+      toast.error('🦄 Wrong Credentials!',{
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      }
+)
+} else{
+        toast.success('🦄 Login successfull', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          });
+        }
+  }
   function login1(e) {
     const { name, value } = e.target;
     setLogin({ email: value });
@@ -62,7 +73,10 @@ const Login = () => {
             width="40px"
           />
         </Box>
-        <Box mt="10px">Enter your email to sign in</Box>
+        <Box>
+
+        <Box mt="10px" border="1px solid black" width="100%">Enter your email to sign in</Box>
+        </Box>
       </Box>
       <form action="" style={{ marginTop: "20px" }} onSubmit={handleSubmit}>
         <label
@@ -90,6 +104,7 @@ const Login = () => {
           <button
             style={{ width: "20%", height: "40px", marginTop: "20px" }}
             className={Styles.signin}
+            onClick={handleAlert}
           >
             continue
           </button>
@@ -101,6 +116,16 @@ const Login = () => {
           <br />
         </Box>
       </form>
+      <ToastContainer position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="colored"/>
     </div>
   );
 };

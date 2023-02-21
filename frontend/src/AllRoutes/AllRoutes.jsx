@@ -10,6 +10,7 @@ import Cartdata from '../Pages/Cartdata/Cartdata'
 import SingleProduct from '../Pages/SingleProduct'
 import AddressPage from '../Pages/AddressPage/AddressPage'
 import Checkout from '../Pages/CheckoutPage/Checkout'
+import DrawerExample from '../Components/FilterDrawer'
 const AllRoutes = () => {
   return (
     <div>
@@ -24,6 +25,7 @@ const AllRoutes = () => {
         <Route path="/singleproduct" element={<SingleProduct/>}></Route>
         <Route path="/address" element={<AddressPage/>}></Route>
         <Route path="/checkout" element={<Checkout/>}></Route>
+        <Route path="/logindrawer" element={<DrawerExample/>}></Route>
       </Routes>
     </div>
   )
