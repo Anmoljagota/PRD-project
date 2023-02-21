@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, AlertIcon, Box, Image, Stack } from "@chakra-ui/react";
+import { Alert, AlertIcon, Box, Image, Input, Stack } from "@chakra-ui/react";
 import Styles from "../../css/Project.module.css";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,7 +7,8 @@ import { getlogin } from "../../Redux/Auth/action";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useLocation} from "react-router-dom";
-const Login = () => {
+const Login = ({width,text,inputwidth}) => {
+  console.log("i ma inputwidthhhhhhhhhhhhhhhhhh",inputwidth)
   const login_data = {
     email: "",
   };
@@ -54,11 +55,12 @@ const Login = () => {
   return (
     <div style={{ marginTop: "180px" }}>
       <Box
-        width="15%"
+        width={width}
         lineHeight="1.5"
         fontSize="20px"
         margin="auto"
         fontWeight="700"
+        textAlign="center"
       >
         <Box
           display="flex"
@@ -75,7 +77,7 @@ const Login = () => {
         </Box>
         <Box>
 
-        <Box mt="10px" border="1px solid black" width="100%">Enter your email to sign in</Box>
+        <Box mt="10px"  width="100%">{text}</Box>
         </Box>
       </Box>
       <form action="" style={{ marginTop: "20px" }} onSubmit={handleSubmit}>
@@ -89,27 +91,35 @@ const Login = () => {
         >
           Email Address
         </label>
-        <Box>
-          <input
+        <Box >
+          <Box  display="flex" justifyContent="center" alignItems="center" >
+
+         
+          <Input
             type="text"
-            style={{
-              border: "1px solid black",
-              padding: "10px",
-              width: "20%",
-              marginTop: "10px",
-            }}
+           
+             border="1px solid black"
+              p= "10px"
+              width= {inputwidth}
+              mt= "10px"
+            
             onChange={login1}
+            placeholder="Enter email"
           />
+           </Box>
           <br />
+          <Box display="flex" justifyContent="center" alignItems="center">
+            
           <button
-            style={{ width: "20%", height: "40px", marginTop: "20px" }}
+            style={{ width: "20%", height: "40px" }}
             className={Styles.signin}
             onClick={handleAlert}
-          >
+            >
             continue
           </button>
-          <Link to="/signup">
-            <h1 style={{ marginTop: "10px", cursor: "pointer" }}>
+            </Box>
+          <Link to="/signup" >
+            <h1 style={{ marginTop: "10px", cursor: "pointer",textAlign:"center" }}>
               New User? Sign Up
             </h1>
           </Link>
