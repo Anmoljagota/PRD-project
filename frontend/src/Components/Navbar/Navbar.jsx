@@ -12,8 +12,6 @@ import { Mycontext } from "../Contextapi/ContextApi";
 const Navbar = () => {
   const {searchproduct,search}=useContext(Mycontext)
   const [searchinput, setSearchinput] = useState();
-// let searchdata = params.getAll("q");
- console.log("i am searchhhhhhhhhhhhhhhhhhhhhhhhhh",search)
   const loginuser = useSelector((details) => details.loginuser.isAuth);
   const data = useSelector((details) => details.homeproduct);
   const dispatch = useDispatch();
@@ -46,11 +44,6 @@ const Navbar = () => {
       }
     }, 1000);
   }
-  // function handeleChange(e) {
-  //   setSearch(e.target.value);
-  //   console.log(e.target.value, "avalueeeeeeeeeeeeeee");
-  // }
-  // console.log(search)
   return (
     <div className={Styles.parentNavbar}>
   <Stack className={Styles.stack}>

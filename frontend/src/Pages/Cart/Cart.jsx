@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { HiPlusSm, HiMinusSm } from "react-icons/hi";
 import Total from "./Total";
 import { cartdata, cartdelete } from "../../Redux/Product_redux/action";
-import Styles from "./SingleProduct.module.css";
+import Styles from "./Cart.module.css";
 const Cart = ({ l }) => {
   const dispatch = useDispatch();
   let newarr = [];

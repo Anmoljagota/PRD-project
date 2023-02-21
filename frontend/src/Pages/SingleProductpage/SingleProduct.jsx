@@ -1,13 +1,14 @@
 import { Box, Image, useDisclosure } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Styles from "../css/Project.module.css";
+import Styles from "../../css/Project.module.css";
+import Styles1 from "./SingleProduct.module.css";
 import { AiOutlineHeart } from "react-icons/ai";
 import { TbAlertCircle } from "react-icons/tb";
-import { addtocart} from "../Redux/Product_redux/action";
+import { addtocart} from "../../Redux/Product_redux/action";
 import { useLocation } from "react-router-dom";
-import DrawerExample from "../Components/FilterDrawer";
-import LoginDrawer from "./Login/LoginDrawer";
+import DrawerExample from "../../Components/FilterDrawer";
+import LoginDrawer from "../Login/LoginDrawer";
 let images = [{ data: "" }, { data: "" }, { data: "" }, { data: "" }];
 const SingleProduct = () => {
   const data=useSelector((details)=>details.homeproduct.cartdata)
@@ -35,9 +36,9 @@ const SingleProduct = () => {
               className={Styles.flexall}
               padding="10px"
             >
-              <Box>
+              <Box className={Styles1.images}>
                 {images.map((i, items) => (
-                  <Box key={i}>
+                  <Box key={i} >
                     <Image
                       src={details[0].image}
                       height="80px"
@@ -47,7 +48,7 @@ const SingleProduct = () => {
                   </Box>
                 ))}
               </Box>
-              <Box height="35vw" width="75%">
+              <Box height="35vw"  className={Styles1.singleproductimage}>
                 <Image
                   src={details[0].image}
                   alt="something wrong with image"
@@ -56,8 +57,9 @@ const SingleProduct = () => {
                 />
               </Box>
             </Box>
-            <Box height="40vw" width="30%" textAlign="left">
+            <Box height="40vw"  textAlign="left"   className={Styles.description}>
               <Box
+              
                 width="100%"
                 margin="auto"
                 boxShadow="rgba(0, 0, 0, 0.16) 0px 1px 4px"
@@ -113,7 +115,7 @@ const SingleProduct = () => {
                     }}
                     className={Styles.flexall}
                   >
-                    Price when purchased online{" "}
+                    Price when purchased online
                     <span>
                       <TbAlertCircle />
                     </span>

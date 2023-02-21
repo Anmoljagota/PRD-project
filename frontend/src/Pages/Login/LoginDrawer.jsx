@@ -6,16 +6,14 @@ import Login from "./Login";
 const  LoginDrawer=()=> {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
-  const {Opendrawer}=useContext(Mycontext)
 return (
     <>
-     
-      <button
-                  className={Styles.signin}
-                  style={{ width: "50%", height: "40px", marginTop: "20px" }}
-                  onClick={onOpen}
-                >
-                  Add to cart
+ <button
+   className={Styles.signin}
+  style={{ width: "50%", height: "40px", marginTop: "20px" }}
+   onClick={onOpen}
+>
+  Add to cart
                 </button>
       <Drawer
         isOpen={isOpen}

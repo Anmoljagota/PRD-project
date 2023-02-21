@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/react";
 import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Styles from "../../css/Project.module.css";
+import Styles from "../../css/Project.module.css"
 const Total = ({ newarr,total }) => {
   const details = useSelector((data) => data.homeproduct.userDetails);
   console.log("i ma userdetailssssssssssssss",details)
