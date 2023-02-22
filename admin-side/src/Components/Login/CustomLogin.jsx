@@ -18,6 +18,7 @@ const CustomLogin = ({ inputfield, name }) => {
     { name: "password", type: "submit" },
   ];
   return (
+    // <Box className={Styles.maincontainer}>
     <div className={Styles.formcontainer}>
       <Tilt>
         <form action="">
@@ -34,10 +35,11 @@ const CustomLogin = ({ inputfield, name }) => {
                 placeholder={signupplaceholder[index].name}
               />
             )
-          )}
+            )}
         </form>
       </Tilt>
     </div>
+            // </Box>
   );
 };
 

@@ -1,0 +1,8 @@
+.maindiv{
+    height: 100vh;
+    width: 95%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
