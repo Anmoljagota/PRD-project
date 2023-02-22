@@ -1,0 +1,57 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    transition: all .2s linear;
+    
+}
+.formcontainer{
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("https://www.tropitone.com/sites/default/files/styles/swatch_medium/public/swatches/finishes/curve-finish-bright-black-bbk.png?itok=qd1ITSER") no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.formcontainer form {
+    height: 450px;
+    width: 350px;
+    background: rgba(255,255,255,.1);
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.3);
+    border-top: 1px solid rgba(255,255,255,.3);
+    border-left: 1px solid rgba(255,255,255,.3);
+    backdrop-filter: blur(10px);
+}
+.formcontainer form h3{
+    font-size: 45px;
+    padding: 30px 0px;
+    color:#ccc;
+    letter-spacing: 3px;
+}
+.formcontainer form input{
+    outline: none;
+    border: none;
+    height: 40px;
+    width: 82%;
+    background: rgba(0,0,0,.1);
+    color: rgba(255,255,255,.7);
+    box-shadow:0 0 5px rgba(0,0,0,.5) inset;
+font-size: 17px;
+padding: 0 10px;
+margin: 15px 0px;
+letter-spacing: 1px;
+}
+.formcontainer form input[type="submit"]{
+    width: 90%;
+    cursor: pointer;
+    background: linear-gradient(90deg,deeppink,blueviolet);
+    margin-top: 30px;
+    border-radius: 50px;
+}
+.formcontainer form input[type="submit"]:hover{
+    letter-spacing: 5px;
+}
