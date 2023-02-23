@@ -52,6 +52,15 @@ userRouter.delete("/delete/:id", async (req, res) => {
     res.send(`error:${err}`);
   }
 });
+userRouter.get("/user",async(req,res)=>{
+  try{
+const getuser=await UserModel.find({})
+res.send(getuser)
+  }
+  catch(err){
+res.send(err)
+  }
+})
 module.exports={
   userRouter
 }

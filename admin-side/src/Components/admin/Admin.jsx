@@ -10,7 +10,7 @@ const Admin = () => {
          <Box  height="100%" width="17%">
           <Sidebar />
         </Box> 
-        <Box border="3px solid green" height="100%" width="80%">
+        <Box  height="100%" width="80%" margin="auto">
           <Dashboard />
         </Box>  
       </Box>

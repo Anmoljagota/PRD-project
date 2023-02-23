@@ -5,7 +5,7 @@ import Admin from "./Components/admin/Admin";
 function App() {
   return (
     <>
-      <AllRoutes />
+     
       <Admin />
     </>
   );

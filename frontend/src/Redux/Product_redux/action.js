@@ -154,14 +154,7 @@ const cartdelete = (id) => (dispatch) => {
   dispatch({ type: CART_ERROR });
 };
 const Filterdata = (data) => (dispatch) => {
-  console.log("i am dataaaaaaaaaaaaaaaaaaaaaaaaaaaaa", data);
-  
-  // const category=""
-  // if (data.params.category) {
-  //    category = data.params.category;
-  // }
-  // console.log("i am paranms", category);
-  dispatch(LOADING_PRODUCT());
+dispatch(LOADING_PRODUCT());
   return axios
     .get("https://real-gold-iguana-cape.cyclic.app/fashion/clothes", data)
     .then((res) => {

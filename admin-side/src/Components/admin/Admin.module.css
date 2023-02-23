@@ -1,8 +1,9 @@
 .maindiv{
-    height: 100vh;
-    width: 95%;
+    height: 140vh;
+    width: 100%;
     margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #eaeaea;
 }

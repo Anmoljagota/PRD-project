@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useNavigate } from "react-router-dom";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { border, Box, Button, Image, Stack } from "@chakra-ui/react";
 import Styles from "../css/Project.module.css";
 import Homestyles from "../Pages/HomePage/Homepage.module.css";

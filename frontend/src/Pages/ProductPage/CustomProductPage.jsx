@@ -42,26 +42,6 @@ const CustomProductPage = () => {
       console.log("navigate runnnnnninggggggggggggggggggggggggggggg");
     }, 2000);
   };
-  // if (data.loading === true) {
-  //   return <SimpleBackdrop />;
-  // }
-  // useEffect(() => {
-  //   if (sort) {
-  //     data.obj._sort = sort;
-  //     setParams(data.obj);
-  //   }
-
-  //   if (sort || location.search!=="") {
-  //     console.log("location.searchhhhhhhhhhhhhhhhhhh for soring", location);
-  //     const changledata = {
-  //       params: {
-  //         _sort: params.getAll("_sort"),
-  //       },
-  //     };
-  //     // dispatch(Filterdata(changledata));
-  //   }
-  // }, [sort,location.search]);
-
   return (
     <>
       <Box
@@ -183,13 +163,6 @@ const CustomProductPage = () => {
                   );
                 })}
             </SimpleGrid>
-            {/* <Box
-            width="100%"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            marginTop="80px"
-          ></Box> */}
           </Box>
         </Box>
       </Box>
