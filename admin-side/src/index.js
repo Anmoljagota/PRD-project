@@ -7,14 +7,16 @@ import { BrowserRouter } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Provider } from "react-redux";
 import { store } from "./redux/Store/store";
+// import { ThemeProvider } from '@material-ui/core/styles';
+// import { createTheme } from '@material-ui/core/styles';
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <ChakraProvider>
+    {/* <ChakraProvider> */}
       <Provider store={store}>
         <App />
       </Provider>
-    </ChakraProvider>
+    {/* </ChakraProvider> */}
   </BrowserRouter>
 );
 

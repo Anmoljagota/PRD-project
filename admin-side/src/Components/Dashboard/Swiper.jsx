@@ -66,11 +66,7 @@ const Slidingimages = () => {
     },
   ];
   
-  useEffect(() => {
-    dispatch(get_product);
-    dispatch(get_user)
-  }, []);
-  const dispatch = useDispatch();
+ 
 
   return (
     <div style={{ marginTop: "50px" }}>

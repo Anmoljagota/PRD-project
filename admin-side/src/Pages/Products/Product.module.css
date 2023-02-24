@@ -1,0 +1,17 @@
+.products{
+    background: url("https://www.tropitone.com/sites/default/files/styles/swatch_medium/public/swatches/finishes/curve-finish-bright-black-bbk.png?itok=qd1ITSER") no-repeat ;
+    background-size: cover;
+    background-position: center;
+    height: 130vh;
+}
+.data{
+    background: rgba(255,255,255,.1);
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.3);
+    border-top: 1px solid rgba(255,255,255,.3);
+    border-left: 1px solid rgba(255,255,255,.3);
+    backdrop-filter: blur(10px);
+    height: 90vh;
+   
+}
