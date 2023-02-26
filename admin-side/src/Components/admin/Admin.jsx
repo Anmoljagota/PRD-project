@@ -14,10 +14,10 @@ const Admin = () => {
   return (
     <div >
      <Box className={Styles.maindiv}>
-         <Box  height="100%" width="17%" >
-          <Sidebar />
-        </Box> 
-        <Box border="2px solid yellow" height="100%" width="80%" margin="auto">
+         <Box  height="100%" width="17%" > 
+           <Sidebar />
+         </Box>  
+        <Box height="100%" width="80%" margin="auto">
           <Dashboard />
         </Box>  
       </Box>

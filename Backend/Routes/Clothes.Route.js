@@ -100,13 +100,24 @@ clothesProductRoute.post("/clothes", async (req, res) => {
       res.send(err);
     }
   } else {
+    console.log(req.body,"k")
     try {
       const PostData = new clothesmodel(req.body);
       await PostData.save();
-      res.send("data added");
+      res.send(PostData);
     } catch (err) {
       res.send(`err`);
     }
+  }
+});
+clothesProductRoute.delete("/:id", async (req, res) => {
+  console.log(req.params)
+  try {
+    const ID = req.params.id;
+    await clothesmodel.findOneAndDelete({ _id: ID });
+    res.send("data deleted");
+  } catch (err) {
+    res.send(err);
   }
 });
 module.exports = {

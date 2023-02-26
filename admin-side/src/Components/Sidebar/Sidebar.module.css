@@ -46,3 +46,8 @@ text-decoration: none;
     margin-top: 10px;
     font-size: 15px;
 }
+.profile{
+    height: 100px;
+    width: 90%;
+    /* margin: auto; */
+}
