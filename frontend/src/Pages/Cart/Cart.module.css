@@ -22,6 +22,51 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* position: fixed; */
   }
+}
+.cartlength{
+  color:#46474a;
+  font-size: 400;
+  margin-left: 10px;
+}
+.cart{
+  width: 90%;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  margin-top: 20px;
+  padding: 13px;
+  height: 230px;
+
+}
+.description{
+  width: 65%;
+  margin-left: 15%;
+  position: absolute;
+  font-size: 16px;
+  text-align: left;
+  color:#46474a;
+  line-height: 1.5;
+  font-weight: 400;
+  padding: 10px;
+
+}
+.maindiv{
+  font-weight: 700;
+  font-size: 30px;
+  width: 85%;
+  margin: auto;
+  text-align: left;
+
+}
+.deleteitem{
+  width: 70%;
+  float: right;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration-line: underline;
+  cursor: pointer;
 }

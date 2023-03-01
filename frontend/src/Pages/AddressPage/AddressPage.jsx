@@ -23,9 +23,6 @@ const textareadata = [
 ];
 
 const AddressPage = () => {
-  const userdetails = {
-    homeaddress: "",
-  };
   const dispatch = useDispatch();
   const navigate=useNavigate()
   const [data, setData] = useState("");

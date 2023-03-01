@@ -1,13 +1,4 @@
-import {
-  Accordion,
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
-  Box,
-  Input,
-  Select,
-} from "@chakra-ui/react";
+import {Accordion,AccordionButton,AccordionItem,AccordionPanel,Box,Select,} from "@chakra-ui/react";
 import React from "react";
 import Styles from "../CheckoutPage/Checkout.module.css";
 import { FaCreditCard } from "react-icons/fa";
@@ -16,7 +7,8 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
-  const navigate=useNavigate()
+  const userdetails = useSelector((details) => details.homeproduct.userDetails);
+  const navigate = useNavigate();
   const payments = [
     { option: "Debit Card" },
     { option: "Credit Card" },
@@ -24,22 +16,14 @@ const Checkout = () => {
     { option: "UPI" },
     { option: "Wallet" },
   ];
-  const userdetails = useSelector((details) => details.homeproduct.userDetails);
-  function navigtetoaddress(){
-navigate("/address")
+  function navigtetoaddress() {
+    navigate("/address");
   }
   return (
     <div>
       <Box height="auto" mt="150px" className={Styles.flexall} width="96%">
-        {userdetails[0]!== undefined && (
-          <Box
-          
-            height="110%"
-            textAlign="left"
-           
-            
-            className={Styles.widthboxes}
-          >
+        {userdetails[0] !== undefined && (
+          <Box height="110%" textAlign="left" className={Styles.widthboxes}>
             <h1 className={Styles.ship}>Shipping Details</h1>
             <br />
             <h1 style={{ color: "grey", fontSize: "13px" }}>SHIP TO</h1>
@@ -54,12 +38,18 @@ navigate("/address")
             <Box className={Styles.email}>
               Order Confirmation will be sent on
             </Box>
-            <span className={Styles.email}>{userdetails[0].userId.email}</span><br/>
-            <button onClick={navigtetoaddress} className={Styles.btn} style={{width:"35%",padding:"0px",fontSize:"12px"}}>CHANGE ADDRESS</button>
+            <span className={Styles.email}>{userdetails[0].userId.email}</span>
+            <br />
+            <button
+              onClick={navigtetoaddress}
+              className={Styles.btn}
+              style={{ width: "35%", padding: "0px", fontSize: "12px" }}
+            >
+              CHANGE ADDRESS
+            </button>
           </Box>
         )}
         <Box
-         
           borderLeft="0.2px solid #0000001a"
           borderRight="0.2px solid #0000001a"
           p="10px"
@@ -90,38 +80,16 @@ navigate("/address")
                     <Box float="left" color="grey" fontSize="10px">
                       Card Number
                     </Box>
-                    <input
-                      type="text"
-                      style={{
-                        float: "left",
-                        width: "100%",
-                        border: "1px solid grey",
-                      }}
-                    />
+                    <input type="text" className={Styles.input} />
                   </AccordionPanel>
                   <AccordionPanel pb={14} width="95%" margin="auto">
                     <Box height="70px">
                       <Box float="left" color="grey" fontSize="10px">
                         Name on Card
                       </Box>
-                      <input
-                        type="text"
-                        style={{
-                          float: "left",
-                          width: "100%",
-                          border: "1px solid grey",
-                        }}
-                      />
+                      <input type="text" className={Styles.input} />
                     </Box>
-                    <Box
-                      width="100%"
-                      margin="auto"
-                      fontSize="10px"
-                      display="flex"
-                      justifyContent="space-between"
-                      alignItems="center"
-                      height="80px"
-                    >
+                    <Box className={Styles.cartdetails}>
                       <Box mb="15px">
                         <Box float="left">Expiry Date</Box>
                         <Select
@@ -138,13 +106,7 @@ navigate("/address")
                           <option value="option3">Option 3</option>
                         </Select>
                       </Box>
-                      <Box
-                        width="20%"
-                        border="1px solid grey"
-                        fontWeight="700"
-                        color="black"
-                        height="30px"
-                      >
+                      <Box className={Styles.year}>
                         <Select
                           fontSize="10px"
                           height="30px"
@@ -164,7 +126,12 @@ navigate("/address")
                       </Box>
                       <FaCreditCard fontSize="30px" />
                     </Box>
-                    <button className={Styles.btn}>PAY SECURELY</button>
+                    <button
+                      className={Styles.btn}
+                      onClick={() => alert("Thanks for Purchasing")}
+                    >
+                      PAY SECURELY
+                    </button>
                   </AccordionPanel>
                 </AccordionItem>
               </Accordion>

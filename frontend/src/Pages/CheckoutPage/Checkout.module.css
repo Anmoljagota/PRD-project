@@ -64,3 +64,24 @@
     width: 45%;
   }
 }
+.input{
+  float: left;
+  width: 100%;
+  border: 1px solid grey;
+}
+.cartdetails{
+  width: 100%;
+  margin: auto;
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  }
+ .year{
+  width: 20%;
+  border: 1px solid grey;
+  font-weight: 700;
+  color:black;
+  height: 30px;
+ }

@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import Styles from "../../css/Project.module.css"
 const Total = ({ newarr,total }) => {
   const details = useSelector((data) => data.homeproduct.userDetails);
-  console.log("i ma userdetailssssssssssssss",details)
   const navigate = useNavigate();
   function checking() {
     details.length > 0 ? navigate("/checkout") : navigate("/address");

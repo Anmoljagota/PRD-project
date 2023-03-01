@@ -1,5 +1,5 @@
 import { Box, Image } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { HiPlusSm, HiMinusSm } from "react-icons/hi";
 import Total from "./Total";
@@ -7,21 +7,17 @@ import { cartdata, cartdelete } from "../../Redux/Product_redux/action";
 import Styles from "./Cart.module.css";
 const Cart = ({ l }) => {
   const dispatch = useDispatch();
-  let newarr = [];
-  let total = 0;
   const singleproductdata = useSelector(
     (details) => details.homeproduct.cartdata
   );
-  console.log("m", singleproductdata);
-
+  let newarr = [];
+  let total = 0;
   for (let i = 0; i < singleproductdata.length; i++) {
-    // console.log("running",singleproductdata.length);
     if (singleproductdata !== "authorization first") {
       total += singleproductdata[i].product.price;
       newarr.push(singleproductdata[i].product);
     }
   }
-  console.log(newarr, "mewarr");
   if (singleproductdata === "you are not authorized") {
     return (
       <Box fontSize="50px" color="black" fontWeight="700" mt="200px">
@@ -30,24 +26,18 @@ const Cart = ({ l }) => {
     );
   }
   function removeproduct(product) {
-    console.log("i ma productssssssssssss", product);
     dispatch(cartdelete(product));
     dispatch(cartdata());
   }
   return (
     <div style={{ marginTop: "170px" }}>
       <Box
-        fontWeight="700"
-        fontSize="30px"
-        width="85%"
-        margin="auto"
-        textAlign="left"
-    
-        border="1px soid black"
+    border="1px soid black"
+    className={Styles.maindiv}
       >
         Cart
         <span
-          style={{ color: "#46474a", fontWeight: "400", marginLeft: "10px" }}
+          className={Styles.cartlength}
         >
           ({newarr.length} items)
         </span>
@@ -56,31 +46,15 @@ const Cart = ({ l }) => {
         className={Styles.checkoutboxes}
         width="90%"
         margin="auto"
-       
-      >
+       >
         <Box
-         
-          margin="auto"
-          boxShadow="rgba(0, 0, 0, 0.16) 0px 1px 4px"
-         
-          className={Styles.checkoutproduct}
-        >
+         margin="auto" boxShadow="rgba(0, 0, 0, 0.16) 0px 1px 4px" className={Styles.checkoutproduct}>
           {newarr !== "you are not authorized" &&
             singleproductdata !== "authorization first" &&
             newarr.map((items) => (
               <>
                 <Box
-                  width="90%"
-                  display="flex"
-                  key={items._id}
-                  position="relative"
-                  justifyContent="space-between"
-                  alignItems="center"
-                  margin="auto"
-                  mt="20px"
-                  padding="13px"
-                  height="230px"
-                
+                className={Styles.cart}
                 >
                   <Box width="100%">
                     <Box height="100px" display="flex" >
@@ -88,15 +62,7 @@ const Cart = ({ l }) => {
                         <Image src={items.image} height="100%" width="100%" />
                       </Box>
                       <Box
-                        width="65%"
-                        ml="15%"
-                        position="absolute"
-                        fontSize="16px"
-                        textAlign="left"
-                        color="#46474a"
-                        lineHeight="1.5"
-                        fontWeight="400"
-                        padding="10px"
+                        className={Styles.description}
                       >
                         {items.description}
                         <Box>Brand:{items.brand}</Box>
@@ -165,13 +131,7 @@ const Cart = ({ l }) => {
                 </Box>
                 <Box
                   onClick={() => removeproduct(items._id)}
-                  width="70%"
-                  float="right"
-                  textAlign="center"
-                  fontSize="15px"
-                  fontWeight="600"
-                  textDecorationLine="underline"
-                  cursor="pointer"
+                  className={Styles.deleteitem}
                 >
                   <h1>Remove</h1>
                 </Box>
