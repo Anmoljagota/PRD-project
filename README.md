@@ -3,6 +3,6 @@
 
 * Tech Stack
 
-<img src="https://2.bp.blogspot.com/_opS9Z5vqQYQ/TTYrMHXNiRI/AAAAAAAAAVA/H0gJ2oCoBTg/s1600/html5_bg_no_icons.png"/>
+<img src="https://2.bp.blogspot.com/_opS9Z5vqQYQ/TTYrMHXNiRI/AAAAAAAAAVA/H0gJ2oCoBTg/s1600/html5_bg_no_icons.png" height="40px" width="40px"/>
 - Java Script
 - CSS
