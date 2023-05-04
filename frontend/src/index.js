@@ -14,9 +14,9 @@ root.render(
   <BrowserRouter>
     <ChakraProvider>
       <Provider store={store}>
-  <ContextApi>
-        <App />
-  </ContextApi>
+        <ContextApi>
+          <App />
+        </ContextApi>
       </Provider>
     </ChakraProvider>
   </BrowserRouter>
