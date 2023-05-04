@@ -36,3 +36,19 @@ Shopify is a e-commerce website from where we can Purchase a western and indian 
 
 <img src="https://github.com/masai-course/Anmol_fw18_0435/blob/master/revesion/mock8/mock8/images/Screenshot%20(2597).png?raw=true"/>
 
+<h1>Product Page</h1>
+
+<img src="https://github.com/masai-course/Anmol_fw18_0435/blob/master/revesion/mock8/mock8/images/Screenshot%20(2599).png?raw=true"/>
+
+<h1>SingleProduct Page</h1>
+
+<img src="https://github.com/masai-course/Anmol_fw18_0435/blob/master/revesion/mock8/mock8/images/Screenshot%20(2601).png?raw=true"/>
+
+<h1> Checkout Page</h1>
+
+<img src="https://github.com/masai-course/Anmol_fw18_0435/blob/master/revesion/mock8/mock8/images/Screenshot%20(2603).png?raw=true"/>
+
+<h1>Payment Page <h1/>
+
+<img sec="https://github.com/masai-course/Anmol_fw18_0435/blob/master/revesion/mock8/mock8/images/Screenshot%20(2605).png?raw=true"/>
+
