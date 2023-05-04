@@ -1,4 +1,5 @@
 <h1 style="display:flex;justifycontent:center;alignItems:center">Project Title : Shopify Project<img src="https://th.bing.com/th/id/OIP.1xChETPoEXpJiPSEe_0Y4gHaFG?pid=ImgDet&rs=1"  height="30px" width="30px"/></h1>
+
 Shopify is a e-commerce website from where we can Purchase a western and indian wear
 
 *** Tech Stack
@@ -12,3 +13,20 @@ Shopify is a e-commerce website from where we can Purchase a western and indian 
 - mongoDB
 - chakra UI
 - material UI
+
+*** <h1>Flow of website</h1>
+
+- Landing Page or Home page
+- Login or Signup Page
+- Product Page
+- Cart Page
+- Checkout Page
+- Address Page
+- Paymant Page
+
+*** <h1>Flow of Admin Page</h1>
+
+- Login or Signup Page
+- DashBoard Page
+- Product Page
+
