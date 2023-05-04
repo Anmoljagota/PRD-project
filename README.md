@@ -1,6 +1,6 @@
 <h1 style="display:flex;justifycontent:center;alignItems:center">Project Title : Shopify Project<img src="https://th.bing.com/th/id/OIP.1xChETPoEXpJiPSEe_0Y4gHaFG?pid=ImgDet&rs=1"  height="30px" width="30px"/></h1>
 
-Shopify is a e-commerce website from where we can Purchase a western and indian wear
+Shopify is an e-commerce website from where we can Purchase a western and indian wear
 
 *** Tech Stack
 
@@ -51,4 +51,12 @@ Shopify is a e-commerce website from where we can Purchase a western and indian 
 <h1>Payment Page <h1/>
 
 <img src="https://github.com/masai-course/Anmol_fw18_0435/blob/master/revesion/mock8/mock8/images/Screenshot%20(2605).png?raw=true"/>
+
+## Deployment
+
+To run
+
+```bash
+  https://frontend-nine-kappa-51.vercel.app
+```
 
