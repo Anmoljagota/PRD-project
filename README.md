@@ -1,1 +1,1 @@
-<h1 style="display:flex;justifycontent:center;alignItems:center">Project Title : Shopify <img src="https://th.bing.com/th/id/OIP.1xChETPoEXpJiPSEe_0Y4gHaFG?pid=ImgDet&rs=1"  height="20px" width="20px"/></h1>
+<h1 style="display:flex;justifycontent:center;alignItems:center">Project Title : Shopify <img src="https://th.bing.com/th/id/OIP.1xChETPoEXpJiPSEe_0Y4gHaFG?pid=ImgDet&rs=1"  height="30px" width="30px"/></h1>
