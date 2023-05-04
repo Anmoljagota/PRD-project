@@ -9,6 +9,7 @@ const get_product = (dispatch) => {
       params: { allproducts: 1 },
     })
     .then((res) => {
+      console.log("prodiuctssssssssss",res.data)
       dispatch({ type: PRODUCT_SUCCESS, payload: res.data });
     })
     .catch((err) => {
@@ -49,6 +50,7 @@ axios.post("http://localhost:8080/admin",data,{
     auth: localStorage.getItem("AdminLogin"),
   },
 }).then((res)=>{
+  console.log("i ma res data",res.data)
   dispatch({type:ADMIN_PRODUCT_SUCCESS,payload:res.data})
 })
 .catch((err)=>{

@@ -53,3 +53,17 @@ letter-spacing: 1px;
 .formcontainer form input[type="submit"]:hover{
     letter-spacing: 5px;
 }
+.signup{
+    /* border: 1px solid white; */
+    color:#bbd1ce;
+    font-size: 15px;
+    padding: 10px;
+    margin-top: 2%;
+    text-decoration-line: underline;
+    cursor: pointer;
+    /* background-color: #fff; */
+}
+.signup:hover{
+    color:#71c1b6;
+    letter-spacing: 1px;
+}

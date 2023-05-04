@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Container,
   Flex,
   Img,
   Input,
@@ -12,43 +13,55 @@ import React from "react";
 import Styles from "./Home.module.css";
 import Slidingimages from "../../Components/Dashboard/Swiper";
 import Topsales from "../../Components/Dashboard/Topsales";
+import { useSelector } from "react-redux";
+import {BiLoaderCircle} from "react-icons/bi"
+import BasicModal from "../Products/Modal";
 const Home = () => {
+  const userDetails=useSelector((data)=>data.product_reducer.userdata[0])
+  console.log("i ma userdetailssssssss",userDetails)
   return (
     <div>
       <Stack>
         <VStack p="20px" width="100%" height="18%" background="#fff">
-          <Flex justifyContent="space-between">
+          <Flex justifyContent="space-between"  width="100%">
             <Flex
-              width="55%"
+              width="60%"
               justifyContent="space-between"
               alignItems="center"
-            >
-              <Box>Add Product</Box>
-              <Flex width="80%">
+ >
+  <Flex width="30%" className={Styles.flexall}>
+  <Flex background="#0071d" height="40px"  width="23%" backgroundColor="#0071dc" color="white" fontSize="25px" justifyContent="center" alignItems="center"><BiLoaderCircle/></Flex> 
+   <Box ml="2%"  width="70%"><BasicModal t="Add product" c="black"/></Box>
+  </Flex>
+            
+              <Flex width="70%"  height="40px">
                 <Input type="text" placeholder="Search..." width="100%" />{" "}
                 <Button
                   background="#0071dc"
                   width="20%"
                   color="white"
                   fontWeight="bold"
+                  border="none"
                 >
                   Search
                 </Button>
               </Flex>
             </Flex>
             <Flex
-              width="17%"
+              width="20%"
+              fontSize="18px"
               alignItems="center"
               justifyContent="space-between"
+ float="right"
             >
               <Img
-                src="https://c4.staticflickr.com/8/7219/27203697011_373d85175d_b.jpg"
-                borderRadius="full"
+                src={userDetails.Image}
+               borderRadius="50%"
                 width="30%"
                 height="100%"
               />
               <Text color="black" fontWeight="bold">
-                Parker Walker
+                {userDetails.Name}
               </Text>
             </Flex>
           </Flex>

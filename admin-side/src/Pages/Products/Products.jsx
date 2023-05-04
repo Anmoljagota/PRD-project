@@ -22,6 +22,7 @@ const Products = () => {
         price: `₹${data[data.length-(index+1)].price}`,
         discount: `₹${data[data.length-(index+1)].discount}`,
         category: data[data.length-(index+1)].category,
+        
       })),
     [data]
   );
@@ -63,9 +64,10 @@ const Products = () => {
       headerName: "Added By",
       width: 80,
       renderCell: (params) => (
-        <Box height="40px" width="50px">
-
-                 </Box>
+        console.log("i am params",params)
+//         <Box height="40px" width="50px">
+// Anmol
+//                  </Box>
       ),
     },
     {
@@ -127,7 +129,7 @@ theme: "colored",
             >
               <Container color="white" fontSize="27px"  fontWeight="600" p="20px"  textAlign="left" className={Styles.flexall}>
                 <Container>Product Overview</Container>
-                <BasicModal/>
+                <BasicModal w="150px" p="15px" b="#14694a" c="#fff" t="ADD PRODUCT"/>
                  </Container>
         <DataGrid
           rows={rows}

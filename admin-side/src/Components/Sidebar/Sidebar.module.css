@@ -1,6 +1,6 @@
 .sidebarmain{
     background: url("https://www.tropitone.com/sites/default/files/styles/swatch_medium/public/swatches/finishes/curve-finish-bright-black-bbk.png?itok=qd1ITSER") no-repeat ;
-    min-height: 130vh;
+    min-height: 150vh;
     width: 100%;
     background-size: cover;
     background-position: center;
@@ -40,14 +40,45 @@ text-decoration: none;
     background-color: #37c47e;
     text-align: center;
     width: 70%;
-    padding: 10px;
+    padding: 5px;
     font-weight: bold;
     margin: auto;
-    margin-top: 10px;
+    margin-top: 16px;
     font-size: 15px;
+    height: 47px;
+    color:white
 }
 .profile{
-    height: 100px;
-    width: 90%;
-    /* margin: auto; */
+    height: 180px;
+    width: 80%;
+    margin: auto;
+    background-color: #fff;
+  border-radius: 10%;
+  padding: 10px;
+  margin-top: 30%;
+}
+.profileimage{
+    border-radius:50%;
+    width: 40%;
+    height: 55%;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 5%;
+
+}
+.email{
+    color:grey;
+    font-size: 13px;
+    margin-top: 2%;
+}
+.logout{
+    padding: 7px;
+    margin-top:7%;
+    text-align: center;
+    background-color: #0071dc;
+    color:white;
+    font-weight: 700;
+    width: 50%;
+    border: none;
+    border-radius: 10px;
 }

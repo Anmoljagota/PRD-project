@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../redux/Login/action";
 import { useNavigate } from "react-router-dom";
 import { get_user } from "../../redux/All_Details/action";
-const CustomLogin = ({ inputfield, name, height, inputheight }) => {
+const CustomLogin = ({ inputfield, name, height, inputheight,text }) => {
   const [signup, setSignup] = useState("");
   const [Login, setLogin] = useState("");
   const navigate = useNavigate();
@@ -131,6 +131,7 @@ if (logindata === true) {
               </>
             )
           )}
+     {text && <h1 className={Styles.signup} onClick={()=>navigate("/signup")}>Create your Shopify account</h1>}
         </form>
       </Tilt>
       <ToastContainer

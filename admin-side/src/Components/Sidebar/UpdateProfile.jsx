@@ -1,9 +1,10 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { styled } from '@mui/material/styles';
-import HelperTextAligned from './Form';
+import Styles from "./Sidebar.module.css";
+import CustomLogin from '../Login/CustomLogin';
 const style = {
   position: 'absolute',
   top: '50%',
@@ -15,23 +16,22 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+const style1={
+    color:"white",
+    fontWeight:"700"
+}
 
-export default function BasicModal({w,p,b,c,t}) {
+export default function BasicModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const BootstrapButton = styled(Button)({
 
-   
-    height:"30%",
-  
-   
-    border:"none",
-    borderRadius:"6px"
-  })
   return (
     <div>
-      <BootstrapButton  onClick={handleOpen} style={{width:`${w}`,padding:`${p}`,background:`${b}`,color:`${c}`}}>{t}</BootstrapButton>
+        <Box  display="flex" justifyContent="center" alignItems="center" className={Styles.upgrade}>
+
+      <Button sx={style1} onClick={handleOpen}>upgrade</Button>
+        </Box>
       <Modal
         open={open}
         onClose={handleClose}
@@ -39,7 +39,7 @@ export default function BasicModal({w,p,b,c,t}) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-         <HelperTextAligned/>
+        
         </Box>
       </Modal>
     </div>
