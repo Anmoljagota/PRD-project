@@ -2,23 +2,23 @@ import React, { useContext, useEffect, useState } from "react";
 import { Box, SimpleGrid } from "@chakra-ui/react";
 import Styles from "../ProductPage/Product.module.css";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import SimpleBackdrop from "../../Components/Backdrop/Backdrop";
+import SimpleBackdrop from "../../../Components/Website/Backdrop/Backdrop";
 
 import {
   Filterdata,
   singleproduct,
   sortgetdata,
-} from "../../Redux/Product_redux/action";
+} from "../../../Redux/Product_redux/action";
 import ProductItems from "./ProductItems";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
-import Filtering from "../../Components/Filtering";
+import Filtering from "../../../Components/Website/Filtering";
 import ProductStyles from "../ProductPage/Product.module.css";
-import PlacementExample from "../../Components/Drawer";
-import DrawerExample from "../../Components/FilterDrawer";
-import  { Mycontext } from "../../Components/Contextapi/ContextApi";
+import PlacementExample from "../../../Components/Website/Drawer";
+import DrawerExample from "../../../Components/Website/FilterDrawer";
+import { Mycontext } from "../../../Components/Website/Contextapi/ContextApi";
 const CustomProductPage = () => {
-  const {getsortdata,search}=useContext(Mycontext)
-  
+  const { getsortdata, search } = useContext(Mycontext);
+
   const navigate = useNavigate();
   const location = useLocation();
   const [norender, setNotrender] = useState("");
@@ -30,7 +30,7 @@ const CustomProductPage = () => {
   let sortdata1 = params.getAll("_sort");
   // console.log("i am sort",sortdata)
   const [sort, setSort] = useState(sortdata1[0] || []);
-  
+
   const dispatch = useDispatch();
   const data = useSelector((data) => {
     return data.homeproduct;
@@ -53,7 +53,6 @@ const CustomProductPage = () => {
         className={ProductStyles.sortmobile}
         color="black"
         width="100%"
-       
       >
         <Box width="50%" border="1px solid grey">
           <PlacementExample />

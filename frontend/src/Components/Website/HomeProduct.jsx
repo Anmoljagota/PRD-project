@@ -3,9 +3,9 @@ import { RotatingLines } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
 import { Box, Image, SimpleGrid, Skeleton } from "@chakra-ui/react";
 import { BiRupee } from "react-icons/bi";
-import Styles from "../css/Project.module.css";
+import Styles from "../../css/Project.module.css";
 import axios from "axios";
-import Homeproduct from "../Pages/HomePage/Homepage.module.css";
+import Homeproduct from "../../Pages/WebsitePages/HomePage/Homepage.module.css";
 import { Backdrop } from "@mui/material";
 
 const HomeProduct = () => {

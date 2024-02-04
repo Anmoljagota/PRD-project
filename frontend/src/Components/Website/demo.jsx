@@ -3,8 +3,8 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useNavigate } from "react-router-dom";
 import { border, Box, Button, Image, Stack } from "@chakra-ui/react";
-import Styles from "../css/Project.module.css";
-import Homestyles from "../Pages/HomePage/Homepage.module.css";
+import Styles from "../../css/Project.module.css";
+import Homestyles from "../../Pages/WebsitePages/HomePage/Homepage.module.css";
 export const ImageSlider = () => {
   const navigate = useNavigate();
   function nextpage() {
@@ -56,15 +56,15 @@ export const ImageSlider = () => {
         infiniteLoop
         stopOnHover
         showIndicators={true}
-        style={{ width: "100%", border: "3px solid black" }}
-        showThumbs={false} 
+        style={{ width: "100%" }}
+        showThumbs={false}
       >
         {images.map((Item, index) => {
           return (
             <Box
               className={Styles.ProductBox}
               key={index}
-           
+             
             >
               <Box
                 width="100%"
@@ -74,23 +74,22 @@ export const ImageSlider = () => {
                 textAlign="left"
                 float="left"
                 onClick={nextpage}
-              >
-                <Box className={Homestyles.imagetext} >
+                >
+                <Box className={Homestyles.imagetext}>
                   <Box>{Item.product}</Box>
                   <Box className={Styles.desc}>{Item.description}</Box>
                   <button className={Styles.btn}>Shop now</button>
                 </Box>
               </Box>
               <Box
+              
                 key={index}
                 width="100%"
                 float="right"
                 position="relative"
-                height="100%"
-                
-              
+                height="95%"
               >
-                <Image src={Item.image}   className={Homestyles.images}/>
+                <Image src={Item.image} className={Homestyles.images} height="100%"/>
               </Box>
             </Box>
           );

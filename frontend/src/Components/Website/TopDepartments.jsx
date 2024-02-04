@@ -1,7 +1,7 @@
 import { Box, HStack, Image, SimpleGrid } from "@chakra-ui/react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Styles from "../css/Project.module.css";
+// import Styles from "../css/Project.module.css";
 const TopDepartments = ({ i }) => {
   const navigate = useNavigate();
   function nextpage() {

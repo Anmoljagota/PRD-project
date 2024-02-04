@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
-import Styles from "../css/Project.module.css";
+import Styles from "../../css/Project.module.css";
 import { useNavigate } from "react-router-dom";
 const Cartlogin = () => {
   const navigate = useNavigate();

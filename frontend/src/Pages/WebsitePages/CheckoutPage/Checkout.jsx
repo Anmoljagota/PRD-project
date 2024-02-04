@@ -2,7 +2,7 @@ import {Accordion,AccordionButton,AccordionItem,AccordionPanel,Box,Select,} from
 import React from "react";
 import Styles from "../CheckoutPage/Checkout.module.css";
 import { FaCreditCard } from "react-icons/fa";
-import Products from "../../Components/Checkout component/Products";
+import Products from "../../../Components/Website/Checkout component/Products";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 

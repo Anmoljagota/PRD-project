@@ -9,45 +9,46 @@ import {
 } from "@chakra-ui/react";
 import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Filterdata, getdata } from "../Redux/Product_redux/action";
-import Styles from "../Pages/ProductPage/Product.module.css";
+import { Filterdata, getdata } from "../../Redux/Product_redux/action";
+import Styles from "../../Pages/WebsitePages/ProductPage/Product.module.css";
 import { Mycontext } from "./Contextapi/ContextApi";
-  const Filtering = ({i,rerenderstop}) => {
-const {sortdata,search} =useContext(Mycontext)
-console.log("i ma sortdataaaaa,searchaaaaaaaaaaaaaaaaaaaaaaaaaaa",search)
+const Filtering = ({ i, rerenderstop }) => {
+  const { sortdata, search } = useContext(Mycontext);
+  console.log("i ma sortdataaaaa,searchaaaaaaaaaaaaaaaaaaaaaaaaaaa", search);
   const details = useSelector((data) => data.homeproduct);
   const [params, setParams] = useSearchParams();
   let persist = params.getAll("category");
-  const persistsort=params.getAll("_sort")
+  const persistsort = params.getAll("_sort");
   const [value, setValue] = useState(persist || []);
-  const [sort,setSort]=useState(persistsort||"");
+  const [sort, setSort] = useState(persistsort || "");
   const dispatch = useDispatch();
   const location = useLocation();
   useEffect(() => {
-    if (value||sortdata||search.searchdata) {
-      console.log("i ma aaaaaa agin",value);
+    if (value || sortdata || search.searchdata) {
+      console.log("i ma aaaaaa agin", value);
       details.obj.category = value;
- {  sortdata!=="" && (details.obj._sort=sortdata)}
- {search!=="" && (details.obj.q=search.searchdata)}
+      {
+        sortdata !== "" && (details.obj._sort = sortdata);
+      }
+      {
+        search !== "" && (details.obj.q = search.searchdata);
+      }
       setParams(details.obj);
     }
-    
-   
-  if (location.search !== "") {
+
+    if (location.search !== "") {
       const changledata = {
         params: {
           category: params.getAll("category"),
-         _sort:params.getAll("_sort"),
-         q:params.getAll("q")
+          _sort: params.getAll("_sort"),
+          q: params.getAll("q"),
         },
       };
       dispatch(Filterdata(changledata));
-    }
-  
-      else {
+    } else {
       dispatch(getdata());
     }
-  }, [value, location.search,sortdata,search.searchdata]);
+  }, [value, location.search, sortdata, search.searchdata]);
   function handleChange(e) {
     const category = [...value];
     if (category.includes(e.target.value)) {
@@ -66,7 +67,7 @@ console.log("i ma sortdataaaaa,searchaaaaaaaaaaaaaaaaaaaaaaaaaaa",search)
         fontWeight="530"
         fontSize="21px"
         padding="4px"
-        onClick={()=>rerenderstop(i)}
+        onClick={() => rerenderstop(i)}
       >
         <AccordionItem>
           <h2>

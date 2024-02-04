@@ -17,7 +17,7 @@ import {
   AccordionPanel,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import Filtering from "../Components/Filtering";
+import Filtering from "./Filtering";
 const DrawerExample = () => {
   //     const [params, setParams] = useSearchParams();
   //   let persist = params.getAll("category");
@@ -62,17 +62,17 @@ const DrawerExample = () => {
       <Button ref={btnRef} background="white" onClick={onOpen}>
         Filter
       </Button>
-       <Drawer
+      <Drawer
         isOpen={isOpen}
         placement="right"
         onClose={onClose}
         finalFocusRef={btnRef}
       >
         <DrawerOverlay />
-         <DrawerContent>
-          <DrawerCloseButton />   
+        <DrawerContent>
+          <DrawerCloseButton />
 
-         <Filtering i={2}/>
+          <Filtering i={2} />
         </DrawerContent>
       </Drawer>
     </>

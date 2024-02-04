@@ -11,7 +11,7 @@ import {
   Stack,
   useDisclosure,
 } from "@chakra-ui/react";
-import Styles from "../css/Project.module.css";
+import Styles from "../../css/Project.module.css";
 import React from "react";
 const PlacementExample = () => {
   const sortdata = [

@@ -10,7 +10,7 @@ import {
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { user_adderss_details } from "../../Redux/Product_redux/action";
+import { user_adderss_details } from "../../../Redux/Product_redux/action";
 import Styles from "../AddressPage/Address.module.css";
 const textareadata = [
   { text: "Landmark (optional)", name: "landmark" },

@@ -47,9 +47,7 @@
   }
 }
 @media (min-width: 0px) and (max-width: 500px) {
-  .specialoffer {
-    display: none;
-  }
+  
 
   .slider {
     width: 100%;

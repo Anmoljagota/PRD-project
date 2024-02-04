@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Alert, AlertIcon, Box, Image, Stack } from "@chakra-ui/react";
-import Styles from "../../css/Project.module.css";
+import Styles from "../../../css/Project.module.css";
 import { Link, Navigate, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getregister } from "../../Redux/Auth/action";
+import { getregister } from "../../../Redux/Auth/action";
 const Signup = () => {
   const login_data = {
     email: "",

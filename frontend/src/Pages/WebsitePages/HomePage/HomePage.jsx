@@ -1,11 +1,11 @@
-import { HStack, Box, Image } from "@chakra-ui/react";
+import { HStack, Box, Image, Text } from "@chakra-ui/react";
 import React from "react";
-import { ImageSlider } from "../../Components/demo";
-import HomeProduct from "../../Components/HomeProduct";
-import TopDepartments from "../../Components/TopDepartments";
-import Styles from "../../css/Project.module.css";
-import HomeStyles from "../HomePage/Homepage.module.css";
-import data from "../../db.json";
+import { ImageSlider } from "../../../Components/Website/demo";
+import HomeProduct from "../../../Components/Website/HomeProduct";
+import TopDepartments from "../../../Components/Website/TopDepartments";
+import Styles from "../../../css/Project.module.css";
+import HomeStyles from "./Homepage.module.css";
+import data from "../../../db.json";
 const HomePage = () => {
   return (
     <div className={Styles.HomePageMain}>
@@ -16,17 +16,20 @@ const HomePage = () => {
               <ImageSlider />
             </Box>
           </Box>
-          <Box className={HomeStyles.specialoffer}>
+          <Box
+            className={HomeStyles.specialoffer}
+            display={{ sm: "none", lg: "block", base: "none" }}
+          >
             <Box
               display="flex"
               justifyContent="space-between"
               alignItems="center"
               marginTop="20px"
             >
-              <h1>Flash Pick of the day</h1>
+              <Text fontSize={"2rem"}>Flash Pick of the day</Text>
               <h1
                 style={{
-                  fontSize: "15px",
+                  fontSize: "1.5rem",
                   float: "right",
                   textDecorationLine: "underline",
                 }}
@@ -46,7 +49,7 @@ const HomePage = () => {
                 width="80%"
               />
             </Box>
-            <Box float="left" position="absolute">
+            <Box>
               <button
                 className={Styles.btn}
                 style={{
@@ -62,7 +65,7 @@ const HomePage = () => {
               <h1
                 style={{
                   margin: "10px 0px 0px 10px",
-                  fontSize: "19px",
+                  fontSize: "1.9rem",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
@@ -76,7 +79,7 @@ const HomePage = () => {
                     fontWeight: "200",
                     color: "#74767c",
                     marginLeft: "5px",
-                    fontSize: "15px",
+                    fontSize: "1.5rem",
                   }}
                 >
                   $558.90
@@ -84,7 +87,7 @@ const HomePage = () => {
               </h1>
               <br />
             </Box>
-            <Box mt="26%" width="100%" fontSize="15px" lineHeight="1.5">
+            <Box mt="1rem" width="100%" fontSize="1.5rem" lineHeight="1.5">
               MAXPRO PTM405 2HP(4 HP Peak) Folding Treadmill, Electric Motorized
             </Box>
           </Box>

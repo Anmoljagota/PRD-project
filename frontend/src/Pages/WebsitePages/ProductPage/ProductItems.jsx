@@ -1,7 +1,7 @@
 import { Alert, AlertIcon, AlertTitle, Box, Img } from "@chakra-ui/react";
 import { shallowEqual, useSelector } from "react-redux";
-import Styles from "../ProductPage/Product.module.css";
-import ProductStyles from "../ProductPage/Product.module.css";
+import Styles from "./Product.module.css";
+import ProductStyles from "./Product.module.css";
 const ProductItems = ({
   image,
   getproduct,

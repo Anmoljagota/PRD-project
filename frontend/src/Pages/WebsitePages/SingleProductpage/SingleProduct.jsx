@@ -1,32 +1,23 @@
-import { Box, Image, useDisclosure } from "@chakra-ui/react";
+import { Box, Image } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Styles from "../../css/Project.module.css";
+import Styles from "../../../css/Project.module.css";
 import Styles1 from "./SingleProduct.module.css";
 import { AiOutlineHeart } from "react-icons/ai";
 import { TbAlertCircle } from "react-icons/tb";
-import { addtocart} from "../../Redux/Product_redux/action";
-import { useLocation } from "react-router-dom";
-import DrawerExample from "../../Components/FilterDrawer";
+import { addtocart } from "../../../Redux/Product_redux/action";
 import LoginDrawer from "../Login/LoginDrawer";
 let images = [{ data: "" }, { data: "" }, { data: "" }, { data: "" }];
 const SingleProduct = () => {
-  const data=useSelector((details)=>details.homeproduct.cartdata)
-  const [login,setLogin]=useState(false)
-  const location=useLocation();
   const dispatch = useDispatch();
   const details = useSelector((data) => data.homeproduct.singledata);
-  const loginornot=useSelector((data) => data.homeproduct.cartdata);
-  console.log("i am locationnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn", details);
+  const loginornot = useSelector((data) => data.homeproduct.cartdata);
   function handleClick() {
     dispatch(addtocart(details[0]._id));
-
   }
-
 
   return (
     <div style={{ marginTop: "150px" }}>
-   
       <Box>
         <Box width="95%" margin="auto" height="100vw">
           <Box height="40vw" className={Styles.flexall}>
@@ -38,7 +29,7 @@ const SingleProduct = () => {
             >
               <Box className={Styles1.images}>
                 {images.map((i, items) => (
-                  <Box key={i} >
+                  <Box key={i}>
                     <Image
                       src={details[0].image}
                       height="80px"
@@ -48,7 +39,7 @@ const SingleProduct = () => {
                   </Box>
                 ))}
               </Box>
-              <Box height="35vw"  className={Styles1.singleproductimage}>
+              <Box height="35vw" className={Styles1.singleproductimage}>
                 <Image
                   src={details[0].image}
                   alt="something wrong with image"
@@ -57,9 +48,8 @@ const SingleProduct = () => {
                 />
               </Box>
             </Box>
-            <Box height="40vw"  textAlign="left"   className={Styles.description}>
+            <Box height="40vw" textAlign="left" className={Styles.description}>
               <Box
-              
                 width="100%"
                 margin="auto"
                 boxShadow="rgba(0, 0, 0, 0.16) 0px 1px 4px"
@@ -121,14 +111,18 @@ const SingleProduct = () => {
                     </span>
                   </h1>
                 </div>
-              
-             {loginornot==="you are not authorized"?<LoginDrawer />:  <button
-                  className={Styles.signin}
-                  style={{ width: "50%", height: "40px", marginTop: "20px" }}
-                  onClick={handleClick}
-                >
-                  Add to cart
-                </button>}    
+
+                {loginornot === "you are not authorized" ? (
+                  <LoginDrawer />
+                ) : (
+                  <button
+                    className={Styles.signin}
+                    style={{ width: "50%", height: "40px", marginTop: "20px" }}
+                    onClick={handleClick}
+                  >
+                    Add to cart
+                  </button>
+                )}
               </Box>
               <hr />
             </Box>
