@@ -1,4 +1,4 @@
-import { HStack, Box, Image, Text } from "@chakra-ui/react";
+import { HStack, Box, Image, Text,SimpleGrid } from "@chakra-ui/react";
 import React from "react";
 import { ImageSlider } from "../../../Components/Website/demo";
 import HomeProduct from "../../../Components/Website/HomeProduct";
@@ -92,13 +92,13 @@ const HomePage = () => {
             </Box>
           </Box>
         </HStack>
-        <Box className={Styles.flexall} mt="20px">
+        <SimpleGrid columns={[1, 2, 4]} spacing='20px' mt={"3rem"}  >
           {data.map((items, index) => (
-            <Box float="right" key={index}>
-              {index < 1 && <TopDepartments i={index} />}
+            <Box float="right" key={index} w={"100%"} >
+              { <TopDepartments i={index} items={items}/>}
             </Box>
           ))}
-        </Box>
+        </SimpleGrid>
         <HomeProduct />
       </Box>
     </div>

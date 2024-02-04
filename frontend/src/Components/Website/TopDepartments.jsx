@@ -1,62 +1,49 @@
-import { Box, HStack, Image, SimpleGrid } from "@chakra-ui/react";
+import { Box, HStack, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 // import Styles from "../css/Project.module.css";
-const TopDepartments = ({ i }) => {
+const TopDepartments = ({ i, items }) => {
+  console.log(items[i]?.title, "title");
   const navigate = useNavigate();
   function nextpage() {
     navigate("/products");
   }
-  const winters = [
-    {
-      image:
-        "https://i5.walmartimages.com/dfw/4ff9c6c9-2abf/k2-_a16fbc9e-bea4-47da-ac72-c774b9796ca3.v1.jpg?odnHeight=128&odnWidth=128&odnBg=FFFFFF",
-      name: "25% off select home",
-    },
-    {
-      image:
-        "https://i5.walmartimages.com/dfw/4ff9c6c9-9ad2/k2-_0377fcda-85f3-4b27-aae6-fdb36a5f1d7a.v1.jpg?odnHeight=128&odnWidth=128&odnBg=FFFFFF",
-      name: "50% off select fashion",
-    },
-    {
-      image:
-        "https://i5.walmartimages.com/dfw/4ff9c6c9-ae69/k2-_7593e03c-eb4b-424b-85a0-574a5eebf95a.v1.jpg?odnHeight=128&odnWidth=128&odnBg=FFFFFF",
-      name: "35% off on select beauty",
-    },
-    {
-      image:
-        "https://i5.walmartimages.com/dfw/4ff9c6c9-f2ba/k2-_1a07238d-99c2-4859-b9cf-28d6a3ec233e.v1.jpg?odnHeight=128&odnWidth=128&odnBg=FFFFFF",
-      name: "30% off on select fitness",
-    },
-  ];
+  console.log("items", items);
   return (
-    <div style={{ height: "460px" }}>
-      <HStack spacing="24px" cursor="pointer">
+    <div style={{ width: "100%", paddingBottom: "1rem" }}>
+      <HStack spacing="24px" cursor="pointer" w={"100%"}>
         <Box
+          w={"100%"}
           position="relative"
           fontSize="25px"
           fontWeight="bold"
           lineHeight="1.25"
-          height="455px"
           boxShadow="rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px"
           p="5px 10px 5px 10px"
         >
           <Box
+            w={"100%"}
             display="flex"
             justifyContent="space-between"
             alignItems="center"
-            marginTop="20px"
+            p={3}
           >
-            <h1>Winter savings</h1>
+            <Text fontSize={"2.5rem"}>{items[0]?.title}</Text>
           </Box>
           <Box display="flex" justifyContent="center">
-            <SimpleGrid columns={[2, null, 2]} spacing="40px">
-              {winters.map((items, index) => (
-                <Box key={index} onClick={nextpage}>
+            <SimpleGrid columns={[2, null, 2]} spacing="20px">
+              {items.map((items, index) => (
+                <Box key={index} onClick={nextpage} pb={"1rem"}>
                   <Box>
-                    <Image src={items.image} alt="something wrong" />
+                    <Image src={items.image} alt="something wrong" w={"full"} />
                   </Box>
-                  <Box fontSize="14px" overflow="hidden" color="#46474a">
+                  <Box
+                    fontSize="1.2rem"
+                    overflow="hidden"
+                    color="#46474a"
+                    textAlign={"left"}
+                    mt={2}
+                  >
                     {items.name}
                   </Box>
                 </Box>

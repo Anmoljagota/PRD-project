@@ -32,7 +32,7 @@ const [error,setError]=useState(false)
       })
       .then((res) => {
         setData((prev) => [...prev, ...res.data]);
-        console.log("hlo i am data", data);
+       
         setdatalength(data.length);
         setLoading(false);
       })

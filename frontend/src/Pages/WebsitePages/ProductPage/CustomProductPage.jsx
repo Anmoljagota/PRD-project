@@ -39,7 +39,6 @@ const CustomProductPage = () => {
     dispatch(singleproduct({ product: id }));
     setTimeout(() => {
       navigate("/singleproduct");
-      console.log("navigate runnnnnninggggggggggggggggggggggggggggg");
     }, 2000);
   };
   return (

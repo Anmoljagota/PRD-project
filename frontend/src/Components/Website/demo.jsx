@@ -61,11 +61,7 @@ export const ImageSlider = () => {
       >
         {images.map((Item, index) => {
           return (
-            <Box
-              className={Styles.ProductBox}
-              key={index}
-             
-            >
+            <Box className={Styles.ProductBox} key={index}>
               <Box
                 width="100%"
                 position="absolute"
@@ -74,7 +70,7 @@ export const ImageSlider = () => {
                 textAlign="left"
                 float="left"
                 onClick={nextpage}
-                >
+              >
                 <Box className={Homestyles.imagetext}>
                   <Box>{Item.product}</Box>
                   <Box className={Styles.desc}>{Item.description}</Box>
@@ -82,14 +78,17 @@ export const ImageSlider = () => {
                 </Box>
               </Box>
               <Box
-              
                 key={index}
                 width="100%"
                 float="right"
                 position="relative"
                 height="95%"
               >
-                <Image src={Item.image} className={Homestyles.images} height="100%"/>
+                <Image
+                  src={Item.image}
+                  className={Homestyles.images}
+                  height="100%"
+                />
               </Box>
             </Box>
           );
