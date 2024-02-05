@@ -1,25 +1,29 @@
 import React, { useEffect } from "react";
- import Sidebar from "../../Components/Sidebar/Sidebar";
+import Sidebar from "../../Components/Sidebar/Sidebar";
 import Dashboard from "../Dashboard/Dashboard";
 import { Box } from "@chakra-ui/react";
 import Styles from "./Admin.module.css";
 import { useDispatch } from "react-redux";
 import { get_product, get_user } from "../../redux/All_Details/action";
 const Admin = () => {
+  console.log("llll", window.location.href);
   useEffect(() => {
     dispatch(get_product);
-    dispatch(get_user)
+    dispatch(get_user);
   }, []);
   const dispatch = useDispatch();
+  console.log("kkkk", window.location.href);
   return (
-    <div >
-     <Box className={Styles.maindiv}>
-         <Box  height="100%" width="17%" > 
-           <Sidebar />
-         </Box>  
+    <div>
+      <Box className={Styles.maindiv}>
+       
+          <Box height="100%" width="17%">
+            <Sidebar />
+          </Box>
+       
         <Box height="100%" width="80%" margin="auto">
           <Dashboard />
-        </Box>  
+        </Box>
       </Box>
     </div>
   );

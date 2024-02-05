@@ -17,8 +17,7 @@ import { useSelector } from "react-redux";
 import {BiLoaderCircle} from "react-icons/bi"
 import BasicModal from "../Products/Modal";
 const Home = () => {
-  const userDetails=useSelector((data)=>data.product_reducer.userdata[0])
-  console.log("i ma userdetailssssssss",userDetails)
+  // const userDetails=useSelector((data)=>data.product_reducer.userdata[0])
   return (
     <div>
       <Stack>
@@ -47,7 +46,7 @@ const Home = () => {
                 </Button>
               </Flex>
             </Flex>
-            <Flex
+            {/* <Flex
               width="20%"
               fontSize="18px"
               alignItems="center"
@@ -63,7 +62,7 @@ const Home = () => {
               <Text color="black" fontWeight="bold">
                 {userDetails.Name}
               </Text>
-            </Flex>
+            </Flex> */}
           </Flex>
         </VStack>
         <Slidingimages />

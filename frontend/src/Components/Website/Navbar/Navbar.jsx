@@ -160,7 +160,7 @@ const Navbar = () => {
               background="#ffc220"
               padding="7px"
               borderRadius="100%"
-              display={{ sm: "none", lg: "block" }}
+              display={{ sm: "none", lg: "block", base: "none" }}
               transform="translateY(-50%)"
               top="50%"
               right="8"

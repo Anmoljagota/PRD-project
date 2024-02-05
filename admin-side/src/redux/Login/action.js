@@ -9,7 +9,7 @@ axiosurl="register"
         axiosurl="login"
     }
 dispatch({type:ADMIN_LOGIN_LOADING})
-return axios.post(`http://localhost:8080/${axiosurl}`,data).then((res)=>{
+return axios.post(`https://real-gold-iguana-cape.cyclic.app/${axiosurl}`,data).then((res)=>{
 console.log("i ma admin register",res.data)
 if(res.data!=="User Already Created" && res.data!=="User Created" && res.data!=="Wrong Credentials"){
     localStorage.setItem("AdminLogin",res.data)

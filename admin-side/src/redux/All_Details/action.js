@@ -5,7 +5,7 @@ import axios from "axios";
 const get_product = (dispatch) => {
   dispatch({ type: PRODUCT_LOADING });
   return axios
-    .get("http://localhost:8080/fashion/clothes", {
+    .get("https://real-gold-iguana-cape.cyclic.app/fashion/clothes", {
       params: { allproducts: 1 },
     })
     .then((res) => {
@@ -20,7 +20,7 @@ const get_user = (dispatch) => {
   console.log("userrrrrrrrrrrrrrrrrrrrrrrr")
     dispatch({ type: USER_LOADING });
     return axios
-      .get("http://localhost:8080/user",{
+      .get("https://real-gold-iguana-cape.cyclic.app/user",{
         headers: {
           "Content-Type": "application/json",
           auth: localStorage.getItem("AdminLogin"),
@@ -35,7 +35,7 @@ const get_user = (dispatch) => {
   };
   const adddata=(data)=>(dispatch)=>{
     dispatch({ type: USER_LOADING });
-    return axios.post("http://localhost:8080/fashion/clothes",data).then((res)=>{
+    return axios.post("https://real-gold-iguana-cape.cyclic.app/fashion/clothes",data).then((res)=>{
       console.log(res)
     })
 .catch((err)=>{
@@ -44,7 +44,7 @@ const get_user = (dispatch) => {
   }
   const adminproduct=(data)=>(dispatch)=>{
 dispatch({type:ADMIN_PRODUCT_LOADING})
-axios.post("http://localhost:8080/admin",data,{
+axios.post("https://real-gold-iguana-cape.cyclic.app/admin",data,{
   headers: {
     "Content-Type": "application/json",
     auth: localStorage.getItem("AdminLogin"),

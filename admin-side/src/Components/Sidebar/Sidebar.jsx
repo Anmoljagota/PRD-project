@@ -10,16 +10,14 @@ import { TbUserCheck } from "react-icons/tb";
 import { HiDocumentReport } from "react-icons/hi";
 import { Box, Button, Container, Stack, TextField } from "@mui/material";
 import { useSelector } from "react-redux";
-import { VscDebugStackframeDot } from "react-icons/vsc";
+
 import BasicModal from "./UpdateProfile";
 
 const Sidebar = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const loginuserdata = useSelector(
     (details) => details.product_reducer.userdata
   );
-
-  console.log("kkk", loginuserdata);
   const links = [
     { path: "/", title: "Home", icon: <AiOutlineCodeSandbox /> },
     { path: "/adminproducts", title: "Products", icon: <BiBox /> },
@@ -30,9 +28,9 @@ const Sidebar = () => {
     { path: "/i", title: "Admin/Hr", icon: <TbUserCheck /> },
     { path: "/o", title: "Reporting", icon: <TbReportSearch /> },
   ];
-  function RemoveToken(){
-    localStorage.removeItem("AdminLogin")
-    navigate("/login")
+  function RemoveToken() {
+    localStorage.removeItem("AdminLogin");
+    navigate("/login");
   }
   return (
     <div>
@@ -79,7 +77,7 @@ const Sidebar = () => {
             </Stack>
           ))}
         </ul>
-        <Stack className={Styles.profile}>
+        <Stack className={Styles.profile}  >
           <>
             {loginuserdata.length > 0 && (
               <img
@@ -95,12 +93,15 @@ const Sidebar = () => {
             fontWeight="700"
             fontSize="18px"
             mt="2%"
+           
           >
             {loginuserdata.length > 0 && loginuserdata[0].Name} <br />
             <Box className={Styles.email}>
               {loginuserdata.length > 0 && loginuserdata[0].email}
             </Box>
-            <button className={Styles.logout} onClick={RemoveToken}>Logout</button>
+            <button className={Styles.logout} onClick={RemoveToken}>
+              Logout
+            </button>
           </Box>
         </Stack>
       </Box>

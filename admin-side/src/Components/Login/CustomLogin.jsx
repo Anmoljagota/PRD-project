@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../redux/Login/action";
 import { useNavigate } from "react-router-dom";
 import { get_user } from "../../redux/All_Details/action";
-const CustomLogin = ({ inputfield, name, height, inputheight,text }) => {
+const CustomLogin = ({ inputfield, name, height, inputheight, text }) => {
   const [signup, setSignup] = useState("");
   const [Login, setLogin] = useState("");
   const navigate = useNavigate();
@@ -72,21 +72,15 @@ const CustomLogin = ({ inputfield, name, height, inputheight,text }) => {
         theme: "light",
       });
 
-      try{
-await dispatch(register(Login));
+      try {
+        await dispatch(register(Login));
 
-if (logindata === true) {
-  console.log("naviagte is running");
-  navigate("/");
-}
-
-      }
-      catch(err){
-
-      }
+        if (logindata === true) {
+          console.log("naviagte is running");
+          navigate("/");
+        }
+      } catch (err) {}
       console.log("dis[patch is runnign");
-
-    
     } else {
       toast.error("🦄 All fields are Required!", {
         position: "bottom-center",
@@ -102,7 +96,7 @@ if (logindata === true) {
   }
   return (
     // <Box className={Styles.maincontainer}>
-    <div className={Styles.formcontainer}>
+    <div className={Styles.formcontainer} >
       <Tilt>
         <form action="" style={{ height: `${height}` }} onSubmit={handlesubmit}>
           <h3 style={{ color: "white" }}>{name}</h3>
@@ -131,7 +125,11 @@ if (logindata === true) {
               </>
             )
           )}
-     {text && <h1 className={Styles.signup} onClick={()=>navigate("/signup")}>Create your Shopify account</h1>}
+          {text && (
+            <h1 className={Styles.signup} onClick={() => navigate("/signup")}>
+              Create your Shopify account
+            </h1>
+          )}
         </form>
       </Tilt>
       <ToastContainer
