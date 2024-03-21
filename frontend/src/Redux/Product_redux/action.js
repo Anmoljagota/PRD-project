@@ -51,7 +51,7 @@ const getdata = (limit, page) => (dispatch) => {
 
   dispatch(LOADING_PRODUCT());
   return axios
-    .get("https://real-gold-iguana-cape.cyclic.app/fashion/clothes", {
+    .get("https://crazy-crown-yak.cyclic.app/fashion/clothes", {
       params: { page: 1, limit: 100 },
     })
     .then((res) => {
@@ -66,7 +66,7 @@ const sortgetdata = (data) => (dispatch) => {
   dispatch(LOADING_PRODUCT());
 
   return axios
-    .get("https://real-gold-iguana-cape.cyclic.app/fashion/clothes", data)
+    .get("https://crazy-crown-yak.cyclic.app/fashion/clothes", data)
     .then((res) => {
       dispatch(SUCCESS_PRODUCT(res.data));
     })
@@ -82,7 +82,7 @@ const addtocart = (data) => (dispatch) => {
   console.log(data, "lllllll");
   return axios
     .post(
-      "https://real-gold-iguana-cape.cyclic.app/cartdata",
+      "https://crazy-crown-yak.cyclic.app/cartdata",
       { product: data },
       {
         headers: {
@@ -92,7 +92,7 @@ const addtocart = (data) => (dispatch) => {
       }
     )
     .then((res) => {
-      console.log("resssssssssssssss", res.data);
+    
       if (res.data === "you are not authorized") {
         alert("Login first");
       }
@@ -104,17 +104,17 @@ const addtocart = (data) => (dispatch) => {
     });
 };
 const singleproduct = (data) => (dispatch) => {
-  console.log("i am dataaaaaaaaa", data);
+  
   SINGLE_LOADING_PRODUCT();
   if (data.product) {
     data = data.product;
   }
   axios
-    .post("https://real-gold-iguana-cape.cyclic.app/fashion/clothes", {
+    .post("https://crazy-crown-yak.cyclic.app/fashion/clothes", {
       product: data,
     })
     .then((res) => {
-      console.log("resssssssssssssss", res.data);
+    
       if (res.data === "you are not authorized") {
         alert("Login first");
       }
@@ -128,14 +128,14 @@ const singleproduct = (data) => (dispatch) => {
 const cartdata = () => (dispatch) => {
   dispatch({ type: CART_REQUEST });
   return axios
-    .get(`https://real-gold-iguana-cape.cyclic.app/cartdata`, {
+    .get(`https://crazy-crown-yak.cyclic.app/cartdata`, {
       headers: {
         "Content-Type": "application/json",
         auth: localStorage.getItem("token"),
       },
     })
     .then((res) => {
-      console.log(res.data, "ppppppppp");
+     
 
       dispatch({ type: CART_SUCCESS, payload: res.data });
     })
@@ -147,7 +147,7 @@ const cartdata = () => (dispatch) => {
 const cartdelete = (id) => (dispatch) => {
   dispatch({ type: CART_REQUEST });
   axios
-    .delete(`https://real-gold-iguana-cape.cyclic.app/cartdata/${id}`)
+    .delete(`https://crazy-crown-yak.cyclic.app/cartdata/${id}`)
     .then((res) => {
       console.log(res.data, "resssssddddddddddd");
     });
@@ -156,9 +156,9 @@ const cartdelete = (id) => (dispatch) => {
 const Filterdata = (data) => (dispatch) => {
 dispatch(LOADING_PRODUCT());
   return axios
-    .get("https://real-gold-iguana-cape.cyclic.app/fashion/clothes", data)
+    .get("https://crazy-crown-yak.cyclic.app/fashion/clothes", data)
     .then((res) => {
-      console.log("i am runningggggggggggg", res.data);
+    
  dispatch(SUCCESS_PRODUCT(res.data));
     })
     .catch((err) => {
@@ -168,7 +168,7 @@ dispatch(LOADING_PRODUCT());
 const user_adderss_details = (data) => (dispatch) => {
   dispatch({ type: USER_DETAILS_REQUEST });
   axios
-    .post("https://real-gold-iguana-cape.cyclic.app/address", data, {
+    .post("https://crazy-crown-yak.cyclic.app/address", data, {
       headers: {
         "Content-Type": "application/json",
         auth: localStorage.getItem("token"),
@@ -180,14 +180,14 @@ const user_adderss_details = (data) => (dispatch) => {
 const user_adderss_details_get = () => (dispatch) => {
   dispatch({ type: USER_DETAILS_REQUEST });
   axios
-    .get("https://real-gold-iguana-cape.cyclic.app/address", {
+    .get("https://crazy-crown-yak.cyclic.app/address", {
       headers: {
         "Content-Type": "application/json",
         auth: localStorage.getItem("token"),
       },
     })
     .then((res) => {
-      console.log("i ma resssssssssssssssssssaaaaa", res.data);
+      
       dispatch({ type: USER_DETAILS_SUCCESS, payload: res.data });
     });
   dispatch({ type: USER_DETAILS_ERROR });
