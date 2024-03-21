@@ -47,11 +47,11 @@ function SINGLE_ERROR_PRODUCT() {
   };
 }
 const getdata = (limit, page) => (dispatch) => {
-  // console.log("i am limit", limit);
+  console.log("i am limit", limit);
 
   dispatch(LOADING_PRODUCT());
   return axios
-    .get("https://crazy-crown-yak.cyclic.app/fashion/clothes", {
+    .get("http://localhost:8080/fashion/clothes", {
       params: { page: 1, limit: 100 },
     })
     .then((res) => {
@@ -66,7 +66,7 @@ const sortgetdata = (data) => (dispatch) => {
   dispatch(LOADING_PRODUCT());
 
   return axios
-    .get("https://crazy-crown-yak.cyclic.app/fashion/clothes", data)
+    .get("https://real-gold-iguana-cape.cyclic.app/fashion/clothes", data)
     .then((res) => {
       dispatch(SUCCESS_PRODUCT(res.data));
     })
@@ -82,7 +82,7 @@ const addtocart = (data) => (dispatch) => {
   console.log(data, "lllllll");
   return axios
     .post(
-      "https://crazy-crown-yak.cyclic.app/cartdata",
+      "https://real-gold-iguana-cape.cyclic.app/cartdata",
       { product: data },
       {
         headers: {
@@ -92,7 +92,6 @@ const addtocart = (data) => (dispatch) => {
       }
     )
     .then((res) => {
-    
       if (res.data === "you are not authorized") {
         alert("Login first");
       }
@@ -104,17 +103,15 @@ const addtocart = (data) => (dispatch) => {
     });
 };
 const singleproduct = (data) => (dispatch) => {
-  
   SINGLE_LOADING_PRODUCT();
   if (data.product) {
     data = data.product;
   }
   axios
-    .post("https://crazy-crown-yak.cyclic.app/fashion/clothes", {
+    .post("https://real-gold-iguana-cape.cyclic.app/fashion/clothes", {
       product: data,
     })
     .then((res) => {
-    
       if (res.data === "you are not authorized") {
         alert("Login first");
       }
@@ -128,15 +125,13 @@ const singleproduct = (data) => (dispatch) => {
 const cartdata = () => (dispatch) => {
   dispatch({ type: CART_REQUEST });
   return axios
-    .get(`https://crazy-crown-yak.cyclic.app/cartdata`, {
+    .get(`https://real-gold-iguana-cape.cyclic.app/cartdata`, {
       headers: {
         "Content-Type": "application/json",
         auth: localStorage.getItem("token"),
       },
     })
     .then((res) => {
-     
-
       dispatch({ type: CART_SUCCESS, payload: res.data });
     })
     .catch((err) => {
@@ -147,19 +142,18 @@ const cartdata = () => (dispatch) => {
 const cartdelete = (id) => (dispatch) => {
   dispatch({ type: CART_REQUEST });
   axios
-    .delete(`https://crazy-crown-yak.cyclic.app/cartdata/${id}`)
+    .delete(`https://real-gold-iguana-cape.cyclic.app/cartdata/${id}`)
     .then((res) => {
       console.log(res.data, "resssssddddddddddd");
     });
   dispatch({ type: CART_ERROR });
 };
 const Filterdata = (data) => (dispatch) => {
-dispatch(LOADING_PRODUCT());
+  dispatch(LOADING_PRODUCT());
   return axios
-    .get("https://crazy-crown-yak.cyclic.app/fashion/clothes", data)
+    .get("https://real-gold-iguana-cape.cyclic.app/fashion/clothes", data)
     .then((res) => {
-    
- dispatch(SUCCESS_PRODUCT(res.data));
+      dispatch(SUCCESS_PRODUCT(res.data));
     })
     .catch((err) => {
       dispatch(ERROR_PRODUCT());
@@ -168,7 +162,7 @@ dispatch(LOADING_PRODUCT());
 const user_adderss_details = (data) => (dispatch) => {
   dispatch({ type: USER_DETAILS_REQUEST });
   axios
-    .post("https://crazy-crown-yak.cyclic.app/address", data, {
+    .post("https://real-gold-iguana-cape.cyclic.app/address", data, {
       headers: {
         "Content-Type": "application/json",
         auth: localStorage.getItem("token"),
@@ -180,14 +174,13 @@ const user_adderss_details = (data) => (dispatch) => {
 const user_adderss_details_get = () => (dispatch) => {
   dispatch({ type: USER_DETAILS_REQUEST });
   axios
-    .get("https://crazy-crown-yak.cyclic.app/address", {
+    .get("https://real-gold-iguana-cape.cyclic.app/address", {
       headers: {
         "Content-Type": "application/json",
         auth: localStorage.getItem("token"),
       },
     })
     .then((res) => {
-      
       dispatch({ type: USER_DETAILS_SUCCESS, payload: res.data });
     });
   dispatch({ type: USER_DETAILS_ERROR });

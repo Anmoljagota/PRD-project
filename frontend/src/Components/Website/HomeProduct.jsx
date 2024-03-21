@@ -14,7 +14,7 @@ const HomeProduct = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [datalength, setdatalength] = useState(0);
-const [error,setError]=useState(false)
+  const [error, setError] = useState(false);
   useEffect(() => {
     if (datalength < 96) {
       getdata1(page, 20);
@@ -27,18 +27,18 @@ const [error,setError]=useState(false)
   const getdata1 = (page, limit) => {
     setLoading(true);
     axios
-      .get("https://crazy-crown-yak.cyclic.app/homeproduct", {
+      .get("https://real-gold-iguana-cape.cyclic.app/homeproduct", {
         params: { page: page, limit: limit },
       })
       .then((res) => {
         setData((prev) => [...prev, ...res.data]);
-       
+
         setdatalength(data.length);
         setLoading(false);
       })
-     .catch((err)=>{
-setError(true)
-     })
+      .catch((err) => {
+        setError(true);
+      });
   };
 
   function gotonextpage() {
