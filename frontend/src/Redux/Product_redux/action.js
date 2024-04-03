@@ -51,7 +51,7 @@ const getdata = (limit, page) => (dispatch) => {
 
   dispatch(LOADING_PRODUCT());
   return axios
-    .get("http://localhost:8080/fashion/clothes", {
+    .get("https://real-gold-iguana-cape.cyclic.app/fashion/clothes", {
       params: { page: 1, limit: 100 },
     })
     .then((res) => {
